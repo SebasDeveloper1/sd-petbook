@@ -1,7 +1,8 @@
 import React from 'react';
+import { NavRoutes } from './routes/NavRoutes';
 
 function App() {
-  return <div>PetBook</div>;
+  return <NavRoutes />;
 }
 
 export default App;
