@@ -6,6 +6,7 @@ import {
   LoginPage,
   SignoutPage,
   DashboardPage,
+  ChooseUserNamePage,
   EditUserPage,
   PetViewPage,
   Page404,
@@ -21,9 +22,10 @@ export function NavRoutes() {
           <Route exact path="dashboard" element={<DashboardPage />} />
           <Route
             exact
-            path="dashboard/p/:username/edit"
-            element={<EditUserPage />}
+            path="choose-username"
+            element={<ChooseUserNamePage />}
           />
+          <Route exact path="p/:username/edit" element={<EditUserPage />} />
           <Route exact path="signout" element={<SignoutPage />} />
           <Route
             exact
