@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
-import { app } from 'fbase/firebase';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { auth } from 'fbase/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 import { userExists, getUserInfo, registerNewUser } from 'fbase/dbFunctions';
 
 /*
@@ -20,8 +20,6 @@ export const useGetUserState = ({
   onUserNotRegistered,
 } = {}) => {
   const [userState, setUserState] = useState({ statusCode: 0 });
-
-  const auth = getAuth(app);
 
   const handlerUserStateChanged = async (user) => {
     setUserState({ statusCode: 1 });

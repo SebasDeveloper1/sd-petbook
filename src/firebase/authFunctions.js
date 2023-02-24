@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { app } from 'fbase/firebase';
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-
-const auth = getAuth(app);
+import { auth } from 'fbase/firebase';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 export const loginWithGoogle = async () => {
   const provider = new GoogleAuthProvider();

@@ -5,6 +5,14 @@ import path from 'node:path';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './setupTests.js',
+    coverage: {
+      provider: 'istanbul', // or 'c8'
+    },
+  },
   server: {
     host: true,
   },

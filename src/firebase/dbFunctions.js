@@ -1,5 +1,4 @@
 import {
-  getFirestore,
   doc,
   getDoc,
   query,
@@ -8,9 +7,8 @@ import {
   getDocs,
   setDoc,
 } from 'firebase/firestore';
-import { app } from 'fbase/firebase';
+import { db } from 'fbase/firebase';
 
-const db = getFirestore(app);
 export const userExists = async ({ userUid: uid } = {}) => {
   try {
     const docRef = doc(db, 'users', uid);

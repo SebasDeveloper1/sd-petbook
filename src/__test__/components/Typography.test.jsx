@@ -2,9 +2,9 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
-import { Typography } from './Typography';
+import { Typography } from 'components/Typography';
 
-describe('render', () => {
+describe('Typography component tests', () => {
   let component;
   let text;
   beforeEach(() => {
@@ -12,10 +12,10 @@ describe('render', () => {
     text = component.getByText('Text');
   });
 
-  test('Should render a text with the text "Text"', () => {
+  it('Should render a text with the text "Text"', () => {
     expect(text).toBeDefined();
   });
-  test('Should render a text with the text "Text"', () => {
+  it('Should render a text with the text "Text"', () => {
     const el = component.container.querySelector('h1');
     expect(el).not.toBeNull();
   });

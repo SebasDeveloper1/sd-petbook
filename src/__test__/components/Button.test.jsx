@@ -3,12 +3,12 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render } from '@testing-library/react';
 import { FcGoogle } from 'react-icons/fc';
-import { Button } from './Button';
+import { Button } from 'components/Button';
 
 describe('Button component tests', () => {
   let component;
   let btn;
-  const mockFuction = jest.fn();
+  const mockFuction = vi.fn();
 
   /* A function that is called before each test. */
   beforeEach(() => {
@@ -25,14 +25,14 @@ describe('Button component tests', () => {
     btn = component.getByText('Button');
   });
 
-  test('Should render a button with the text "Button"', () => {
+  it('Should render a button with the text "Button"', () => {
     expect(btn).toBeDefined();
   });
-  test('Should show an icon', () => {
+  it('Should show an icon', () => {
     const icon = component.container.querySelector('svg');
     expect(icon).not.toBeNull();
   });
-  test('Checking if the mock function is called once', () => {
+  it('Checking if the mock function is called once', () => {
     fireEvent.click(btn);
     expect(mockFuction.mock.calls).toHaveLength(1);
   });
