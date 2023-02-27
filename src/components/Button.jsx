@@ -12,14 +12,13 @@ export function Button({
   endIcon = null,
   disabled = null,
   onClick = null,
-  onChange = null,
 }) {
   const buttonVariant = {
     contained:
-      'group inline-flex items-center justify-center rounded-full py-2.5 px-6 text-md font-medium focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600',
+      'group inline-flex items-center justify-center rounded-md py-2.5 px-6 text-md font-medium focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600',
     outlined:
-      'group inline-flex items-center justify-center rounded-full py-2.5 px-6 ring-1 text-md font-medium focus:outline-none ring-slate-200 text-slate-700 bg-white hover:text-slate-900 hover:ring-slate-300 hover:bg-blue-50 active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300',
-    text: 'group inline-flex items-center justify-center rounded-full py-2.5 px-6 text-md font-medium focus:outline-none text-slate-700 bg-white hover:text-slate-900 hover:bg-blue-50 active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600',
+      'group inline-flex items-center justify-center rounded-md py-2.5 px-6 ring-1 text-md font-medium focus:outline-none ring-slate-200 text-slate-700 bg-white hover:text-slate-900 hover:ring-slate-300 hover:bg-blue-50 active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300',
+    text: 'group inline-flex items-center justify-center rounded-md py-2.5 px-6 text-md font-medium focus:outline-none text-slate-700 bg-white hover:text-slate-900 hover:bg-blue-50 active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600',
   };
   return (
     <button
@@ -31,7 +30,6 @@ export function Button({
           : `${buttonVariant[variant]} ${styles}`
       }
       onClick={onClick}
-      onChange={onChange}
     >
       <IconContext.Provider value={{ className: 'text-3xl mr-3' }}>
         {startIcon}

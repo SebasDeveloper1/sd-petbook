@@ -1,7 +1,15 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { useGetUserState } from 'hooks/useGetUserState';
 import { useNavigate } from 'react-router-dom';
 import { existsUsername, updateUser } from 'fbase/dbFunctions';
+import {
+  Logo,
+  Typography,
+  Button,
+  TextField,
+} from 'components/indexComponents';
+import backgroundImage from 'images/cover-login.jpg';
 
 export function ChooseUserNamePage() {
   const navigate = useNavigate();
@@ -46,9 +54,11 @@ export function ChooseUserNamePage() {
     setErrorUser(null);
     const valueUsername = username.trim().toLowerCase();
     if (valueUsername !== '') {
-      const exists = await existsUsername({ valueUsername });
+      const exists = await existsUsername({ username: valueUsername });
       if (exists) {
-        return setErrorUser('El nombre de usuario ya existe');
+        return setErrorUser(
+          'Este nombre de usuario ya está en uso, por favor seleccione otro.'
+        );
       }
       const tmp = { ...currentUser };
       tmp.username = valueUsername;
@@ -56,7 +66,7 @@ export function ChooseUserNamePage() {
       await updateUser(tmp);
       return navigate('/dashboard');
     }
-    return setErrorUser('Campo vacio');
+    return setErrorUser('Introduce un nombre de usuario válido.');
   };
 
   useEffect(() => {
@@ -64,17 +74,42 @@ export function ChooseUserNamePage() {
   }, []);
 
   return (
-    <div>
-      <h1>Bienvenido {currentUser?.displayName} </h1>
-      <p>Para terminar el proceso seleciona un nombre de usuario</p>
-      {errorUser ? <span> {errorUser} </span> : null}
-      <div>
-        <input type="text" onChange={handlerInputUsername} />
-      </div>
-      <div>
-        <button type="button" onClick={handlerContinue}>
-          Continuar
-        </button>
+    <div
+      style={{ backgroundImage: `url('${backgroundImage}')` }}
+      className="relative flex justify-center items-center p-4 h-screen bg-center bg-cover bg-no-repeat after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-t from-sky-500 to-indigo-500 after:opacity-20"
+    >
+      <div className="flex flex-col justify-center items-center space-y-8 h-fit p-8 rounded-xl max-w-sm bg-white shadow-2xl z-10">
+        <div className="flex flex-col space-y-8 w-full">
+          <Logo className="w-8/12" alt="PetBook" />
+          <div className="px-4 py-3 rounded-lg bg-sky-100">
+            <Typography
+              variant="h5"
+              styles="mb-1 text-sky-900"
+              value="¡Hola !"
+            />
+            <Typography
+              variant="p_base"
+              styles="text-sky-800"
+              value="Antes de continuar por favor  selecciona tu nombre de usuario."
+            />
+          </div>
+        </div>
+        <div className="grid grid-cols-1 justify-center items-center space-y-8 w-full">
+          <TextField
+            labelValue="Nombre de Usuario"
+            placeholder="Username"
+            status={errorUser ? 'warning' : 'normal'}
+            exceptionMessage={errorUser}
+            onChange={handlerInputUsername}
+          />
+          <Button
+            type="button"
+            variant="contained"
+            styles="mx-w-4"
+            value="Continuar"
+            onClick={handlerContinue}
+          />
+        </div>
       </div>
     </div>
   );

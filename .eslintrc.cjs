@@ -24,5 +24,6 @@ module.exports = {
     'linebreak-style': RULES.OFF,
     'object-curly-newline': RULES.OFF,
     'comma-dangle': RULES.OFF,
+    'import/no-extraneous-dependencies': RULES.OFF,
   },
 };

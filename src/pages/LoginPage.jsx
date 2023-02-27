@@ -5,11 +5,10 @@ import { FcGoogle } from 'react-icons/fc';
 import { loginWithGoogle } from 'fbase/authFunctions';
 import { useGetUserState } from 'hooks/useGetUserState';
 import { Logo, Button, Typography } from 'components/indexComponents';
+import coverLogin from 'images/cover-login.jpg';
 
 export function LoginPage() {
   const navigate = useNavigate();
-  const coverLogin =
-    'https://firebasestorage.googleapis.com/v0/b/petbook-ea7b2.appspot.com/o/WebImages%2Fcover-login.jpg?alt=media&token=22429f9f-00cc-4cd4-8838-fc77508570e4';
   const handlerUserLoggedIn = () => {
     navigate('/dashboard');
     return 2;
@@ -48,7 +47,7 @@ export function LoginPage() {
               styles="mb-2 text-center text-sky-900"
               value="Bienvenido a"
             />
-            <Logo className="mb-12" alt="PetBook" />
+            <Logo className="mb-12 w-9/12" alt="PetBook" />
             <Typography
               variant="span_lg"
               styles="text-center text-sky-700"
