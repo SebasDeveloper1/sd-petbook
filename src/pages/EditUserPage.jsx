@@ -1,5 +1,5 @@
 import React from 'react';
 
-export function EditUserPage() {
+export default function EditUserPage() {
   return <div>EditUserPage</div>;
 }

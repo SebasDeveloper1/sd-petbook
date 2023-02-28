@@ -7,7 +7,7 @@ import { useGetUserState } from 'hooks/useGetUserState';
 import { Logo, Button, Typography } from 'components/indexComponents';
 import coverLogin from 'images/cover-login.jpg';
 
-export function LoginPage() {
+export default function LoginPage() {
   const navigate = useNavigate();
   const handlerUserLoggedIn = () => {
     navigate('/dashboard');

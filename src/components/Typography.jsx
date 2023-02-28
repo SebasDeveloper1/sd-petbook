@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Typography({ variant = 'p_xl', styles = '', value = '' }) {
+export function Typography({ variant = 'p_xl', styles = '', value = '' } = {}) {
   const typographyVariant = {
     h1: 'font-display font-medium text-5xl font-medium tracking-tight sm:text-6xl md:text-7xl',
     h2: 'font-display font-medium text-4xl tracking-tight sm:text-5xl',
@@ -8,16 +8,16 @@ export function Typography({ variant = 'p_xl', styles = '', value = '' }) {
     h4: 'font-display font-medium text-2xl tracking-tight sm:text-3xl',
     h5: 'font-display font-medium text-xl tracking-tight sm:text-2xl',
     h6: 'font-display font-medium text-lg tracking-tight sm:text-xl',
-    p_xl: 'text-xl font-normal tracking-tight',
-    p_lg: 'text-lg font-normal tracking-tight',
-    p_base: 'text-base font-normal tracking-tight',
-    p_sm: 'text-sm font-normal tracking-tight',
-    p_xs: 'text-xs font-normal tracking-tight',
-    span_xl: 'text-xl font-normal tracking-tight',
-    span_lg: 'text-lg font-normal tracking-tight',
-    span_base: 'text-base font-normal tracking-tight',
-    span_sm: 'text-sm font-normal tracking-tight',
-    span_xs: 'text-xs font-normal tracking-tight',
+    p_xl: 'text-xl font-medium tracking-tight',
+    p_lg: 'text-lg font-medium tracking-tight',
+    p_base: 'text-base font-medium tracking-tight',
+    p_sm: 'text-sm font-medium tracking-tight',
+    p_xs: 'text-xs font-medium tracking-tight',
+    span_xl: 'text-xl font-medium tracking-tight',
+    span_lg: 'text-lg font-medium tracking-tight',
+    span_base: 'text-base font-medium tracking-tight',
+    span_sm: 'text-sm font-medium tracking-tight',
+    span_xs: 'text-xs font-medium tracking-tight',
   };
   if (variant === 'h1') {
     return (

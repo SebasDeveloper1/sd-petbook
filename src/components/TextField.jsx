@@ -13,21 +13,23 @@ export function TextField({
 
   const statusTypes = {
     normal:
-      'mt-2 mb-4  appearance-none text-slate-900 bg-white rounded-md block w-full px-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200',
+      'appearance-none text-slate-900 bg-white rounded-md block w-full px-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200',
     error:
-      'bg-red-50 placeholder:text-red-400 focus:ring-2 focus:ring-red-500 ring-red-500',
+      'bg-red-100 placeholder:text-red-600 focus:ring-2 focus:ring-red-600 ring-red-600',
     warning:
-      'bg-yellow-50 placeholder:text-yellow-400 focus:ring-2 focus:ring-yellow-500 ring-yellow-500',
+      'bg-yellow-50 placeholder:text-yellow-600 focus:ring-2 focus:ring-yellow-500 ring-yellow-500',
   };
 
   return (
     <div>
-      <label
-        htmlFor={textFieldId}
-        className="block text-md font-semibold leading-6 text-sky-900"
-      >
-        {labelValue}
-      </label>
+      {labelValue ? (
+        <label
+          htmlFor={textFieldId}
+          className="mb-1 block text-sm font-medium leading-6 text-slate-700"
+        >
+          {labelValue}
+        </label>
+      ) : null}
       <input
         id={textFieldId}
         type="text"
@@ -42,10 +44,10 @@ export function TextField({
       {exceptionMessage ? (
         <Typography
           variant="span_base"
-          styles={`p-1 rounded-md text-center font-medium ${
+          styles={`block p-1 my-4 rounded-md text-center font-medium ${
             status === 'warning'
               ? 'bg-yellow-100 text-yellow-900'
-              : 'bg-red-100 text-red-900'
+              : 'bg-red-100 text-red-600'
           }`}
           value={`• ${exceptionMessage}`}
         />

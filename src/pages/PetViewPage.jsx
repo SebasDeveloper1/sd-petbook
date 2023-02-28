@@ -1,5 +1,5 @@
 import React from 'react';
 
-export function PetViewPage() {
+export default function PetViewPage() {
   return <div>PetViewPage</div>;
 }
