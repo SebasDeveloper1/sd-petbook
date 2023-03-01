@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useGetUserState } from 'hooks/useGetUserState';
 import { useNavigate } from 'react-router-dom';
 import { existsUsername, updateUser } from 'fbase/dbFunctions';
-import backgroundImage from 'images/cover-login.jpg';
 import { UsernameForm, ConfirmationLayout } from 'containers/indexContainers';
 
 export default function ChooseUserNamePage() {
@@ -72,10 +71,7 @@ export default function ChooseUserNamePage() {
   }, []);
 
   return (
-    <div
-      style={{ backgroundImage: `url('${backgroundImage}')` }}
-      className="relative flex justify-center items-center p-4 h-screen bg-center bg-cover bg-no-repeat after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-t from-sky-500 to-indigo-500 after:opacity-20"
-    >
+    <div className="relative flex justify-center items-center p-4 h-screen bg-ChooseUsernamePage bg-center bg-cover bg-no-repeat after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-t from-sky-500 to-indigo-500 after:opacity-20">
       {!registerCompleted ? (
         <UsernameForm
           exeptionUser={exeption}

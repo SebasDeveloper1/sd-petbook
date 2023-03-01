@@ -21,7 +21,11 @@ module.exports = {
         'Noto Color Emoji',
       ],
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        ChooseUsernamePage: 'url("./src/assets/images/cover-login.jpg")',
+      },
+    },
   },
   plugins: [],
 };
