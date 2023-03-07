@@ -22,7 +22,7 @@ export default function ChooseUserNamePage() {
   5: exists usuername
 */
   const handlerUserLoggedIn = () => {
-    navigate('/dashboard');
+    navigate('/home');
     return 2;
   };
   const handlerUserNotRegistered = (user) => {

@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navbar-item {
+  @apply inline-block rounded-lg py-1 px-2 text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900;
+}

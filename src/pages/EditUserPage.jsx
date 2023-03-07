@@ -1,5 +1,10 @@
 import React from 'react';
+import { DashboardWrapper } from 'containers/indexContainers';
 
 export default function EditUserPage() {
-  return <div>EditUserPage</div>;
+  return (
+    <DashboardWrapper>
+      <div>EditUserPage</div>
+    </DashboardWrapper>
+  );
 }
