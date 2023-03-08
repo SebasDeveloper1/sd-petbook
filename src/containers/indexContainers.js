@@ -9,6 +9,10 @@ import { DashboardWrapper } from './GlobalContainers/DashboardWrapper';
 import { UsernameForm } from './ChooseUsernameContainers/UsernameForm';
 import { ConfirmationLayout } from './ChooseUsernameContainers/ConfirmationLayout';
 
+// HomePageContainers
+import { HeaderList } from './HomeContainers/HeaderList';
+import { PetList } from './HomeContainers/PetList';
+
 export {
   Header,
   Layout,
@@ -17,4 +21,6 @@ export {
   DashboardWrapper,
   UsernameForm,
   ConfirmationLayout,
+  HeaderList,
+  PetList,
 };

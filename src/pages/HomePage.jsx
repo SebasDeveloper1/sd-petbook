@@ -2,7 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGetUserState } from 'hooks/useGetUserState';
-import { DashboardWrapper } from 'containers/indexContainers';
+import {
+  DashboardWrapper,
+  HeaderList,
+  PetList,
+} from 'containers/indexContainers';
+import { PetCart } from 'components/indexComponents';
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -40,7 +45,17 @@ export default function HomePage() {
 
   return (
     <DashboardWrapper>
-      <div>Dashboard</div>
+      <div className="relative flex flex-col items-center w-full min-h-screen bg-slate-200">
+        <section className="flex flex-col justify-center items-center space-y-10 w-full">
+          <HeaderList />
+          <PetList>
+            <PetCart />
+            <PetCart />
+            <PetCart />
+            <PetCart />
+          </PetList>
+        </section>
+      </div>
     </DashboardWrapper>
   );
 }

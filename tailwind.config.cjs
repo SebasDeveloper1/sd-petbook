@@ -24,6 +24,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         ChooseUsernamePage: 'url("./src/assets/images/cover-login.jpg")',
+        GenericBlue: 'url("./src/assets/images/background-blue.jpg")',
       },
     },
   },

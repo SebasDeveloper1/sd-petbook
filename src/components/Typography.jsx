@@ -21,32 +21,32 @@ export function Typography({ variant = 'p_xl', styles = '', value = '' } = {}) {
   };
   if (variant === 'h1') {
     return (
-      <h1 className={`${typographyVariant[variant]} ${styles}`}>{value}</h1>
+      <h1 className={`${styles} ${typographyVariant[variant]} `}>{value}</h1>
     );
   }
   if (variant === 'h2') {
     return (
-      <h2 className={`${typographyVariant[variant]} ${styles}`}>{value}</h2>
+      <h2 className={`${styles} ${typographyVariant[variant]}`}>{value}</h2>
     );
   }
   if (variant === 'h3') {
     return (
-      <h3 className={`${typographyVariant[variant]} ${styles}`}>{value}</h3>
+      <h3 className={`${styles} ${typographyVariant[variant]}`}>{value}</h3>
     );
   }
   if (variant === 'h4') {
     return (
-      <h4 className={`${typographyVariant[variant]} ${styles}`}>{value}</h4>
+      <h4 className={`${styles} ${typographyVariant[variant]}`}>{value}</h4>
     );
   }
   if (variant === 'h5') {
     return (
-      <h5 className={`${typographyVariant[variant]} ${styles}`}>{value}</h5>
+      <h5 className={`${styles} ${typographyVariant[variant]}`}>{value}</h5>
     );
   }
   if (variant === 'h6') {
     return (
-      <h6 className={`${typographyVariant[variant]} ${styles}`}>{value}</h6>
+      <h6 className={`${styles} ${typographyVariant[variant]}`}>{value}</h6>
     );
   }
   if (
@@ -56,7 +56,7 @@ export function Typography({ variant = 'p_xl', styles = '', value = '' } = {}) {
     variant === 'p_sm' ||
     variant === 'p_xs'
   ) {
-    return <p className={`${typographyVariant[variant]} ${styles}`}>{value}</p>;
+    return <p className={`${styles} ${typographyVariant[variant]}`}>{value}</p>;
   }
   if (
     variant === 'span_xl' ||
@@ -66,7 +66,7 @@ export function Typography({ variant = 'p_xl', styles = '', value = '' } = {}) {
     variant === 'span_xs'
   ) {
     return (
-      <span className={`${typographyVariant[variant]} ${styles}`}>{value}</span>
+      <span className={`${styles} ${typographyVariant[variant]}`}>{value}</span>
     );
   }
 }
