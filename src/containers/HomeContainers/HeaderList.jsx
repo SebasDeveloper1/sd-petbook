@@ -6,7 +6,7 @@ import { FaUserAstronaut } from 'react-icons/fa';
 export function HeaderList({ userInfo } = {}) {
   const { profilePicture, username, email } = userInfo;
   return (
-    <section className="relative flex justify-center items-center w-full h-72 bg-slate-900 after:absolute after:inset-0 after:bg-cover after:bg-BlurCyan">
+    <section className="relative flex justify-center items-center w-full h-64 bg-slate-900 lg:h-60 after:absolute after:inset-0 after:bg-cover after:bg-BlurCyan">
       <div className="z-10 flex flex-col justify-between gap-12 w-11/12 md:flex-row md:items-center">
         <div className="flex items-center space-x-6">
           <img
@@ -16,9 +16,9 @@ export function HeaderList({ userInfo } = {}) {
           />
           <div className="w-full">
             <Typography
-              variant="span_lg"
+              variant="span_xl"
               value="Bienvenido"
-              styles="font-medium tracking-tight text-slate-100 truncate"
+              styles="font-medium tracking-tight text-slate-200 truncate"
             />
             <Typography
               variant="h3"
