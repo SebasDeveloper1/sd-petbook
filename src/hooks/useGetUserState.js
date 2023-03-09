@@ -40,7 +40,8 @@ export const useGetUserState = ({
       await registerNewUser({
         uid: user?.uid,
         displayName: user?.displayName,
-        profilePicture: '',
+        profilePicture: user?.photoURL,
+        email: user?.email,
         username: '',
         processCompleted: false,
       });

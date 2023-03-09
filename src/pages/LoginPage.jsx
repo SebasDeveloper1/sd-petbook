@@ -10,7 +10,7 @@ import coverLogin from 'images/cover-login.jpg';
 export default function LoginPage() {
   const navigate = useNavigate();
   const handlerUserLoggedIn = () => {
-    navigate('/dashboard');
+    navigate('/home');
     return 2;
   };
   const handlerUserNotRegistered = () => {

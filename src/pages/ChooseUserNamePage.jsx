@@ -64,7 +64,7 @@ export default function ChooseUserNamePage() {
     return setExeption('Introduce un nombre de usuario válido.');
   };
 
-  const handlerContinue = () => navigate('/dashboard');
+  const handlerContinue = () => navigate('/home');
 
   useEffect(() => {
     getStateUser();

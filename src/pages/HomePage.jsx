@@ -7,7 +7,8 @@ import {
   HeaderList,
   PetList,
 } from 'containers/indexContainers';
-import { PetCart } from 'components/indexComponents';
+import { Button, PetCart } from 'components/indexComponents';
+import { BsClipboardPlus } from 'react-icons/bs';
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -45,10 +46,17 @@ export default function HomePage() {
 
   return (
     <DashboardWrapper>
-      <div className="relative flex flex-col items-center w-full min-h-screen bg-slate-100">
-        <section className="flex flex-col justify-center items-center space-y-10 w-full">
-          <HeaderList />
+      <div className="relative flex flex-col items-center w-full min-h-screen bg-slate-50">
+        <section className="flex flex-col justify-center items-center w-full">
+          <HeaderList userInfo={currentUser} />
           <PetList>
+            <Button
+              type="button"
+              variant="outlined"
+              styles="shadow-lg flex-col py-8 border-dashed border-2 border-sky-500"
+              value="Agregar mascota"
+              startIcon={<BsClipboardPlus />}
+            />
             <PetCart />
             <PetCart />
             <PetCart />

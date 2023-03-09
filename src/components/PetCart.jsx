@@ -6,7 +6,7 @@ export function PetCart() {
   return (
     <Link
       to="/home"
-      className="Block max-w-md p-4 space-y-3 border border-gray-200 rounded-lg shadow-lg bg-white hover:bg-gray-100"
+      className="Block p-4 space-y-3 border border-gray-200 rounded-lg shadow-lg bg-white hover:bg-blue-50"
     >
       <div className="flex items-center space-x-4 w-full">
         <img
@@ -23,7 +23,7 @@ export function PetCart() {
           <Typography
             variant="span_sm"
             value="15/Julio/1999"
-            styles="font-medium tracking-tight text-slate-500 truncate"
+            styles="font-medium tracking-tight text-slate-400 truncate"
           />
         </div>
       </div>
@@ -31,7 +31,7 @@ export function PetCart() {
         <Typography
           variant="p_base"
           value="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-          styles="text-2xl font-medium tracking-tight text-slate-600 truncate"
+          styles="text-2xl font-medium tracking-tight text-slate-500 truncate"
         />
       </div>
     </Link>
