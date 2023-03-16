@@ -31,9 +31,11 @@ export default function HomePage() {
   const handlerUserNotRegistered = () =>
     // navigate('/login');
     3;
+
   const handlerUserNotLoggedIn = () =>
     // navigate('/login');
     4;
+
   const { getStateUser } = useGetUserState({
     onUserLoggedIn: handlerUserLoggedIn,
     onUserNotLoggedIn: handlerUserNotLoggedIn,
@@ -43,6 +45,10 @@ export default function HomePage() {
   useEffect(() => {
     getStateUser();
   }, []);
+
+  const handlerOnClick = () => {
+    navigate('/create-pet');
+  };
 
   return (
     <DashboardWrapper>
@@ -56,6 +62,7 @@ export default function HomePage() {
               styles="shadow-lg flex-col py-8 border-dashed border-2 border-sky-500"
               value="Agregar mascota"
               startIcon={<BsClipboardPlus />}
+              handlerOnClick={handlerOnClick}
             />
             <PetCart />
             <PetCart />

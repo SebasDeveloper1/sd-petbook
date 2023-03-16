@@ -6,29 +6,29 @@ import { FaUserAstronaut } from 'react-icons/fa';
 export function HeaderList({ userInfo } = {}) {
   const { profilePicture, username, email } = userInfo;
   return (
-    <section className="relative flex justify-center items-center w-full h-64 bg-slate-900 lg:h-60 after:absolute after:inset-0 after:bg-cover after:bg-BlurCyan">
+    <section className="relative flex justify-center items-center w-full min-h-[16rem] py-8 bg-slate-900 lg:h-60 after:absolute after:inset-0 after:bg-cover after:bg-BlurCyan">
       <div className="z-10 flex flex-col justify-between gap-12 w-11/12 md:flex-row md:items-center">
-        <div className="flex items-center space-x-6">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-center md:text-start">
           <img
-            className="w-24 h-24 rounded-full shadow-lg object-cover object-center lg:w-36 lg:h-36"
+            className="w-28 h-28 rounded-full shadow-lg object-cover object-center lg:w-36 lg:h-36"
             src={profilePicture || defaultImage}
             alt="Bonnie"
           />
-          <div className="w-full">
+          <div className="overflow-hidden w-full">
             <Typography
               variant="span_xl"
               value="Bienvenido"
-              styles="font-medium tracking-tight text-slate-200 truncate"
+              styles="font-medium tracking-tight text-sky-500 truncate"
             />
             <Typography
-              variant="h3"
+              variant="h2"
               value={username || 'username'}
-              styles="text-2xl font-bold tracking-tight truncate capitalize bg-gradient-to-r from-indigo-200 via-sky-400 to-indigo-200 bg-clip-text text-transparent"
+              styles="font-bold tracking-tight text-white truncate capitalize"
             />
             <Typography
               variant="span_sm"
               value={email}
-              styles="font-medium text-slate-400 truncate"
+              styles="font-normal text-slate-400 tracking-wide truncate"
             />
           </div>
         </div>

@@ -9,14 +9,14 @@ export function Footer() {
         <Typography
           variant="span_lg"
           value="PetBook ◉ @SebasDeveloper ◉ 2023"
-          styles="inline-block font text-2xl tracking-tight text-blue-500 capitalize"
+          styles="inline-block font text-2xl tracking-tight text-sky-500 capitalize"
         />
         <Typography
           variant="span_base"
           value="Hecho con el 💙 por Sebastian Pedroza"
-          styles="inline-block font-medium text-slate-50"
+          styles="inline-block font-medium text-slate-400"
         />
-        <div className="flex space-x-8 w-fit mt-8 text-3xl text-slate-400">
+        <div className="flex space-x-8 w-fit mt-8 text-3xl text-sky-400">
           <a
             href="https://github.com/SebasDeveloper1/sd-petbook"
             title="Github repository"

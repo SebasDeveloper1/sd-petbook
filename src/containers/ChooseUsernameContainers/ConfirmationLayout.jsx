@@ -3,7 +3,7 @@ import { Typography, Button } from 'components/indexComponents';
 
 export function ConfirmationLayout({ handlerButton } = {}) {
   return (
-    <div className="flex flex-col justify-center items-center space-y-8 h-fit p-6 rounded-xl max-w-sm text-center bg-white shadow-2xl z-10">
+    <div className="flex flex-col justify-center items-center space-y-8 h-fit p-6 rounded-md max-w-sm text-center bg-white shadow-2xl z-10">
       <div className="flex flex-col justify-center items-center space-y-4">
         <Typography
           variant="h4"
@@ -22,7 +22,7 @@ export function ConfirmationLayout({ handlerButton } = {}) {
         variant="contained"
         styles="w-full mx-w-4"
         value="Continuar"
-        onClick={handlerButton}
+        handlerOnClick={handlerButton}
       />
     </div>
   );

@@ -1,9 +1,9 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 
-export function Modal({ children } = {}) {
+export function Modal({ children }) {
   return createPortal(
-    <section className="absolute top-0 left-0 w-full h-screen z-50 bg-red-600">
+    <section className="fixed top-0 left-0 flex justify-center items-center w-full h-full bg-slate-900/70 z-50">
       {children}
     </section>,
     document.getElementById('modal')

@@ -74,8 +74,9 @@ export default function ChooseUserNamePage() {
     <div className="relative flex justify-center items-center p-4 h-screen bg-ChooseUsernamePage bg-center bg-cover bg-no-repeat after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-t from-sky-500 to-indigo-500 after:opacity-20">
       {!registerCompleted ? (
         <UsernameForm
-          exeptionUser={exeption}
           handlerInput={handlerInputUsername}
+          defaultValue={username}
+          exeptionUser={exeption}
           handlerButton={handlerRegister}
         />
       ) : (

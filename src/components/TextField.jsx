@@ -4,20 +4,21 @@ import { Typography } from 'components/indexComponents';
 
 export function TextField({
   labelValue = '',
+  type = 'text',
+  rows = 3,
+  name = '',
   placeholder = '',
+  defaultValue = '',
   status = 'normal',
   exceptionMessage = '',
-  onChange = null,
+  handlerOnChange = null,
 } = {}) {
   const textFieldId = useId();
 
   const statusTypes = {
-    normal:
-      'appearance-none text-slate-900 bg-white rounded-md block w-full px-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200',
-    error:
-      'bg-red-100 placeholder:text-red-600 focus:ring-2 focus:ring-red-600 ring-red-600',
-    warning:
-      'bg-yellow-50 placeholder:text-yellow-600 focus:ring-2 focus:ring-yellow-500 ring-yellow-500',
+    normal: 'input-form p-2',
+    warning: 'input-form-warning',
+    error: 'input-form-error',
   };
 
   return (
@@ -30,21 +31,40 @@ export function TextField({
           {labelValue}
         </label>
       ) : null}
-      <input
-        id={textFieldId}
-        type="text"
-        className={
-          status
-            ? ` ${statusTypes?.normal} ${statusTypes[status]}`
-            : statusTypes?.normal
-        }
-        placeholder={placeholder}
-        onChange={onChange}
-      />
+
+      {type === 'textarea' ? (
+        <textarea
+          id={textFieldId}
+          name={name}
+          rows={rows}
+          className={
+            status
+              ? `${statusTypes?.normal} ${statusTypes[status]}`
+              : statusTypes?.normal
+          }
+          placeholder={placeholder}
+          defaultValue={defaultValue}
+        />
+      ) : (
+        <input
+          id={textFieldId}
+          type={type}
+          name={name}
+          className={
+            status
+              ? ` ${statusTypes?.normal} ${statusTypes[status]}`
+              : statusTypes?.normal
+          }
+          placeholder={placeholder}
+          value={defaultValue}
+          onChange={handlerOnChange}
+        />
+      )}
+
       {exceptionMessage ? (
         <Typography
           variant="span_base"
-          styles={`block p-1 my-4 rounded-md text-center font-medium ${
+          styles={`block p-1 my-4 rounded-md font-medium ${
             status === 'warning'
               ? 'bg-yellow-100 text-yellow-900'
               : 'bg-red-100 text-red-600'

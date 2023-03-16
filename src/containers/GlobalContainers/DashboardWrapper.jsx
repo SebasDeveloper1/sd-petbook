@@ -5,8 +5,8 @@ export function DashboardWrapper({ children }) {
   return (
     <>
       <Header />
-      <main>{children}</main>
-      <Footer />
+      <main className="w-full">{children}</main>
+      <Footer className="" />
     </>
   );
 }

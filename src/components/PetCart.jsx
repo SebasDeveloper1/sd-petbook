@@ -6,7 +6,7 @@ export function PetCart() {
   return (
     <Link
       to="/home"
-      className="Block p-4 space-y-3 border border-gray-200 rounded-lg shadow-lg bg-white hover:bg-blue-50"
+      className="block p-4 space-y-3 border border-gray-200 rounded-md shadow-lg bg-white hover:bg-sky-50"
     >
       <div className="flex items-center space-x-4 w-full">
         <img
@@ -14,7 +14,7 @@ export function PetCart() {
           src="https://images.pexels.com/photos/160846/french-bulldog-summer-smile-joy-160846.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="Bonnie"
         />
-        <div className="w-full">
+        <div className="overflow-hidden w-full">
           <Typography
             variant="h5"
             value="Merlin"

@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-.navbar-item {
-  @apply inline-block rounded-lg py-1 px-2 text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900;
+.navbar-item-dark {
+  @apply inline-block rounded-md py-1 px-2 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-slate-200;
+}
+
+.navbar-item-light {
+  @apply inline-block rounded-md py-1 px-2 text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900;
+}
+
+.label-input-form {
+  @apply block text-sm font-normal leading-6 text-slate-900;
+}
+
+.input-form {
+  @apply block appearance-none text-slate-900 bg-white rounded-md w-full px-3 mt-2 min-h-[2.5rem] shadow-sm sm:text-sm focus:outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200;
+}
+
+.input-form-warning {
+  @apply bg-yellow-50 placeholder:text-yellow-600 focus:ring-2 focus:ring-yellow-500 ring-yellow-500;
+}
+
+.input-form-error {
+  @apply bg-red-100 placeholder:text-red-600 focus:ring-2 focus:ring-red-600 ring-red-600;
+}
+
+.button-contained {
+  @apply inline-flex items-center justify-center gap-2 text-base font-medium text-white bg-sky-500 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 hover:text-slate-50 hover:bg-sky-400 focus-visible:outline-sky-500;
+}
+
+.button-outlined {
+  @apply inline-flex items-center justify-center gap-2 ring-1 text-base font-medium text-slate-700 ring-slate-200 bg-white focus:outline-none hover:text-slate-900 hover:ring-slate-300 hover:bg-sky-50 focus-visible:outline-sky-500 focus-visible:ring-slate-300;
+}
+
+.button-text {
+  @apply inline-flex items-center justify-center gap-2 text-base font-medium focus:outline-none focus-visible:outline-sky-500;
 }

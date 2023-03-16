@@ -2,22 +2,22 @@ import React from 'react';
 
 export function Typography({ variant = 'p_xl', styles = '', value = '' } = {}) {
   const typographyVariant = {
-    h1: 'font-display text-5xl tracking-tight sm:text-6xl md:text-7xl',
-    h2: 'font-display text-4xl tracking-tight sm:text-5xl',
-    h3: 'font-display text-3xl tracking-tight sm:text-4xl',
-    h4: 'font-display text-2xl tracking-tight sm:text-3xl',
-    h5: 'font-display text-xl tracking-tight sm:text-2xl',
-    h6: 'font-display text-lg tracking-tight sm:text-xl',
-    p_xl: 'text-xl tracking-tight',
-    p_lg: 'text-lg tracking-tight',
-    p_base: 'text-base tracking-tight',
-    p_sm: 'text-sm tracking-tight',
-    p_xs: 'text-xs tracking-tight',
-    span_xl: 'text-xl tracking-tight',
-    span_lg: 'text-lg tracking-tight',
-    span_base: 'text-base tracking-tight',
-    span_sm: 'text-sm tracking-tight',
-    span_xs: 'text-xs tracking-tight',
+    h1: 'block text-5xl tracking-tight sm:text-6xl md:text-7xl',
+    h2: 'block text-4xl tracking-tight sm:text-5xl',
+    h3: 'block text-3xl tracking-tight sm:text-4xl',
+    h4: 'block text-2xl tracking-tight sm:text-3xl',
+    h5: 'block text-xl tracking-tight sm:text-2xl',
+    h6: 'block text-lg tracking-tight sm:text-xl',
+    p_xl: 'block text-xl tracking-tight',
+    p_lg: 'block text-lg tracking-tight',
+    p_base: 'block text-base tracking-tight',
+    p_sm: 'block text-sm tracking-tight',
+    p_xs: 'block text-xs tracking-tight',
+    span_xl: 'block text-xl tracking-tight',
+    span_lg: 'block text-lg tracking-tight',
+    span_base: 'block text-base tracking-tight',
+    span_sm: 'block text-sm tracking-tight',
+    span_xs: 'block text-xs tracking-tight',
   };
   if (variant === 'h1') {
     return (
