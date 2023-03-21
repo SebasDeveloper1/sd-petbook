@@ -1,26 +1,65 @@
 import React from 'react';
+import defaultImage from 'images/profile-picture.png';
 import {
   Typography,
   TextField,
   TextSelection,
+  Button,
 } from 'components/indexComponents';
 
-export function OwnerDataForm() {
+export function EditForm() {
   return (
-    <section className=" md:col-span-3">
-      <div>
-        <div className="py-4 md:px-4 md:pt-0">
+    <form className="w-11/12 p-8 rounded-md shadow-md bg-white">
+      <Typography
+        variant="h3"
+        value="Editar perfil"
+        styles="pb-4 text-2xl font-semibold tracking-tight text-slate-900"
+      />
+      <section className="grid grid-cols-3 gap-8 divide-y md:divide-x md:divide-y-0">
+        <div className="col-span-3 md:col-span-1">
+          <div className="w-full rounded-md border border-gray-300 text-center hover:bg-slate-50">
+            <label
+              htmlFor="file-upload"
+              className="block w-full p-6 cursor-pointer font-medium text-sky-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-sky-500 focus-within:ring-offset-2 hover:text-sky-500"
+            >
+              <img
+                className="w-44 mb-3 aspect-square m-auto rounded-full object-cover object-center"
+                src={defaultImage}
+                alt="Perfil"
+              />
+              <span>Selecciona una foto</span>
+              <input
+                id="file-upload"
+                name="file-upload"
+                type="file"
+                className="sr-only"
+              />
+            </label>
+          </div>
+        </div>
+        <div className="col-span-3 md:col-span-2 pt-8 md:pl-8 md:py-0">
           <Typography
             variant="h4"
-            value="Información del Propietario"
-            styles="mb-4 col-span-3 text-2xl font-medium tracking-tight text-slate-900"
+            value="Tus Datos"
+            styles="pb-4 text-2xl font-semibold tracking-tight text-slate-900"
           />
           <div className="grid grid-cols-6 gap-6">
             <div className="col-span-6 sm:col-span-2">
               <TextField
+                labelValue="Nombre de Usuario"
+                type="text"
+                name="username-user"
+                placeholder="Jessica Lorena"
+                status="normal"
+                handlerOnChange={() => {}}
+              />
+            </div>
+
+            <div className="col-span-6 sm:col-span-2">
+              <TextField
                 labelValue="Nombres"
                 type="text"
-                name="name-owner"
+                name="name-user"
                 placeholder="Jessica Lorena"
                 status="normal"
                 handlerOnChange={() => {}}
@@ -31,7 +70,7 @@ export function OwnerDataForm() {
               <TextField
                 labelValue="Apellidos"
                 type="text"
-                name="lastname-owner"
+                name="lastname-user"
                 placeholder="Casas Garcia"
                 status="normal"
                 handlerOnChange={() => {}}
@@ -41,7 +80,7 @@ export function OwnerDataForm() {
             <div className="col-span-6 sm:col-span-2">
               <TextSelection
                 labelValue="Género"
-                selectionName="gender-owner"
+                selectionName="gender-user"
                 options={['Masculino', 'Femenino', 'Otro']}
                 status="normal"
                 handlerOnChange={() => {}}
@@ -52,7 +91,7 @@ export function OwnerDataForm() {
               <TextField
                 labelValue="Celular y/o WhatsApp"
                 type="number"
-                name="cell-owner"
+                name="cell-user"
                 placeholder="1234567890"
                 status="normal"
                 handlerOnChange={() => {}}
@@ -63,7 +102,7 @@ export function OwnerDataForm() {
               <TextField
                 labelValue="Correo Electrónico"
                 type="email"
-                name="email-owner"
+                name="email-user"
                 placeholder="prueba@ejemplo.com"
                 status="normal"
                 handlerOnChange={() => {}}
@@ -74,59 +113,69 @@ export function OwnerDataForm() {
               <TextField
                 labelValue="Sitio web de contacto (Opcional)"
                 type="text"
-                name="web-owner"
+                name="web-user"
                 placeholder="Facebook, Instagram, etc."
                 status="normal"
                 handlerOnChange={() => {}}
               />
             </div>
 
-            <div className="col-span-3 sm:col-span-2">
+            <div className="col-span-6 sm:col-span-2">
               <TextField
                 labelValue="País"
                 type="text"
-                name="country-owner"
+                name="country-user"
                 placeholder="Colombia"
                 status="normal"
                 handlerOnChange={() => {}}
               />
             </div>
 
-            <div className="col-span-3 sm:col-span-2">
+            <div className="col-span-6 sm:col-span-2">
               <TextField
                 labelValue="Departamento"
                 type="text"
-                name="departament-owner"
+                name="departament-user"
                 placeholder="Cundinamarca"
                 status="normal"
                 handlerOnChange={() => {}}
               />
             </div>
 
-            <div className="col-span-3 sm:col-span-2">
+            <div className="col-span-6 sm:col-span-2">
               <TextField
                 labelValue="Ciudad"
                 type="text"
-                name="city-owner"
+                name="city-user"
                 placeholder="Bogotá"
                 status="normal"
                 handlerOnChange={() => {}}
               />
             </div>
 
-            <div className="col-span-3 sm:col-span-2">
+            <div className="col-span-6 sm:col-span-2">
               <TextField
                 labelValue="Dirección de residencia"
                 type="text"
-                name="address-owner"
+                name="address-user"
                 placeholder="Call 0 # 0-00 / Casa 0"
                 status="normal"
                 handlerOnChange={() => {}}
               />
             </div>
+
+            <div className="col-span-6">
+              <Button
+                type="button"
+                variant="contained"
+                styles="w-fit"
+                value="Guardar cambios"
+                // handlerOnClick={handlerOnSubmit}
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </form>
   );
 }

@@ -21,6 +21,9 @@ import { OwnerDataForm } from './CreatePetContainers/OwnerDataForm';
 import { VaccinesDataForm } from './CreatePetContainers/VaccinesDataForm';
 import { VaccinesInputs } from './CreatePetContainers/VaccinesInputs';
 
+// EditUserContainers
+import { EditForm } from './EditUserContainers/EditForm';
+
 export {
   Header,
   Layout,
@@ -37,4 +40,5 @@ export {
   OwnerDataForm,
   VaccinesDataForm,
   VaccinesInputs,
+  EditForm,
 };

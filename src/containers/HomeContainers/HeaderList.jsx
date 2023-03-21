@@ -1,10 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Typography, Button } from 'components/indexComponents';
 import defaultImage from 'images/profile-picture.png';
 import { FaUserAstronaut } from 'react-icons/fa';
 
 export function HeaderList({ userInfo } = {}) {
   const { profilePicture, username, email } = userInfo;
+  const navigate = useNavigate();
+
+  const handlerProfileButton = () => {
+    navigate('/p/edit');
+  };
+
   return (
     <section className="relative flex justify-center items-center w-full min-h-[16rem] py-8 bg-slate-900 lg:h-60 after:absolute after:inset-0 after:bg-cover after:bg-BlurCyan">
       <div className="z-10 flex flex-col justify-between gap-12 w-11/12 md:flex-row md:items-center">
@@ -36,8 +43,9 @@ export function HeaderList({ userInfo } = {}) {
           type="button"
           variant="contained"
           styles=""
-          value="Ver perfil"
+          value="Editar perfil"
           startIcon={<FaUserAstronaut />}
+          handlerOnClick={handlerProfileButton}
         />
       </div>
     </section>

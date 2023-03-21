@@ -10,8 +10,7 @@ export function Header() {
   const iconNavBar = openNavBar ? <MdClose /> : <MdMenu />;
   const navList = [
     { routeName: 'Inicio', routeLink: '/home' },
-    { routeName: 'Perfil', routeLink: '/p/edit' },
-    { routeName: 'Cerrar Sesión ', routeLink: '/signout' },
+    { routeName: 'Cerrar Sesión', routeLink: '/signout' },
   ];
 
   const handlerNavBar = () => {
