@@ -9,7 +9,7 @@ import {
 
 export function EditForm() {
   return (
-    <form className="w-11/12 p-8 rounded-md shadow-md bg-white">
+    <form className="w-11/12 p-8">
       <Typography
         variant="h3"
         value="Editar perfil"
