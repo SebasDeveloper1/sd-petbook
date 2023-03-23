@@ -6,6 +6,10 @@ import { Modal } from './GlobalContainers/Modal';
 import { DashboardWrapper } from './GlobalContainers/DashboardWrapper';
 import { GoToBackLayout } from './GlobalContainers/GoToBackLayout';
 
+// HeaderContainers
+import { NavBarLG } from './HeaderContainers/NavBarLG';
+import { NavBarSM } from './HeaderContainers/NavBarSM';
+
 // ChooseUsernameContainers
 import { UsernameForm } from './ChooseUsernameContainers/UsernameForm';
 import { ConfirmationLayout } from './ChooseUsernameContainers/ConfirmationLayout';
@@ -26,6 +30,8 @@ import { EditForm } from './EditUserContainers/EditForm';
 
 export {
   Header,
+  NavBarLG,
+  NavBarSM,
   Layout,
   Footer,
   Modal,

@@ -1,46 +1,65 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Logo, IconButton } from 'components/indexComponents';
+/* eslint-disable react/jsx-no-constructed-context-values */
+import React, { useState, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { MdMenu, MdClose } from 'react-icons/md';
+import { Logo, IconButton } from 'components/indexComponents';
+import { NavBarLG, NavBarSM } from 'containers/indexContainers';
+import { useGetUserState } from 'hooks/useGetUserState';
+import { signOutWithGoogle } from 'fbase/authFunctions';
 
 export function Header() {
   const [openNavBar, setOpenNavBar] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
+  const navigate = useNavigate();
 
   const activeClassName = 'text-sky-400';
   const iconNavBar = openNavBar ? <MdClose /> : <MdMenu />;
   const navList = [
     { routeName: 'Inicio', routeLink: '/home' },
-    { routeName: 'Cerrar Sesión', routeLink: '/signout' },
+    { routeName: 'create-pet', routeLink: '/create-pet' },
   ];
+  /*
+  Stages:
+  0: initiated
+  1: loading
+  2: login completed
+  3: login but no username
+  4: not logged
+  5: exists usuername
+*/
+  const handlerUserLoggedIn = (user) => {
+    setCurrentUser(user);
+    return 2;
+  };
 
-  const handlerNavBar = () => {
-    setOpenNavBar(!openNavBar);
+  const { getStateUser } = useGetUserState({
+    onUserLoggedIn: handlerUserLoggedIn,
+  });
+
+  useEffect(() => {
+    getStateUser();
+  }, []);
+
+  const handlerNavBar = () => setOpenNavBar(!openNavBar);
+
+  const handlerSignOut = async () => {
+    await signOutWithGoogle();
+    navigate('/login');
   };
 
   return (
-    <header className="flex items-center h-20 px-4  bg-slate-900">
-      <nav className="relative z-50 flex justify-between w-full">
+    <header className="z-20 sticky top-0 flex items-center w-full h-16 px-4 border-b border-slate-50/[0.06] bg-slate-900">
+      <nav className="relative flex justify-between w-full">
         <div className="flex justify-between items-center w-full md:gap-x-12">
           <NavLink className="w-36" to="/home">
             <Logo className="w-full" alt="PetBook" />
           </NavLink>
-          <ul className="hidden md:flex md:gap-x-6">
-            {navList.map((item) => (
-              <li
-                key={`navItem_${item?.routeName}`}
-                className="navbar-item-dark"
-              >
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? activeClassName : null
-                  }
-                  to={item?.routeLink}
-                >
-                  {item?.routeName}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
+          <NavBarLG
+            navList={navList}
+            activeClassName={activeClassName}
+            userInfo={currentUser}
+            handlerSignOut={handlerSignOut}
+          />
           <IconButton
             type="button"
             variant="contained"
@@ -49,25 +68,12 @@ export function Header() {
             handlerOnClick={handlerNavBar}
           />
           {openNavBar ? (
-            <div className="fixed inset-0 flex justify-center items-start mt-20 bg-slate-300/90 md:hidden">
-              <ul className="inset-x-0 top-full flex origin-top flex-col w-11/12 rounded-md bg-white p-4 mt-4 shadow-xl ring-1 ring-slate-900/5 opacity-100 scale-100">
-                {navList.map((item) => (
-                  <li
-                    key={`navItem_${item?.routeName}`}
-                    className="navbar-item-light"
-                  >
-                    <NavLink
-                      className={({ isActive }) =>
-                        isActive ? activeClassName : null
-                      }
-                      to={item?.routeLink}
-                    >
-                      {item?.routeName}
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <NavBarSM
+              navList={navList}
+              activeClassName={activeClassName}
+              handlerNavBar={handlerNavBar}
+              handlerSignOut={handlerSignOut}
+            />
           ) : null}
         </div>
       </nav>

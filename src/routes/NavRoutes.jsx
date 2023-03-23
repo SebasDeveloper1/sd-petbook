@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 const MainPage = lazy(() => import('pages/MainPage'));
 const HomePage = lazy(() => import('pages/HomePage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
-const SignoutPage = lazy(() => import('pages/SignoutPage'));
 const ChooseUserNamePage = lazy(() => import('pages/ChooseUserNamePage'));
 const EditUserPage = lazy(() => import('pages/EditUserPage'));
 const CreatePetPage = lazy(() => import('pages/CreatePetPage'));
@@ -25,7 +24,6 @@ export function NavRoutes() {
             element={<ChooseUserNamePage />}
           />
           <Route exact path="p/edit" element={<EditUserPage />} />
-          <Route exact path="signout" element={<SignoutPage />} />
           <Route
             exact
             path="/u/:username/p/:petName"

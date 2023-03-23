@@ -11,6 +11,7 @@ export function IconButton({
   title = '',
   disabled = null,
   handlerOnClick = null,
+  refElement = null,
 } = {}) {
   const buttonVariant = {
     contained: 'button-contained rounded-full p-2.5',
@@ -19,6 +20,7 @@ export function IconButton({
   };
   return (
     <button
+      ref={refElement}
       type={type}
       disabled={disabled}
       className={

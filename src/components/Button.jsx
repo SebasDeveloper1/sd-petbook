@@ -12,6 +12,7 @@ export function Button({
   endIcon = null,
   disabled = null,
   handlerOnClick = null,
+  refElement = null,
 } = {}) {
   const buttonVariant = {
     contained: 'button-contained rounded-md py-2.5 px-6',
@@ -20,6 +21,7 @@ export function Button({
   };
   return (
     <button
+      ref={refElement}
       type={type}
       disabled={disabled}
       className={
