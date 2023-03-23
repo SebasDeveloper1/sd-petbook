@@ -13,7 +13,6 @@ import { BsClipboardPlus } from 'react-icons/bs';
 export default function HomePage() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
-  const [username, setUsername] = useState('');
   /*
   Stages:
   0: initiated

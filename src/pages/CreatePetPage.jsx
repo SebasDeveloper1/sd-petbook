@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   DashboardWrapper,
@@ -13,6 +13,7 @@ import {
 } from 'containers/indexContainers';
 import { Typography, Button } from 'components/indexComponents';
 import { useEvents } from 'hooks/useEvents';
+import { useOnClickOutside } from 'hooks/useOnClickOutside';
 
 export default function CreatePetPage() {
   const defaultState = {
@@ -40,6 +41,8 @@ export default function CreatePetPage() {
   const handlerGoToContinue = () => {
     handlerModal();
   };
+  const myRefElement1 = useRef(null);
+  useOnClickOutside(myRefElement1, () => handlerGoToContinue());
 
   return (
     <DashboardWrapper>
@@ -86,10 +89,12 @@ export default function CreatePetPage() {
       </div>
       {openModal?.modalState ? (
         <Modal>
-          <GoToBackLayout
-            handlerGoToBack={handlerGoToBack}
-            handlerGoToContinue={handlerGoToContinue}
-          />
+          <div ref={myRefElement1}>
+            <GoToBackLayout
+              handlerGoToBack={handlerGoToBack}
+              handlerGoToContinue={handlerGoToContinue}
+            />
+          </div>
         </Modal>
       ) : null}
     </DashboardWrapper>

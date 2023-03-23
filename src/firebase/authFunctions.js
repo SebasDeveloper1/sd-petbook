@@ -11,3 +11,7 @@ export const loginWithGoogle = async () => {
     return error;
   }
 };
+
+export const signOutWithGoogle = async () => {
+  await auth.signOut();
+};
