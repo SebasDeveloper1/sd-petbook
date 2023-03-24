@@ -10,7 +10,8 @@ export function HeaderList({ userInfo } = {}) {
       <div className="z-10 w-11/12">
         <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-center md:text-start">
           <img
-            className="w-28 h-28 rounded-full shadow-lg object-cover object-center lg:w-36 lg:h-36"
+            style={{ borderRadius: '30% 70% 67% 33% / 30% 30% 70% 70%' }}
+            className="w-32 h-32 shadow-lg object-cover object-center lg:w-44 lg:h-44"
             src={profilePicture || defaultImage}
             alt="Bonnie"
           />

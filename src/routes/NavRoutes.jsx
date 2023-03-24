@@ -5,6 +5,7 @@ const MainPage = lazy(() => import('pages/MainPage'));
 const HomePage = lazy(() => import('pages/HomePage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const ChooseUserNamePage = lazy(() => import('pages/ChooseUserNamePage'));
+const UserViewPage = lazy(() => import('pages/UserViewPage'));
 const EditUserPage = lazy(() => import('pages/EditUserPage'));
 const CreatePetPage = lazy(() => import('pages/CreatePetPage'));
 const PetViewPage = lazy(() => import('pages/PetViewPage'));
@@ -23,6 +24,7 @@ export function NavRoutes() {
             path="choose-username"
             element={<ChooseUserNamePage />}
           />
+          <Route exact path="p/:username" element={<UserViewPage />} />
           <Route exact path="p/edit" element={<EditUserPage />} />
           <Route
             exact

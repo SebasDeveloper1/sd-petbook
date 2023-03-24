@@ -12,7 +12,7 @@ export function NavBarLG({
   userInfo = {},
   handlerSignOut = null,
 } = {}) {
-  const moreOptionsList = [{ routeName: 'Perfil', routeLink: '/p/edit' }];
+  const moreOptionsList = [{ routeName: 'Perfil', routeLink: '/p/e' }];
   const [moreOptions, setMoreOptions] = useState({
     transition: '',
     status: false,

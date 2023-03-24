@@ -21,7 +21,17 @@ export function NavBarSM({
             </NavLink>
           </li>
         ))}
-        <div className="mt-4 border-t">
+
+        <div className="mt-4 pt-4 border-t">
+          <li className="navbar-item-light">
+            <NavLink
+              className={({ isActive }) => (isActive ? activeClassName : null)}
+              to="/p/e"
+              onClick={handlerNavBar}
+            >
+              Perfil
+            </NavLink>
+          </li>
           <li className="navbar-item-light w-full mt-2">
             <button
               type="button"

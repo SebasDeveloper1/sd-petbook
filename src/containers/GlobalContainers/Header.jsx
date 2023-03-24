@@ -14,10 +14,7 @@ export function Header() {
 
   const activeClassName = 'text-sky-400';
   const iconNavBar = openNavBar ? <MdClose /> : <MdMenu />;
-  const navList = [
-    { routeName: 'Inicio', routeLink: '/home' },
-    { routeName: 'create-pet', routeLink: '/create-pet' },
-  ];
+  const navList = [{ routeName: 'Inicio', routeLink: '/home' }];
   /*
   Stages:
   0: initiated
