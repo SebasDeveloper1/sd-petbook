@@ -57,7 +57,7 @@ export function UserInfoSection({ userInfo = {} } = {}) {
         handlerOnClick={handlerEditProfile}
       />
       <section className="w-full pt-4 border-t">
-        <div className="flex flex-col gap-6 p-4 text-2xl text-slate-600">
+        <div className="flex flex-col gap-6 p-4 text-xl text-slate-300">
           {userData.map((item) => (
             <article
               key={`userDateElement__${item?.name}`}
@@ -65,9 +65,9 @@ export function UserInfoSection({ userInfo = {} } = {}) {
             >
               {item?.icon}
               <Typography
-                variant="span_lg"
+                variant="span_base"
                 value={item?.data}
-                styles="text-slate-600"
+                styles="font-medium text-slate-700"
               />
             </article>
           ))}
