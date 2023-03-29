@@ -41,8 +41,17 @@ export const useGetUserState = ({
         uid: user?.uid,
         displayName: user?.displayName,
         profilePicture: user?.photoURL,
-        email: user?.email,
         username: '',
+        name: '',
+        lastname: '',
+        gender: '',
+        cell: '',
+        email: user?.email,
+        website: '',
+        country: '',
+        departament: '',
+        city: '',
+        address: '',
         processCompleted: false,
       });
       return setUserState({ statusCode: onUserNotRegistered(user) });
