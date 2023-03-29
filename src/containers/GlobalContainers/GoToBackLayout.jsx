@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Button } from 'components/indexComponents';
 
-export function GoToBackLayout({ handlerGoToBack, handlerGoToContinue }) {
+export function GoToBackLayout({ handlerGoToBack, handlerGoToContinue }={}) {
   return (
     <div className="flex flex-col justify-center items-center space-y-8 h-fit p-6 rounded-md max-w-sm text-center bg-white shadow-2xl">
       <div className="flex flex-col justify-center items-center gap-4">

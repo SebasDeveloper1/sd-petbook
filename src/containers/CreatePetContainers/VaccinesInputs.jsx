@@ -16,7 +16,7 @@ export function VaccinesInputs({
 }) {
   return (
     <article className="overflow-hidden border rounded-md bg-white shadow-lg">
-      <div className="flex justify-between items-center px-4 bg-slate-900">
+      <div className="flex justify-between items-center px-4 py-2 bg-slate-900">
         <Typography
           variant="h6"
           value="Vacuna"
@@ -24,10 +24,10 @@ export function VaccinesInputs({
         />
         <IconButton
           type="button"
-          variant="text"
+          variant="contained¿"
           styles="text-white hover:text-sky-500 "
           value="Eliminar"
-          Icon={<MdClose />}
+          icon={<MdClose />}
           title="Borrar"
           handlerOnClick={onRemove}
         />
@@ -94,7 +94,7 @@ export function VaccinesInputs({
 
         <div className="col-span-3 md:col-span-1">
           <label htmlFor="vaccine-upload" className="label-input-form">
-            Fotografía
+            Imagen de la etiqueta
             <label
               htmlFor="vaccine-upload"
               className="overflow-hidden flex justify-between items-center gap-2 w-full min-h-[2.5rem] mt-2 rounded-md ring-1 ring-slate-200 text-sm font-medium text-sky-400 bg-white shadow-sm cursor-pointer focus-within:outline-none focus-within:ring-2 focus-within:ring-sky-500 focus-within:ring-offset-2 hover:text-sky-500"

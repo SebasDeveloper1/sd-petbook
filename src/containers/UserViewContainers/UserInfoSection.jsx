@@ -1,5 +1,11 @@
 import React from 'react';
-import { FaHeart, FaPhone, FaEnvelope, FaLink, FaHome } from 'react-icons/fa';
+import {
+  FaHeart,
+  FaPhone,
+  FaEnvelope,
+  FaLink,
+  FaMapMarkerAlt,
+} from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { Typography, Button } from 'components/indexComponents';
 import defaultImage from 'images/profile-picture.png';
@@ -13,7 +19,11 @@ export function UserInfoSection({ userInfo = {} } = {}) {
     { name: 'cell', icon: <FaPhone />, data: 1234567890 },
     { name: 'email', icon: <FaEnvelope />, data: 'correo@correo.com' },
     { name: 'website', icon: <FaLink />, data: 'twitter/username' },
-    { name: 'address', icon: <FaHome />, data: 'calle # 1-123/cund/colombia' },
+    {
+      name: 'address',
+      icon: <FaMapMarkerAlt />,
+      data: 'calle # 1-123/cund/colombia',
+    },
   ];
 
   const handlerEditProfile = () => {

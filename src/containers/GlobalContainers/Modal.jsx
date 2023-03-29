@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
-export function Modal({ children }) {
+export function Modal({ children } = {}) {
   useEffect(() => {
     document.getElementById('modal').focus();
   }, []);

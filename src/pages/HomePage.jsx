@@ -51,7 +51,7 @@ export default function HomePage() {
 
   return (
     <DashboardWrapper>
-      <div className="relative flex flex-col items-center w-full min-h-screen bg-slate-50">
+      <div className="relative flex flex-col items-center w-full min-h-screen bg-BeamsCover bg-cover bg-top bg-no-repeat">
         <section className="flex flex-col justify-center items-center w-full">
           <HeaderList userInfo={currentUser} />
           <PetList>

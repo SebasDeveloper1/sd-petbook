@@ -31,24 +31,31 @@ import { UserInfoSection } from './UserViewContainers/UserInfoSection';
 // EditUserContainers
 import { EditForm } from './EditUserContainers/EditForm';
 
+// PetViewContainers
+import { HeroSection } from './PetViewContainers/HeroSection';
+import { VaccinesSection } from './PetViewContainers/VaccinesSection';
+import { OwnerInfoSection } from './PetViewContainers/OwnerInfoSection';
+
+// --------- Exported Objects ---------
+// GlobalContainers
+export { Header, Layout, Footer, Modal, DashboardWrapper, GoToBackLayout };
+// HeaderContainers
+export { NavBarLG, NavBarSM };
+// ChooseUsernameContainers
+export { UsernameForm, ConfirmationLayout };
+// HomePageContainers
+export { HeaderList, PetList };
+// CreatePetContainers
 export {
-  Header,
-  NavBarLG,
-  NavBarSM,
-  Layout,
-  Footer,
-  Modal,
-  DashboardWrapper,
-  GoToBackLayout,
-  UsernameForm,
-  ConfirmationLayout,
-  HeaderList,
-  PetList,
   AddImagePet,
   PetDataForm,
   OwnerDataForm,
   VaccinesDataForm,
   VaccinesInputs,
-  UserInfoSection,
-  EditForm,
 };
+// EditUserContainers
+export { UserInfoSection };
+// EditUserContainers
+export { EditForm };
+// PetViewContainers
+export { HeroSection, VaccinesSection, OwnerInfoSection };

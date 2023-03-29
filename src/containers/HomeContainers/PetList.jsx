@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from 'components/indexComponents';
 
-export function PetList({ children }) {
+export function PetList({ children } = {}) {
   return (
     <div className="w-11/12 pt-16 pb-40">
       <Typography
