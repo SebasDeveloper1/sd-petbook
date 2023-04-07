@@ -46,7 +46,7 @@ export function VaccinesDataForm({ defaultState, rows, setRows }) {
           variant="outlined"
           styles="w-fit"
           value="Añadir vacuna"
-          handlerOnClick={handleOnAdd}
+          handleOnClick={handleOnAdd}
         />
       </div>
     </section>

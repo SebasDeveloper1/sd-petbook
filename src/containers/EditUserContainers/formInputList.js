@@ -1,0 +1,90 @@
+export const componentTypes = {
+  TEXT_FIELD: 'textField',
+  TEXT_SELECTION: 'textSelection',
+};
+
+export const formInputList = [
+  {
+    inputComponent: componentTypes.TEXT_FIELD,
+    type: 'text',
+    labelValue: 'Usuario',
+    name: 'username',
+    placeholder: 'Nombre de usuario',
+  },
+  {
+    inputComponent: componentTypes.TEXT_FIELD,
+    type: 'text',
+    labelValue: 'Nombres',
+    name: 'names',
+    placeholder: 'Jessica Lorena',
+  },
+  {
+    inputComponent: componentTypes.TEXT_FIELD,
+    type: 'text',
+    labelValue: 'Apellidos',
+    name: 'surnames',
+    placeholder: 'Casas Garcia',
+  },
+  {
+    inputComponent: componentTypes.TEXT_SELECTION,
+    labelValue: 'Género',
+    name: 'gender',
+    options: ['Masculino', 'Femenino', 'Otro'],
+  },
+  {
+    inputComponent: componentTypes.TEXT_FIELD,
+    type: 'text',
+    labelValue: 'Código de país',
+    name: 'ccp',
+    placeholder: '+57',
+  },
+  {
+    inputComponent: componentTypes.TEXT_FIELD,
+    type: 'tel',
+    labelValue: 'Celular y/o WhatsApp',
+    name: 'cell',
+    placeholder: '1234567890',
+  },
+  {
+    inputComponent: componentTypes.TEXT_FIELD,
+    type: 'email',
+    labelValue: 'Email',
+    name: 'email',
+    placeholder: 'prueba@ejemplo.com',
+  },
+  {
+    inputComponent: componentTypes.TEXT_FIELD,
+    type: 'text',
+    labelValue: 'País',
+    name: 'country',
+    placeholder: 'Colombia',
+  },
+  {
+    inputComponent: componentTypes.TEXT_FIELD,
+    type: 'text',
+    labelValue: 'Departamento',
+    name: 'department',
+    placeholder: 'Cundinamarca',
+  },
+  {
+    inputComponent: componentTypes.TEXT_FIELD,
+    type: 'text',
+    labelValue: 'Ciudad',
+    name: 'city',
+    placeholder: 'Bogotá',
+  },
+  {
+    inputComponent: componentTypes.TEXT_FIELD,
+    type: 'text',
+    labelValue: 'Dirección (Opcional)',
+    name: 'address',
+    placeholder: 'Call 0 # 0-00 / Casa 0',
+  },
+  {
+    inputComponent: componentTypes.TEXT_FIELD,
+    type: 'url',
+    labelValue: 'Sitio web (Opcional)',
+    name: 'website',
+    placeholder: 'https://www.facebook.com/ejemplo/',
+  },
+];

@@ -27,11 +27,11 @@
 }
 
 .input-form-warning {
-  @apply bg-yellow-50 placeholder:text-yellow-600 focus:ring-2 focus:ring-yellow-500 ring-yellow-500;
+  @apply bg-yellow-50 placeholder:text-yellow-600 placeholder:font-medium focus:ring-2 focus:ring-yellow-500 ring-yellow-500;
 }
 
 .input-form-error {
-  @apply bg-red-100 placeholder:text-red-600 focus:ring-2 focus:ring-red-600 ring-red-600;
+  @apply bg-red-50 placeholder:text-red-500 placeholder:font-medium focus:ring-2 focus:ring-red-500 ring-red-500;
 }
 
 .button-contained {
@@ -44,4 +44,7 @@
 
 .button-text {
   @apply inline-flex items-center justify-center gap-2 text-base font-medium focus:outline-none focus-visible:outline-sky-500;
+}
+.button-text-secondary {
+  @apply text-sky-500 hover:bg-sky-100;
 }

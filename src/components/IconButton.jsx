@@ -10,7 +10,7 @@ export function IconButton({
   icon = null,
   title = '',
   disabled = null,
-  handlerOnClick = null,
+  handleOnClick = null,
   refElement = null,
 } = {}) {
   const buttonVariant = {
@@ -28,7 +28,7 @@ export function IconButton({
           ? `${buttonVariant[variant]} ${styles} opacity-50`
           : `${buttonVariant[variant]} ${styles}`
       }
-      onClick={handlerOnClick}
+      onClick={handleOnClick}
       title={title}
     >
       <IconContext.Provider value={{ className: 'text-3xl' }}>

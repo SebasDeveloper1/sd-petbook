@@ -23,7 +23,7 @@ export function OwnerDataForm() {
                 name="name-owner"
                 placeholder="Jessica Lorena"
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -34,7 +34,7 @@ export function OwnerDataForm() {
                 name="lastname-owner"
                 placeholder="Casas Garcia"
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -44,7 +44,7 @@ export function OwnerDataForm() {
                 selectionName="gender-owner"
                 options={['Masculino', 'Femenino', 'Otro']}
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -55,7 +55,7 @@ export function OwnerDataForm() {
                 name="cell-owner"
                 placeholder="1234567890"
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -66,7 +66,7 @@ export function OwnerDataForm() {
                 name="email-owner"
                 placeholder="prueba@ejemplo.com"
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -77,7 +77,7 @@ export function OwnerDataForm() {
                 name="web-owner"
                 placeholder="Facebook, Instagram, etc."
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -88,7 +88,7 @@ export function OwnerDataForm() {
                 name="country-owner"
                 placeholder="Colombia"
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -99,7 +99,7 @@ export function OwnerDataForm() {
                 name="departament-owner"
                 placeholder="Cundinamarca"
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -110,7 +110,7 @@ export function OwnerDataForm() {
                 name="city-owner"
                 placeholder="Bogotá"
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -121,7 +121,7 @@ export function OwnerDataForm() {
                 name="address-owner"
                 placeholder="Call 0 # 0-00 / Casa 0"
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
           </div>

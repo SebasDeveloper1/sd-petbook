@@ -39,7 +39,7 @@ export default function Page404() {
             styles=""
             value="Regresar"
             startIcon={<MdKeyboardArrowLeft />}
-            handlerOnClick={handlerGoToBack}
+            handleOnClick={handlerGoToBack}
           />
         </div>
       </section>

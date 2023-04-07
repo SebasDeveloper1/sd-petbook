@@ -6,12 +6,14 @@ export function TextField({
   labelValue = '',
   type = 'text',
   rows = 3,
+  min = 0,
   name = '',
   placeholder = '',
   defaultValue = '',
   status = 'normal',
   exceptionMessage = '',
-  handlerOnChange = null,
+  handleOnChange = () => {},
+  handleOnBlur = () => {},
 } = {}) {
   const textFieldId = useId();
 
@@ -43,13 +45,16 @@ export function TextField({
               : statusTypes?.normal
           }
           placeholder={placeholder}
-          defaultValue={defaultValue}
+          value={defaultValue}
+          onChange={handleOnChange}
+          onBlur={handleOnBlur}
         />
       ) : (
         <input
           id={textFieldId}
           type={type}
           name={name}
+          min={min}
           className={
             status
               ? ` ${statusTypes?.normal} ${statusTypes[status]}`
@@ -57,19 +62,20 @@ export function TextField({
           }
           placeholder={placeholder}
           value={defaultValue}
-          onChange={handlerOnChange}
+          onChange={handleOnChange}
+          onBlur={handleOnBlur}
         />
       )}
 
       {exceptionMessage ? (
         <Typography
-          variant="span_base"
-          styles={`block p-1 my-4 rounded-md font-medium ${
+          variant="span_xs"
+          styles={`block px-3 py-2 my-2 rounded-lg font-medium ${
             status === 'warning'
-              ? 'bg-yellow-100 text-yellow-900'
-              : 'bg-red-100 text-red-600'
+              ? 'bg-yellow-50 text-yellow-600'
+              : 'bg-red-50 text-red-500'
           }`}
-          value={`• ${exceptionMessage}`}
+          value={exceptionMessage}
         />
       ) : null}
     </div>

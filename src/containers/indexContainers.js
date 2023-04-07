@@ -5,6 +5,7 @@ import { Footer } from './GlobalContainers/Footer';
 import { Modal } from './GlobalContainers/Modal';
 import { DashboardWrapper } from './GlobalContainers/DashboardWrapper';
 import { GoToBackLayout } from './GlobalContainers/GoToBackLayout';
+import { ConfirmationLayout } from './GlobalContainers/ConfirmationLayout';
 
 // HeaderContainers
 import { NavBarLG } from './HeaderContainers/NavBarLG';
@@ -12,7 +13,6 @@ import { NavBarSM } from './HeaderContainers/NavBarSM';
 
 // ChooseUsernameContainers
 import { UsernameForm } from './ChooseUsernameContainers/UsernameForm';
-import { ConfirmationLayout } from './ChooseUsernameContainers/ConfirmationLayout';
 
 // HomePageContainers
 import { HeaderList } from './HomeContainers/HeaderList';
@@ -38,11 +38,19 @@ import { OwnerInfoSection } from './PetViewContainers/OwnerInfoSection';
 
 // --------- Exported Objects ---------
 // GlobalContainers
-export { Header, Layout, Footer, Modal, DashboardWrapper, GoToBackLayout };
+export {
+  Header,
+  Layout,
+  Footer,
+  Modal,
+  DashboardWrapper,
+  GoToBackLayout,
+  ConfirmationLayout,
+};
 // HeaderContainers
 export { NavBarLG, NavBarSM };
 // ChooseUsernameContainers
-export { UsernameForm, ConfirmationLayout };
+export { UsernameForm };
 // HomePageContainers
 export { HeaderList, PetList };
 // CreatePetContainers

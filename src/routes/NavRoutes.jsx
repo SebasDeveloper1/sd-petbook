@@ -25,7 +25,7 @@ export function NavRoutes() {
             element={<ChooseUserNamePage />}
           />
           <Route exact path="p/:username" element={<UserViewPage />} />
-          <Route exact path="p/edit" element={<EditUserPage />} />
+          <Route exact path="p/:username/edit" element={<EditUserPage />} />
           <Route
             exact
             path="/u/:username/p/:petName"

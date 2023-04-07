@@ -74,14 +74,14 @@ export default function CreatePetPage() {
                 variant="contained"
                 styles="w-fit"
                 value="Guardar mascota"
-                handlerOnClick={handlerOnSubmit}
+                handleOnClick={handlerOnSubmit}
               />
               <Button
                 type="button"
                 variant="text"
-                styles="w-fit text-sky-500 font-semibold hover:bg-sky-100"
+                styles="w-fit button-text-secondary"
                 value="Volver al inicio"
-                handlerOnClick={handlerGoToContinue}
+                handleOnClick={handlerGoToContinue}
               />
             </section>
           </form>

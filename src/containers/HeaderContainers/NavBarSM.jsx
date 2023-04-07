@@ -5,6 +5,7 @@ export function NavBarSM({
   navList = [],
   activeClassName = '',
   handlerNavBar = null,
+  userInfo = {},
   handlerSignOut = null,
 } = {}) {
   return (
@@ -26,7 +27,7 @@ export function NavBarSM({
           <li className="navbar-item-light">
             <NavLink
               className={({ isActive }) => (isActive ? activeClassName : null)}
-              to="/p/e"
+              to={`/p/${userInfo.username}`}
               onClick={handlerNavBar}
             >
               Perfil

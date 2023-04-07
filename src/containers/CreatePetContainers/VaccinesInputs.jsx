@@ -29,7 +29,7 @@ export function VaccinesInputs({
           value="Eliminar"
           icon={<MdClose />}
           title="Borrar"
-          handlerOnClick={onRemove}
+          handleOnClick={onRemove}
         />
       </div>
       <div className="grid grid-cols-3 gap-4 p-4">
@@ -39,7 +39,7 @@ export function VaccinesInputs({
             type="date"
             name="date-vaccine"
             status="normal"
-            handlerOnChange={(e) => onChange('date', e.target.value)}
+            handleOnChange={(e) => onChange('date', e.target.value)}
             defaultValue={date}
           />
         </div>
@@ -51,7 +51,7 @@ export function VaccinesInputs({
             name="vaccine-name"
             placeholder="Vacuna"
             status="normal"
-            handlerOnChange={(e) => onChange('vaccine', e.target.value)}
+            handleOnChange={(e) => onChange('vaccine', e.target.value)}
             defaultValue={vaccine}
           />
         </div>
@@ -63,7 +63,7 @@ export function VaccinesInputs({
             name="vaccine-purpose"
             placeholder="Propósito de la vacuna"
             status="normal"
-            handlerOnChange={(e) => onChange('purpose', e.target.value)}
+            handleOnChange={(e) => onChange('purpose', e.target.value)}
             defaultValue={purpose}
           />
         </div>
@@ -75,7 +75,7 @@ export function VaccinesInputs({
             name="vaccine-vet"
             placeholder="Dr. Smith"
             status="normal"
-            handlerOnChange={(e) => onChange('vet', e.target.value)}
+            handleOnChange={(e) => onChange('vet', e.target.value)}
             defaultValue={vet}
           />
         </div>
@@ -87,7 +87,7 @@ export function VaccinesInputs({
             name="vaccine-vet-contact"
             placeholder="Teléfono, Dirección, correo, etc."
             status="normal"
-            handlerOnChange={(e) => onChange('contact', e.target.value)}
+            handleOnChange={(e) => onChange('contact', e.target.value)}
             defaultValue={contact}
           />
         </div>

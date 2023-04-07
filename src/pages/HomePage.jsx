@@ -45,7 +45,7 @@ export default function HomePage() {
     getStateUser();
   }, []);
 
-  const handlerOnClick = () => {
+  const handleOnClick = () => {
     navigate('/create-pet');
   };
 
@@ -61,7 +61,7 @@ export default function HomePage() {
               styles="shadow-lg flex-col py-8 border-dashed border-2 border-sky-500"
               value="Agregar mascota"
               startIcon={<BsClipboardPlus />}
-              handlerOnClick={handlerOnClick}
+              handleOnClick={handleOnClick}
             />
             <PetCart />
             <PetCart />

@@ -26,8 +26,8 @@ export function UserInfoSection({ userInfo = {} } = {}) {
     },
   ];
 
-  const handlerEditProfile = () => {
-    navigate('/p/edit');
+  const handleEditProfile = () => {
+    navigate(`/p/${userInfo.username}/edit`);
   };
   return (
     <>
@@ -54,7 +54,7 @@ export function UserInfoSection({ userInfo = {} } = {}) {
         variant="text"
         styles="w-full text-sky-600 font-semibold bg-sky-100 hover:bg-sky-200"
         value="Editar perfil"
-        handlerOnClick={handlerEditProfile}
+        handleOnClick={handleEditProfile}
       />
       <section className="w-full pt-4 border-t">
         <div className="flex flex-col gap-6 p-4 text-xl text-slate-300">

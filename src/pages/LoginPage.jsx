@@ -61,7 +61,7 @@ export default function LoginPage() {
               styles="w-full mt-6"
               value="Continuar con Google"
               startIcon={<FcGoogle />}
-              handlerOnClick={loginWithGoogle}
+              handleOnClick={loginWithGoogle}
             />
           </form>
         </div>

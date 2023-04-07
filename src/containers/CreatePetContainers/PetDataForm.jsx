@@ -23,7 +23,7 @@ export function PetDataForm() {
                 name="name-pet"
                 placeholder="Merlin"
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -34,7 +34,7 @@ export function PetDataForm() {
                 name="race-pet"
                 placeholder="Criollo"
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -45,7 +45,7 @@ export function PetDataForm() {
                 name="color-pet"
                 placeholder="Dorado/Blanco"
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -56,7 +56,7 @@ export function PetDataForm() {
                 name="specie-pet"
                 placeholder="Canino"
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -67,7 +67,7 @@ export function PetDataForm() {
                 name="weight-pet"
                 placeholder="1.5"
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -78,7 +78,7 @@ export function PetDataForm() {
                 name="height-pet"
                 placeholder="50"
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -88,7 +88,7 @@ export function PetDataForm() {
                 type="date"
                 name="birthdate-pet"
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -98,7 +98,7 @@ export function PetDataForm() {
                 selectionName="sex-pet"
                 options={['Macho', 'Hembra']}
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -108,7 +108,7 @@ export function PetDataForm() {
                 selectionName="reproductive-status-pet"
                 options={['Esterilizad', 'Sin Esterilizar']}
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -120,7 +120,7 @@ export function PetDataForm() {
                 rows={4}
                 placeholder="Comportamiento, gustos, rasgos particulares, personalidad, etc."
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
 
@@ -132,7 +132,7 @@ export function PetDataForm() {
                 rows={4}
                 placeholder="Alergias, Cuidados, discapacidades, etc."
                 status="normal"
-                handlerOnChange={() => {}}
+                handleOnChange={() => {}}
               />
             </div>
           </div>

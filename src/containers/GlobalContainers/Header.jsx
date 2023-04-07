@@ -62,13 +62,14 @@ export function Header() {
             variant="contained"
             styles="md:hidden"
             icon={iconNavBar}
-            handlerOnClick={handlerNavBar}
+            handleOnClick={handlerNavBar}
           />
           {openNavBar ? (
             <NavBarSM
               navList={navList}
               activeClassName={activeClassName}
               handlerNavBar={handlerNavBar}
+              userInfo={currentUser}
               handlerSignOut={handlerSignOut}
             />
           ) : null}
