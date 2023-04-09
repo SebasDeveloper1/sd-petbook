@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable no-nested-ternary */
+import React, { useState, useEffect } from 'react';
 import {
   FaHeart,
   FaPhone,
@@ -8,21 +9,73 @@ import {
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { Typography, Button } from 'components/indexComponents';
+import { getStorageImageUrl } from 'fbase/storageFunctions';
 import defaultImage from 'images/profile-picture.png';
 
 export function UserInfoSection({ userInfo = {} } = {}) {
-  const { profilePicture, username, displayName } = userInfo;
+  const {
+    profilePicture,
+    username,
+    names,
+    surnames,
+    gender,
+    ccp,
+    cell,
+    email,
+    website,
+    address,
+  } = userInfo;
+  const [profileUrl, setProfileUrl] = useState(defaultImage);
   const navigate = useNavigate();
 
+  const msmByDefault = 'No disponible';
+
+  useEffect(() => {
+    (async () => {
+      if (profilePicture !== '') {
+        const urlImage = await getStorageImageUrl({
+          path: userInfo.profilePicture,
+        });
+        return setProfileUrl(urlImage);
+      }
+      return setProfileUrl(defaultImage);
+    })();
+  }, [userInfo]);
+
+  const dataTypes = {
+    TEXT: 'text',
+    URL: 'url',
+  };
   const userData = [
-    { name: 'gender', icon: <FaHeart />, data: 'Femenino' },
-    { name: 'cell', icon: <FaPhone />, data: 1234567890 },
-    { name: 'email', icon: <FaEnvelope />, data: 'correo@correo.com' },
-    { name: 'website', icon: <FaLink />, data: 'twitter/username' },
     {
+      type: dataTypes.TEXT,
+      name: 'gender',
+      icon: <FaHeart />,
+      data: gender ?? msmByDefault,
+    },
+    {
+      type: dataTypes.TEXT,
+      name: 'cell',
+      icon: <FaPhone />,
+      data: userInfo.cell ? `${ccp} / ${cell}` : msmByDefault,
+    },
+    {
+      type: dataTypes.TEXT,
+      name: 'email',
+      icon: <FaEnvelope />,
+      data: email ?? msmByDefault,
+    },
+    {
+      type: dataTypes.URL,
+      name: 'website',
+      icon: <FaLink />,
+      data: website || msmByDefault,
+    },
+    {
+      type: dataTypes.TEXT,
       name: 'address',
       icon: <FaMapMarkerAlt />,
-      data: 'calle # 1-123/cund/colombia',
+      data: address || msmByDefault,
     },
   ];
 
@@ -34,18 +87,18 @@ export function UserInfoSection({ userInfo = {} } = {}) {
       <img
         style={{ borderRadius: '30% 70% 67% 33% / 30% 30% 70% 70%' }}
         className="w-60 aspect-square shadow-lg object-cover object-center"
-        src={profilePicture || defaultImage}
-        alt="Bonnie"
+        src={profileUrl}
+        alt={username}
       />
       <div className="w-full text-center">
         <Typography
           variant="h4"
-          value={username || 'Username'}
+          value={username || msmByDefault}
           styles="w-full mb-1 font-semibold tracking-tight text-slate-900 truncate"
         />
         <Typography
           variant="p_lg"
-          value={displayName || 'correo@correo.com'}
+          value={names && surnames ? `${names} ${surnames}` : msmByDefault}
           styles="w-full font-medium text-sky-500 truncate capitalize"
         />
       </div>
@@ -58,19 +111,35 @@ export function UserInfoSection({ userInfo = {} } = {}) {
       />
       <section className="w-full pt-4 border-t">
         <div className="flex flex-col gap-6 p-4 text-xl text-slate-300">
-          {userData.map((item) => (
-            <article
-              key={`userDateElement__${item?.name}`}
-              className="flex items-center gap-3"
-            >
-              {item?.icon}
-              <Typography
-                variant="span_base"
-                value={item?.data}
-                styles="font-medium text-slate-700"
-              />
-            </article>
-          ))}
+          {userData.map((item) =>
+            item.type === dataTypes.TEXT ? (
+              <article
+                key={`userDateElement__${item?.name}`}
+                className="flex items-center gap-3"
+              >
+                {item?.icon}
+                <Typography
+                  variant="span_base"
+                  value={item?.data}
+                  styles="font-medium text-slate-700"
+                />
+              </article>
+            ) : item?.data !== msmByDefault ? (
+              <article
+                key={`userDateElement__${item?.name}`}
+                className="flex items-center gap-3"
+              >
+                {item?.icon}
+                <a href={item?.data} target="_blank" rel="noopener noreferrer">
+                  <Typography
+                    variant="span_base"
+                    value={item?.data}
+                    styles="font-medium text-slate-700 hover:text-sky-600 hover:underline"
+                  />
+                </a>
+              </article>
+            ) : null
+          )}
         </div>
       </section>
     </>

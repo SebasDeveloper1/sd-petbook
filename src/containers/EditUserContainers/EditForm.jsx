@@ -63,6 +63,8 @@ export function EditForm({ userInfo, handleUserInfo }) {
   const handleOnValidate = (values) =>
     validateUserDataForm({ values, uid: userInfo.uid });
 
+  const handelToGoBack = () => navigate(`/p/${userInfo.username}`);
+
   const handelOnSubmit = async (values) => {
     const tmpUser = {
       ...userInfo,
@@ -101,10 +103,11 @@ export function EditForm({ userInfo, handleUserInfo }) {
     await updateUser(tmpUser);
     handleUserInfo(tmpUser);
     setSubmittedForm(true);
-    setTimeout(() => setSubmittedForm(false), 3000);
+    setTimeout(() => {
+      setSubmittedForm(false);
+      handelToGoBack();
+    }, 1000);
   };
-
-  const handelToGoBack = () => navigate(`/p/${userInfo.username}`);
 
   if (loading) {
     return (

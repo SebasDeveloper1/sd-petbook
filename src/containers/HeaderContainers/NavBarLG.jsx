@@ -1,9 +1,10 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import { MdOutlineExpandMore } from 'react-icons/md';
 import { useOnClickOutside } from 'hooks/useOnClickOutside';
+import { getStorageImageUrl } from 'fbase/storageFunctions';
 import defaultImage from 'images/profile-picture.png';
 
 export function NavBarLG({
@@ -13,12 +14,26 @@ export function NavBarLG({
   handlerSignOut = null,
 } = {}) {
   const moreOptionsList = [
-    { routeName: 'Perfil', routeLink: `/p/${userInfo.username}` },
+    { routeName: 'Perfil', routeLink: `/p/${userInfo?.username}` },
   ];
+  const [profileUrl, setProfileUrl] = useState(defaultImage);
   const [moreOptions, setMoreOptions] = useState({
     transition: '',
     status: false,
   });
+
+  useEffect(() => {
+    (async () => {
+      if (userInfo?.profilePicture !== '') {
+        const urlImage = await getStorageImageUrl({
+          path: userInfo.profilePicture,
+        });
+        return setProfileUrl(urlImage);
+      }
+      return setProfileUrl(defaultImage);
+    })();
+  }, [userInfo]);
+
   const moreOptionsRef1 = useRef(null);
   const moreOptionsRef2 = useRef(null);
 
@@ -60,7 +75,7 @@ export function NavBarLG({
         >
           <img
             className="w-8 aspect-square rounded-full"
-            src={userInfo?.profilePicture || defaultImage}
+            src={profileUrl}
             alt="User"
           />
           <IconContext.Provider
