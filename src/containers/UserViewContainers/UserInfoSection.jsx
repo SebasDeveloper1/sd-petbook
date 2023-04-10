@@ -12,9 +12,16 @@ import { Typography, Button } from 'components/indexComponents';
 import { getStorageImageUrl } from 'fbase/storageFunctions';
 import defaultImage from 'images/profile-picture.png';
 
-export function UserInfoSection({ userInfo = {} } = {}) {
+const dataTypes = {
+  TEXT: 'text',
+  URL: 'url',
+};
+
+const msmByDefault = 'No disponible';
+
+export function UserInfoSection({ userInfo = {} }) {
   const {
-    profilePicture,
+    profilePicture = '',
     username,
     names,
     surnames,
@@ -25,45 +32,43 @@ export function UserInfoSection({ userInfo = {} } = {}) {
     website,
     address,
   } = userInfo;
+
   const [profileUrl, setProfileUrl] = useState(defaultImage);
   const navigate = useNavigate();
 
-  const msmByDefault = 'No disponible';
+  const getProfileUrl = async () => {
+    if (profilePicture !== '') {
+      const urlImage = await getStorageImageUrl({
+        path: profilePicture,
+      });
+      setProfileUrl(urlImage);
+    } else {
+      setProfileUrl(defaultImage);
+    }
+  };
 
   useEffect(() => {
-    (async () => {
-      if (profilePicture !== '') {
-        const urlImage = await getStorageImageUrl({
-          path: userInfo.profilePicture,
-        });
-        return setProfileUrl(urlImage);
-      }
-      return setProfileUrl(defaultImage);
-    })();
-  }, [userInfo]);
+    getProfileUrl();
+  }, [profilePicture]);
 
-  const dataTypes = {
-    TEXT: 'text',
-    URL: 'url',
-  };
   const userData = [
     {
       type: dataTypes.TEXT,
       name: 'gender',
       icon: <FaHeart />,
-      data: gender ?? msmByDefault,
+      data: gender || msmByDefault,
     },
     {
       type: dataTypes.TEXT,
       name: 'cell',
       icon: <FaPhone />,
-      data: userInfo.cell ? `${ccp} / ${cell}` : msmByDefault,
+      data: cell ? `${ccp} / ${cell}` : msmByDefault,
     },
     {
       type: dataTypes.TEXT,
       name: 'email',
       icon: <FaEnvelope />,
-      data: email ?? msmByDefault,
+      data: email || msmByDefault,
     },
     {
       type: dataTypes.URL,
@@ -80,8 +85,9 @@ export function UserInfoSection({ userInfo = {} } = {}) {
   ];
 
   const handleEditProfile = () => {
-    navigate(`/p/${userInfo.username}/edit`);
+    navigate(`/p/${username}/edit`);
   };
+
   return (
     <>
       <img

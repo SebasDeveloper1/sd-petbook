@@ -17,6 +17,7 @@ import { UsernameForm } from './ChooseUsernameContainers/UsernameForm';
 // HomePageContainers
 import { HeaderList } from './HomeContainers/HeaderList';
 import { PetList } from './HomeContainers/PetList';
+import { LoadingSkeletonHome } from './HomeContainers/LoadingSkeletonHome';
 
 // CreatePetContainers
 import { AddImagePet } from './CreatePetContainers/AddImagePet';
@@ -27,6 +28,7 @@ import { VaccinesInputs } from './CreatePetContainers/VaccinesInputs';
 
 // UserViewContainers
 import { UserInfoSection } from './UserViewContainers/UserInfoSection';
+import { LoadingSkeletonUserView } from './UserViewContainers/LoadingSkeletonUserView';
 
 // EditUserContainers
 import { EditForm } from './EditUserContainers/EditForm';
@@ -52,7 +54,7 @@ export { NavBarLG, NavBarSM };
 // ChooseUsernameContainers
 export { UsernameForm };
 // HomePageContainers
-export { HeaderList, PetList };
+export { HeaderList, PetList, LoadingSkeletonHome };
 // CreatePetContainers
 export {
   AddImagePet,
@@ -61,8 +63,8 @@ export {
   VaccinesDataForm,
   VaccinesInputs,
 };
-// EditUserContainers
-export { UserInfoSection };
+// UserViewContainers
+export { UserInfoSection, LoadingSkeletonUserView };
 // EditUserContainers
 export { EditForm };
 // PetViewContainers

@@ -13,8 +13,9 @@ export function NavBarLG({
   userInfo = {},
   handlerSignOut = null,
 } = {}) {
+  const { profilePicture = '', username } = userInfo;
   const moreOptionsList = [
-    { routeName: 'Perfil', routeLink: `/p/${userInfo?.username}` },
+    { routeName: 'Perfil', routeLink: `/p/${username}` },
   ];
   const [profileUrl, setProfileUrl] = useState(defaultImage);
   const [moreOptions, setMoreOptions] = useState({
@@ -23,15 +24,20 @@ export function NavBarLG({
   });
 
   useEffect(() => {
-    (async () => {
-      if (userInfo?.profilePicture !== '') {
-        const urlImage = await getStorageImageUrl({
-          path: userInfo.profilePicture,
-        });
-        return setProfileUrl(urlImage);
+    const fetchProfileUrl = async () => {
+      try {
+        if (profilePicture !== '') {
+          const urlImage = await getStorageImageUrl({ path: profilePicture });
+          setProfileUrl(urlImage);
+        } else {
+          setProfileUrl(defaultImage);
+        }
+      } catch (error) {
+        console.error(error);
       }
-      return setProfileUrl(defaultImage);
-    })();
+    };
+
+    fetchProfileUrl();
   }, [userInfo]);
 
   const moreOptionsRef1 = useRef(null);
@@ -39,12 +45,13 @@ export function NavBarLG({
 
   const handlerMoreOptions = () => {
     if (!moreOptions.status) {
-      return setMoreOptions({
+      setMoreOptions({
         transition: 'transform rotate-180',
         status: true,
       });
+    } else {
+      setMoreOptions({ transition: '', status: false });
     }
-    return setMoreOptions({ transition: '', status: false });
   };
 
   useOnClickOutside(

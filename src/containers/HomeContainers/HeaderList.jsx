@@ -4,19 +4,24 @@ import { getStorageImageUrl } from 'fbase/storageFunctions';
 import defaultImage from 'images/profile-picture.png';
 
 export function HeaderList({ userInfo } = {}) {
-  const { profilePicture, username, email } = userInfo;
+  const { profilePicture = '', username } = userInfo;
   const [profileUrl, setProfileUrl] = useState(defaultImage);
 
   useEffect(() => {
-    (async () => {
-      if (profilePicture !== '') {
-        const urlImage = await getStorageImageUrl({
-          path: userInfo.profilePicture,
-        });
-        return setProfileUrl(urlImage);
+    const fetchProfileUrl = async () => {
+      try {
+        if (profilePicture !== '') {
+          const urlImage = await getStorageImageUrl({ path: profilePicture });
+          setProfileUrl(urlImage);
+        } else {
+          setProfileUrl(defaultImage);
+        }
+      } catch (error) {
+        console.error(error);
       }
-      return setProfileUrl(defaultImage);
-    })();
+    };
+
+    fetchProfileUrl();
   }, [userInfo]);
 
   return (
@@ -39,11 +44,6 @@ export function HeaderList({ userInfo } = {}) {
               variant="h2"
               value={username || 'username'}
               styles="font-bold tracking-tight text-white truncate capitalize"
-            />
-            <Typography
-              variant="span_sm"
-              value={email}
-              styles="font-normal text-slate-400 tracking-wide truncate"
             />
           </div>
         </div>
