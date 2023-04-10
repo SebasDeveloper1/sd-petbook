@@ -110,10 +110,7 @@ export function EditForm({ userInfo, handleUserInfo }) {
     await updateUser(newUserInfo);
     handleUserInfo(newUserInfo);
     setSubmittedForm(true);
-    setTimeout(() => {
-      setSubmittedForm(false);
-      handelToGoBack();
-    }, 1000);
+    setTimeout(() => setSubmittedForm(false), 3000);
   };
 
   if (loading) {
