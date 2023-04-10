@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+const ScrollWrapper = React.lazy(() => import('utils//ScrollWrapper'));
 const MainPage = lazy(() => import('pages/MainPage'));
 const HomePage = lazy(() => import('pages/HomePage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
@@ -15,25 +16,27 @@ export function NavRoutes() {
   return (
     <Suspense fallback={<div />}>
       <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<MainPage />} />
-          <Route exact path="login" element={<LoginPage />} />
-          <Route exact path="home" element={<HomePage />} />
-          <Route
-            exact
-            path="choose-username"
-            element={<ChooseUserNamePage />}
-          />
-          <Route exact path="p/:username" element={<UserViewPage />} />
-          <Route exact path="p/:username/edit" element={<EditUserPage />} />
-          <Route
-            exact
-            path="/u/:username/p/:petName"
-            element={<PetViewPage />}
-          />
-          <Route exact path="create-pet" element={<CreatePetPage />} />
-          <Route path="*" element={<Page404 />} />
-        </Routes>
+        <ScrollWrapper>
+          <Routes>
+            <Route exact path="/" element={<MainPage />} />
+            <Route exact path="login" element={<LoginPage />} />
+            <Route exact path="home" element={<HomePage />} />
+            <Route
+              exact
+              path="choose-username"
+              element={<ChooseUserNamePage />}
+            />
+            <Route exact path="p/:username" element={<UserViewPage />} />
+            <Route exact path="p/:username/edit" element={<EditUserPage />} />
+            <Route
+              exact
+              path="/u/:username/p/:petName"
+              element={<PetViewPage />}
+            />
+            <Route exact path="create-pet" element={<CreatePetPage />} />
+            <Route path="*" element={<Page404 />} />
+          </Routes>
+        </ScrollWrapper>
       </BrowserRouter>
     </Suspense>
   );

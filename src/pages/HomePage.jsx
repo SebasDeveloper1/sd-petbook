@@ -6,6 +6,7 @@ import {
   DashboardWrapper,
   HeaderList,
   PetList,
+  LoadingSkeletonHome,
 } from 'containers/indexContainers';
 import { Button, PetCart } from 'components/indexComponents';
 import { BsClipboardPlus } from 'react-icons/bs';
@@ -13,6 +14,7 @@ import { BsClipboardPlus } from 'react-icons/bs';
 export default function HomePage() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
+  const [loading, setLoading] = useState(true);
   /*
   Stages:
   0: initiated
@@ -24,6 +26,7 @@ export default function HomePage() {
 */
   const handlerUserLoggedIn = (user) => {
     setCurrentUser(user);
+    setLoading(!loading);
     return 2;
   };
 
@@ -51,25 +54,29 @@ export default function HomePage() {
 
   return (
     <DashboardWrapper>
-      <div className="relative flex flex-col items-center w-full min-h-screen bg-BeamsCover bg-cover bg-top bg-no-repeat">
-        <section className="flex flex-col justify-center items-center w-full">
-          <HeaderList userInfo={currentUser} />
-          <PetList>
-            <Button
-              type="button"
-              variant="outlined"
-              styles="shadow-lg flex-col py-8 border-dashed border-2 border-sky-500"
-              value="Agregar mascota"
-              startIcon={<BsClipboardPlus />}
-              handleOnClick={handleOnClick}
-            />
-            <PetCart />
-            <PetCart />
-            <PetCart />
-            <PetCart />
-          </PetList>
-        </section>
-      </div>
+      {loading ? (
+        <LoadingSkeletonHome />
+      ) : (
+        <div className="relative flex flex-col items-center w-full min-h-screen bg-BeamsCover bg-cover bg-top bg-no-repeat">
+          <section className="flex flex-col justify-center items-center w-full">
+            <HeaderList userInfo={currentUser} />
+            <PetList>
+              <Button
+                type="button"
+                variant="outlined"
+                styles="shadow-lg flex-col py-8 border-dashed border-2 border-sky-500"
+                value="Agregar mascota"
+                startIcon={<BsClipboardPlus />}
+                handleOnClick={handleOnClick}
+              />
+              <PetCart />
+              <PetCart />
+              <PetCart />
+              <PetCart />
+            </PetList>
+          </section>
+        </div>
+      )}
     </DashboardWrapper>
   );
 }

@@ -21,20 +21,18 @@ export function EditForm({ userInfo, handleUserInfo }) {
   const [loading, setLoading] = useState(true);
   const [profileUrl, setProfileUrl] = useState(defaultImage);
   const [submittedForm, setSubmittedForm] = useState(false);
-
   const navigate = useNavigate();
 
   useEffect(() => {
-    (async () => {
+    async function fetchUserInfo() {
       if (userInfo) {
-        if (userInfo.profilePicture !== '') {
-          const urlImage = await getStorageImageUrl({
-            path: userInfo.profilePicture,
-          });
-          setProfileUrl(urlImage);
-        }
-        setFormInitialValues({
-          profilePicture: profileUrl,
+        const urlImage = userInfo.profilePicture
+          ? await getStorageImageUrl({ path: userInfo.profilePicture })
+          : defaultImage;
+        setProfileUrl(urlImage);
+
+        const formValues = {
+          profilePicture: urlImage,
           username: userInfo.username,
           names: userInfo.names,
           surnames: userInfo.surnames,
@@ -47,10 +45,12 @@ export function EditForm({ userInfo, handleUserInfo }) {
           department: userInfo.department,
           city: userInfo.city,
           address: userInfo.address,
-        });
+        };
+        setFormInitialValues(formValues);
         setLoading(false);
       }
-    })();
+    }
+    fetchUserInfo();
   }, [userInfo]);
 
   const handleChangeFile = (e) => {
@@ -63,8 +63,22 @@ export function EditForm({ userInfo, handleUserInfo }) {
   const handleOnValidate = (values) =>
     validateUserDataForm({ values, uid: userInfo.uid });
 
-  const handelOnSubmit = async (values) => {
-    const tmpUser = {
+  const handelToGoBack = () => navigate(`/p/${userInfo.username}`);
+
+  const readFileAsArrayBuffer = (file) =>
+    new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsArrayBuffer(file);
+      fileReader.onload = (event) => {
+        resolve(event.target.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+
+  const handleOnSubmit = async (values) => {
+    const newUserInfo = {
       ...userInfo,
       username: values.username,
       names: values.names,
@@ -80,31 +94,24 @@ export function EditForm({ userInfo, handleUserInfo }) {
       address: values.address,
     };
 
-    const fileReader = new FileReader();
-    if (fileReader && fileInput && fileInput.length > 0) {
-      fileReader.readAsArrayBuffer(fileInput[0]);
-      fileReader.onload = async () => {
-        const imageData = fileReader.result;
-        const res = await setImageToStorage({
-          uid: userInfo?.uid,
-          fileName: `userPhoto_${userInfo?.uid}`,
-          file: imageData,
-        });
+    if (fileInput && fileInput.length > 0) {
+      const imageData = await readFileAsArrayBuffer(fileInput[0]);
+      const res = await setImageToStorage({
+        uid: userInfo?.uid,
+        fileName: `userPhoto_${userInfo?.uid}`,
+        file: imageData,
+      });
 
-        if (res) {
-          tmpUser.profilePicture = await res.metadata.fullPath;
-          await updateUser(tmpUser);
-          handleUserInfo(tmpUser);
-        }
-      };
+      if (res) {
+        newUserInfo.profilePicture = await res.metadata.fullPath;
+      }
     }
-    await updateUser(tmpUser);
-    handleUserInfo(tmpUser);
+
+    await updateUser(newUserInfo);
+    handleUserInfo(newUserInfo);
     setSubmittedForm(true);
     setTimeout(() => setSubmittedForm(false), 3000);
   };
-
-  const handelToGoBack = () => navigate(`/p/${userInfo.username}`);
 
   if (loading) {
     return (
@@ -123,7 +130,7 @@ export function EditForm({ userInfo, handleUserInfo }) {
     <Formik
       initialValues={formInitialValues}
       validate={handleOnValidate}
-      onSubmit={handelOnSubmit}
+      onSubmit={handleOnSubmit}
     >
       {({ errors, handleBlur, handleChange, touched, values }) => (
         <Form className="w-11/12 md:w-9/12">

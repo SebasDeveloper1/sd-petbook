@@ -25,39 +25,45 @@ export const useGetUserState = ({
     setUserState({ statusCode: 1 });
     /* Checking if the user is logged in. */
     if (user) {
-      /* Checking if the user is registered in the database. */
-      const isRegister = await userExists({ userUid: user?.uid });
-      if (isRegister) {
-        /* Getting the user information from the database. */
-        const userInfo = await getUserInfo({ userUid: user?.uid });
-        /* Checking if the user has completed the registration process. */
-        if (userInfo.processCompleted) {
-          return setUserState({ statusCode: onUserLoggedIn(userInfo) });
+      try {
+        const isRegistered = await userExists({ userUid: user.uid });
+
+        if (isRegistered) {
+          const userInfo = await getUserInfo({ userUid: user.uid });
+
+          if (userInfo.processCompleted) {
+            setUserState({ statusCode: onUserLoggedIn(userInfo) });
+          } else {
+            setUserState({ statusCode: onUserNotRegistered(userInfo) });
+          }
+        } else {
+          await registerNewUser({
+            uid: user?.uid,
+            displayName: user?.displayName,
+            profilePicture: '',
+            username: '',
+            names: '',
+            surnames: '',
+            gender: '',
+            ccp: '',
+            cell: '',
+            email: user?.email,
+            website: '',
+            country: '',
+            department: '',
+            city: '',
+            address: '',
+            processCompleted: false,
+          });
+          setUserState({ statusCode: onUserNotRegistered(user) });
         }
-        return setUserState({ statusCode: onUserNotRegistered(userInfo) });
+      } catch (error) {
+        console.error(error);
+        setUserState({ statusCode: onUserNotLoggedIn() });
       }
-      /* Registering a new user in the database. */
-      await registerNewUser({
-        uid: user?.uid,
-        displayName: user?.displayName,
-        profilePicture: '',
-        username: '',
-        names: '',
-        surnames: '',
-        gender: '',
-        ccp: '',
-        cell: '',
-        email: user?.email,
-        website: '',
-        country: '',
-        department: '',
-        city: '',
-        address: '',
-        processCompleted: false,
-      });
-      return setUserState({ statusCode: onUserNotRegistered(user) });
+    } else {
+      setUserState({ statusCode: onUserNotLoggedIn() });
     }
-    return setUserState({ statusCode: onUserNotLoggedIn() });
   };
 
   const getStateUser = () => {
