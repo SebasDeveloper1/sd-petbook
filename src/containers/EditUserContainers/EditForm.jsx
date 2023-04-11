@@ -11,7 +11,7 @@ import {
 } from 'components/indexComponents';
 import { setImageToStorage, getStorageImageUrl } from 'fbase/storageFunctions';
 import { updateUser } from 'fbase/dbFunctions';
-import { validateUserDataForm } from 'utils/InputValidationFunctions';
+import { validateUserDataForm } from 'utils/UserformValidationFunctions';
 import defaultImage from 'images/profile-picture.png';
 import { componentTypes, formInputList } from './formInputList';
 

@@ -15,8 +15,22 @@ import {
 import { Typography, Button } from 'components/indexComponents';
 import { useEvents } from 'hooks/useEvents';
 import { useOnClickOutside } from 'hooks/useOnClickOutside';
+import { validatePetDataForm } from 'utils/PetformValidationFunctions';
 
 export default function CreatePetPage() {
+  const initialValuesPetForm = {
+    petName: '',
+    petRace: '',
+    petColor: '',
+    petSpecie: '',
+    petWeight: '',
+    petHeight: '',
+    petBirthdate: '',
+    petSex: '',
+    petRepStatus: '',
+    petDesc: '',
+    petObserv: '',
+  };
   const defaultState = {
     date: '',
     vaccine: '',
@@ -30,9 +44,8 @@ export default function CreatePetPage() {
   const { stateEvents, handlerModal } = useEvents();
   const { openModal } = stateEvents;
 
-  const handlerOnSubmit = (e) => {
-    e.preventDefault();
-    console.log(rows);
+  const handleOnSubmit = (values) => {
+    console.log(values);
   };
 
   const handlerGoToBack = () => {
@@ -56,42 +69,49 @@ export default function CreatePetPage() {
           />
 
           <Formik
-            // initialValues={}
-            validate={() => {}}
-            onSubmit={() => {}}
+            initialValues={{ ...initialValuesPetForm }}
+            validate={validatePetDataForm}
+            onSubmit={handleOnSubmit}
           >
-            <Form onSubmit={handlerOnSubmit}>
-              <section className="pb-6 border-b md:grid md:grid-cols-3 md:gap-x-12 md:gap-y-6">
-                <AddImagePet />
-                <PetDataForm />
-              </section>
-              <section className="py-6 border-b md:grid md:grid-cols-3 md:gap-x-12 md:gap-y-6">
-                <VaccinesDataForm
-                  defaultState={defaultState}
-                  rows={rows}
-                  setRows={setRows}
-                />
-              </section>
-              <section className="py-6 border-b md:grid md:grid-cols-3 md:gap-x-12 md:gap-y-6">
-                <OwnerDataForm />
-              </section>
-              <section className="flex justify-center md:justify-end items-center gap-8 mt-8">
-                <Button
-                  type="button"
-                  variant="contained"
-                  styles="w-fit"
-                  value="Guardar mascota"
-                  handleOnClick={handlerOnSubmit}
-                />
-                <Button
-                  type="button"
-                  variant="text"
-                  styles="w-fit button-text-secondary"
-                  value="Volver al inicio"
-                  handleOnClick={handlerGoToContinue}
-                />
-              </section>
-            </Form>
+            {({ errors, handleBlur, handleChange, touched, values }) => (
+              <Form>
+                <section className="pb-6 border-b md:grid md:grid-cols-3 md:gap-x-12 md:gap-y-6">
+                  <AddImagePet />
+                  <PetDataForm
+                    initialValues={values}
+                    errors={errors}
+                    handleChange={handleChange}
+                    handleBlur={handleBlur}
+                    touched={touched}
+                  />
+                </section>
+                <section className="py-6 border-b md:grid md:grid-cols-3 md:gap-x-12 md:gap-y-6">
+                  <VaccinesDataForm
+                    defaultState={defaultState}
+                    rows={rows}
+                    setRows={setRows}
+                  />
+                </section>
+                <section className="py-6 border-b md:grid md:grid-cols-3 md:gap-x-12 md:gap-y-6">
+                  <OwnerDataForm />
+                </section>
+                <section className="flex justify-center md:justify-end items-center gap-8 mt-8">
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    styles="w-fit"
+                    value="Guardar mascota"
+                  />
+                  <Button
+                    type="button"
+                    variant="text"
+                    styles="w-fit button-text-secondary"
+                    value="Volver al inicio"
+                    handleOnClick={handlerGoToContinue}
+                  />
+                </section>
+              </Form>
+            )}
           </Formik>
         </div>
       </div>

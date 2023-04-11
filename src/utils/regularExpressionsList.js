@@ -9,3 +9,7 @@ export const regExpCountry = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
 export const regExpDeparment = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
 export const regExpCity = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
 export const regExpAddress = /^[a-zA-ZÀ-ÿ0-9\s\.\,\#\-\/\º\ª\(\)]+$/;
+export const regExpColor = /^[a-zA-ZÀ-ÿ\s-/]+$/;
+export const regExpSpecie = /^[a-zA-ZÀ-ÿ\s]+$/;
+export const regExpWeight = /^[0-9.]{1,5}$/;
+export const regExpHeight = /^[0-9.]{1,5}$/;

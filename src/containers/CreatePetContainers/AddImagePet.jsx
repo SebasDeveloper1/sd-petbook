@@ -19,7 +19,7 @@ export function AddImagePet() {
             <span>Selecciona una foto de tu mascota</span>
             <input
               id="file-upload"
-              name="file-upload"
+              name="petFile"
               type="file"
               className="sr-only"
             />

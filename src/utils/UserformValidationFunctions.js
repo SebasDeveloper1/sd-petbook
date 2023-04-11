@@ -22,7 +22,6 @@ export const validateUsername = async (values, uid) => {
   }
   return errors;
 };
-
 export const validateNames = (values) => {
   const errors = {};
   if (!regExpNames.test(values.names)) {
@@ -94,28 +93,17 @@ export const validateCity = (values) => {
 };
 
 export const validateUserDataForm = async ({ values = {}, uid = '' }) => {
-  const usernameErrors = await validateUsername(values, uid);
-  const nameErrors = validateNames(values);
-  const lastnameErrors = validateSurnames(values);
-  const genderErrors = validateGender(values);
-  const ccpErrors = validateCcp(values);
-  const cellErrors = validateCell(values);
-  const emailErrors = validateEmail(values);
-  const countryErrors = validateCountry(values);
-  const departmentErrors = validateDepartment(values);
-  const cityErrors = validateCity(values);
-
   const errors = {
-    ...usernameErrors,
-    ...nameErrors,
-    ...lastnameErrors,
-    ...genderErrors,
-    ...ccpErrors,
-    ...cellErrors,
-    ...emailErrors,
-    ...countryErrors,
-    ...departmentErrors,
-    ...cityErrors,
+    ...(await validateUsername(values, uid)),
+    ...validateNames(values),
+    ...validateSurnames(values),
+    ...validateGender(values),
+    ...validateCcp(values),
+    ...validateCell(values),
+    ...validateEmail(values),
+    ...validateCountry(values),
+    ...validateDepartment(values),
+    ...validateCity(values),
   };
 
   return errors;

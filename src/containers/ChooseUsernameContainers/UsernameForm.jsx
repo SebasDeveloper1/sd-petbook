@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
 import { Typography, Button, TextField } from 'components/indexComponents';
-import { validateUsername } from 'utils/InputValidationFunctions';
+import { validateUsername } from 'utils/UserformValidationFunctions';
 
 export function UsernameForm({ handleSubmitForm } = {}) {
   const handelOnSubmit = (values, { resetForm }) => {

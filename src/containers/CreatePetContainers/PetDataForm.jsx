@@ -5,7 +5,26 @@ import {
   TextSelection,
 } from 'components/indexComponents';
 
-export function PetDataForm() {
+export function PetDataForm({
+  errors = {},
+  initialValues = {},
+  handleChange = null,
+  handleBlur = null,
+  touched = null,
+}) {
+  const {
+    petName,
+    petRace,
+    petColor,
+    petSpecie,
+    petWeight,
+    petHeight,
+    petBirthdate,
+    petSex,
+    petRepStatus,
+    petDesc,
+    petObserv,
+  } = initialValues;
   return (
     <section className=" md:col-span-2">
       <div>
@@ -20,10 +39,17 @@ export function PetDataForm() {
               <TextField
                 labelValue="Nombre"
                 type="text"
-                name="name-pet"
+                name="petName"
                 placeholder="Merlin"
-                status="normal"
-                handleOnChange={() => {}}
+                status={
+                  touched?.petName && errors?.petName ? 'error' : 'normal'
+                }
+                exceptionMessage={
+                  touched?.petName && errors?.petName ? errors?.petName : null
+                }
+                defaultValue={petName}
+                handleOnChange={handleChange}
+                handleOnBlur={handleBlur}
               />
             </div>
 
@@ -31,10 +57,17 @@ export function PetDataForm() {
               <TextField
                 labelValue="Raza"
                 type="text"
-                name="race-pet"
+                name="petRace"
                 placeholder="Criollo"
-                status="normal"
-                handleOnChange={() => {}}
+                status={
+                  touched?.petRace && errors?.petRace ? 'error' : 'normal'
+                }
+                exceptionMessage={
+                  touched?.petRace && errors?.petRace ? errors?.petRace : null
+                }
+                defaultValue={petRace}
+                handleOnChange={handleChange}
+                handleOnBlur={handleBlur}
               />
             </div>
 
@@ -42,10 +75,19 @@ export function PetDataForm() {
               <TextField
                 labelValue="Color"
                 type="text"
-                name="color-pet"
+                name="petColor"
                 placeholder="Dorado/Blanco"
-                status="normal"
-                handleOnChange={() => {}}
+                status={
+                  touched?.petColor && errors?.petColor ? 'error' : 'normal'
+                }
+                exceptionMessage={
+                  touched?.petColor && errors?.petColor
+                    ? errors?.petColor
+                    : null
+                }
+                defaultValue={petColor}
+                handleOnChange={handleChange}
+                handleOnBlur={handleBlur}
               />
             </div>
 
@@ -53,10 +95,19 @@ export function PetDataForm() {
               <TextField
                 labelValue="Especie"
                 type="text"
-                name="specie-pet"
+                name="petSpecie"
                 placeholder="Canino"
-                status="normal"
-                handleOnChange={() => {}}
+                status={
+                  touched?.petSpecie && errors?.petSpecie ? 'error' : 'normal'
+                }
+                exceptionMessage={
+                  touched?.petSpecie && errors?.petSpecie
+                    ? errors?.petSpecie
+                    : null
+                }
+                defaultValue={petSpecie}
+                handleOnChange={handleChange}
+                handleOnBlur={handleBlur}
               />
             </div>
 
@@ -64,10 +115,19 @@ export function PetDataForm() {
               <TextField
                 labelValue="Peso (Kg)"
                 type="number"
-                name="weight-pet"
+                name="petWeight"
                 placeholder="1.5"
-                status="normal"
-                handleOnChange={() => {}}
+                status={
+                  touched?.petWeight && errors?.petWeight ? 'error' : 'normal'
+                }
+                exceptionMessage={
+                  touched?.petWeight && errors?.petWeight
+                    ? errors?.petWeight
+                    : null
+                }
+                defaultValue={petWeight}
+                handleOnChange={handleChange}
+                handleOnBlur={handleBlur}
               />
             </div>
 
@@ -75,10 +135,19 @@ export function PetDataForm() {
               <TextField
                 labelValue="Altura (cm)"
                 type="number"
-                name="height-pet"
-                placeholder="50"
-                status="normal"
-                handleOnChange={() => {}}
+                name="petHeight"
+                placeholder="50.5"
+                status={
+                  touched?.petHeight && errors?.petHeight ? 'error' : 'normal'
+                }
+                exceptionMessage={
+                  touched?.petHeight && errors?.petHeight
+                    ? errors?.petHeight
+                    : null
+                }
+                defaultValue={petHeight}
+                handleOnChange={handleChange}
+                handleOnBlur={handleBlur}
               />
             </div>
 
@@ -86,29 +155,57 @@ export function PetDataForm() {
               <TextField
                 labelValue="Fecha de Nacimiento"
                 type="date"
-                name="birthdate-pet"
-                status="normal"
-                handleOnChange={() => {}}
+                name="petBirthdate"
+                placeholder=""
+                status={
+                  touched?.petBirthdate && errors?.petBirthdate
+                    ? 'error'
+                    : 'normal'
+                }
+                exceptionMessage={
+                  touched?.petBirthdate && errors?.petBirthdate
+                    ? errors?.petBirthdate
+                    : null
+                }
+                defaultValue={petBirthdate}
+                handleOnChange={handleChange}
+                handleOnBlur={handleBlur}
               />
             </div>
 
             <div className="col-span-3 sm:col-span-2">
               <TextSelection
                 labelValue="Sexo"
-                selectionName="sex-pet"
+                name="petSex"
                 options={['Macho', 'Hembra']}
-                status="normal"
-                handleOnChange={() => {}}
+                status={touched?.petSex && errors?.petSex ? 'error' : 'normal'}
+                exceptionMessage={
+                  touched?.petSex && errors?.petSex ? errors?.petSex : null
+                }
+                defaultValue={petSex}
+                handleOnChange={handleChange}
+                handleOnBlur={handleBlur}
               />
             </div>
 
             <div className="col-span-3 sm:col-span-2">
               <TextSelection
                 labelValue="Estado Reproductivo"
-                selectionName="reproductive-status-pet"
+                name="petRepStatus"
                 options={['Esterilizad', 'Sin Esterilizar']}
-                status="normal"
-                handleOnChange={() => {}}
+                status={
+                  touched?.petRepStatus && errors?.petRepStatus
+                    ? 'error'
+                    : 'normal'
+                }
+                exceptionMessage={
+                  touched?.petRepStatus && errors?.petRepStatus
+                    ? errors?.petRepStatus
+                    : null
+                }
+                defaultValue={petRepStatus}
+                handleOnChange={handleChange}
+                handleOnBlur={handleBlur}
               />
             </div>
 
@@ -116,11 +213,18 @@ export function PetDataForm() {
               <TextField
                 labelValue="Descripción (Opcional)"
                 type="textarea"
-                name="description-pet"
+                name="petDesc"
                 rows={4}
                 placeholder="Comportamiento, gustos, rasgos particulares, personalidad, etc."
-                status="normal"
-                handleOnChange={() => {}}
+                status={
+                  touched?.petDesc && errors?.petDesc ? 'error' : 'normal'
+                }
+                exceptionMessage={
+                  touched?.petDesc && errors?.petDesc ? errors?.petDesc : null
+                }
+                defaultValue={petDesc}
+                handleOnChange={handleChange}
+                handleOnBlur={handleBlur}
               />
             </div>
 
@@ -128,11 +232,20 @@ export function PetDataForm() {
               <TextField
                 labelValue="Observaciones adicionales (Opcional)"
                 type="textarea"
-                name="observations-pet"
+                name="petObserv"
                 rows={4}
                 placeholder="Alergias, Cuidados, discapacidades, etc."
-                status="normal"
-                handleOnChange={() => {}}
+                status={
+                  touched?.petObserv && errors?.petObserv ? 'error' : 'normal'
+                }
+                exceptionMessage={
+                  touched?.petObserv && errors?.petObserv
+                    ? errors?.petObserv
+                    : null
+                }
+                defaultValue={petObserv}
+                handleOnChange={handleChange}
+                handleOnBlur={handleBlur}
               />
             </div>
           </div>
