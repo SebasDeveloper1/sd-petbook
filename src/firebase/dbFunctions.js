@@ -6,6 +6,7 @@ import {
   where,
   getDocs,
   setDoc,
+  addDoc,
 } from 'firebase/firestore';
 import { db } from 'fbase/firebase';
 
@@ -61,6 +62,15 @@ export const getUserInfo = async ({ userUid: uid } = {}) => {
     const docRef = doc(db, 'users', uid);
     const document = await getDoc(docRef);
     return document.data();
+  } catch (error) {
+    return error;
+  }
+};
+
+export const createNewPet = async (newPet = {}) => {
+  try {
+    const docRef = collection(db, 'pets');
+    return await addDoc(docRef, newPet);
   } catch (error) {
     return error;
   }

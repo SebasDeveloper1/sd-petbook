@@ -3,19 +3,16 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import { InfinitySpin } from 'react-loader-spinner';
-import {
-  Typography,
-  TextField,
-  TextSelection,
-  Button,
-} from 'components/indexComponents';
-import { setImageToStorage, getStorageImageUrl } from 'fbase/storageFunctions';
+import { Typography, Button } from 'components/indexComponents';
+import { TextFieldGenerator } from 'containers/indexContainers';
+import { getStorageImageUrl } from 'fbase/storageFunctions';
 import { updateUser } from 'fbase/dbFunctions';
 import { validateUserDataForm } from 'utils/UserformValidationFunctions';
+import { imageLoadController } from 'utils/imageLoadController';
 import defaultImage from 'images/profile-picture.png';
-import { componentTypes, formInputList } from './formInputList';
+import { userformInputList } from './formInputList';
 
-export function EditForm({ userInfo, handleUserInfo }) {
+export function EditForm({ userInfo, handleUserInfo } = {}) {
   const [fileInput, setFileInput] = useState([]);
   const [formInitialValues, setFormInitialValues] = useState({});
   const [loading, setLoading] = useState(true);
@@ -65,18 +62,6 @@ export function EditForm({ userInfo, handleUserInfo }) {
 
   const handelToGoBack = () => navigate(`/p/${userInfo.username}`);
 
-  const readFileAsArrayBuffer = (file) =>
-    new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsArrayBuffer(file);
-      fileReader.onload = (event) => {
-        resolve(event.target.result);
-      };
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-
   const handleOnSubmit = async (values) => {
     const newUserInfo = {
       ...userInfo,
@@ -94,18 +79,12 @@ export function EditForm({ userInfo, handleUserInfo }) {
       address: values.address,
     };
 
-    if (fileInput && fileInput.length > 0) {
-      const imageData = await readFileAsArrayBuffer(fileInput[0]);
-      const res = await setImageToStorage({
-        uid: userInfo?.uid,
-        fileName: `userPhoto_${userInfo?.uid}`,
-        file: imageData,
-      });
-
-      if (res) {
-        newUserInfo.profilePicture = await res.metadata.fullPath;
-      }
-    }
+    newUserInfo.profilePicture = await imageLoadController({
+      fileInput,
+      type: 'user',
+      uid: userInfo?.uid,
+      fileName: `userPhoto_${userInfo?.uid}`,
+    });
 
     await updateUser(newUserInfo);
     handleUserInfo(newUserInfo);
@@ -182,58 +161,15 @@ export function EditForm({ userInfo, handleUserInfo }) {
                 styles="pb-4 text-2xl font-semibold tracking-tight text-slate-900"
               />
               <div className="grid grid-cols-6 gap-6">
-                {formInputList.map((item) =>
-                  item.inputComponent === componentTypes.TEXT_FIELD ? (
-                    <div
-                      key={`input_${item.name}`}
-                      className="col-span-6 sm:col-span-3"
-                    >
-                      <TextField
-                        labelValue={item.labelValue}
-                        type={item.type}
-                        name={item.name}
-                        placeholder={item.placeholder}
-                        status={
-                          touched[item.name] && errors[item.name]
-                            ? 'error'
-                            : 'normal'
-                        }
-                        exceptionMessage={
-                          touched[item.name] && errors[item.name]
-                            ? errors[item.name]
-                            : null
-                        }
-                        defaultValue={values[item.name]}
-                        handleOnChange={handleChange}
-                        handleOnBlur={handleBlur}
-                      />
-                    </div>
-                  ) : item.inputComponent === componentTypes.TEXT_SELECTION ? (
-                    <div
-                      key={`input_${item.name}`}
-                      className="col-span-6 sm:col-span-3"
-                    >
-                      <TextSelection
-                        labelValue={item.labelValue}
-                        name={item.name}
-                        options={item.options}
-                        status={
-                          touched[item.name] && errors[item.name]
-                            ? 'error'
-                            : 'normal'
-                        }
-                        exceptionMessage={
-                          touched[item.name] && errors[item.name]
-                            ? errors[item.name]
-                            : null
-                        }
-                        defaultValue={values[item.name]}
-                        handleOnChange={handleChange}
-                        handleOnBlur={handleBlur}
-                      />
-                    </div>
-                  ) : null
-                )}
+                <TextFieldGenerator
+                  textFieldList={userformInputList}
+                  errors={errors}
+                  values={values}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  touched={touched}
+                  containerClassName="col-span-6 sm:col-span-3"
+                />
                 {submittedForm ? (
                   <Typography
                     variant="span_base"
@@ -242,7 +178,7 @@ export function EditForm({ userInfo, handleUserInfo }) {
                   />
                 ) : null}
 
-                <div className="col-span-6 flex flex-col md:flex-row gap-6 mt-4">
+                <section className="col-span-6 flex flex-col md:flex-row gap-6 mt-4">
                   <Button
                     type="submit"
                     variant="contained"
@@ -256,7 +192,7 @@ export function EditForm({ userInfo, handleUserInfo }) {
                     value="Volver al perfil"
                     handleOnClick={handelToGoBack}
                   />
-                </div>
+                </section>
               </div>
             </section>
           </section>

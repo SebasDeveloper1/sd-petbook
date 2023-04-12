@@ -6,6 +6,7 @@ import { Modal } from './GlobalContainers/Modal';
 import { DashboardWrapper } from './GlobalContainers/DashboardWrapper';
 import { GoToBackLayout } from './GlobalContainers/GoToBackLayout';
 import { ConfirmationLayout } from './GlobalContainers/ConfirmationLayout';
+import { TextFieldGenerator } from './GlobalContainers/TextFieldGenerator';
 
 // HeaderContainers
 import { NavBarLG } from './HeaderContainers/NavBarLG';
@@ -25,6 +26,7 @@ import { PetDataForm } from './CreatePetContainers/PetDataForm';
 import { OwnerDataForm } from './CreatePetContainers/OwnerDataForm';
 import { VaccinesDataForm } from './CreatePetContainers/VaccinesDataForm';
 import { VaccinesInputs } from './CreatePetContainers/VaccinesInputs';
+import { CreateForm } from './CreatePetContainers/CreateForm';
 
 // UserViewContainers
 import { UserInfoSection } from './UserViewContainers/UserInfoSection';
@@ -48,6 +50,7 @@ export {
   DashboardWrapper,
   GoToBackLayout,
   ConfirmationLayout,
+  TextFieldGenerator,
 };
 // HeaderContainers
 export { NavBarLG, NavBarSM };
@@ -62,6 +65,7 @@ export {
   OwnerDataForm,
   VaccinesDataForm,
   VaccinesInputs,
+  CreateForm,
 };
 // UserViewContainers
 export { UserInfoSection, LoadingSkeletonUserView };

@@ -108,3 +108,18 @@ export const validateUserDataForm = async ({ values = {}, uid = '' }) => {
 
   return errors;
 };
+
+export const validateOwnerPetForm = (values) => {
+  const errors = {
+    ...validateNames(values),
+    ...validateSurnames(values),
+    ...validateGender(values),
+    ...validateCcp(values),
+    ...validateCell(values),
+    ...validateEmail(values),
+    ...validateCountry(values),
+    ...validateDepartment(values),
+    ...validateCity(values),
+  };
+  return errors;
+};

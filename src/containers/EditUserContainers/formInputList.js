@@ -3,7 +3,7 @@ export const componentTypes = {
   TEXT_SELECTION: 'textSelection',
 };
 
-export const formInputList = [
+export const userformInputList = [
   {
     inputComponent: componentTypes.TEXT_FIELD,
     type: 'text',

@@ -1,8 +1,18 @@
 import React from 'react';
 import { Typography } from 'components/indexComponents';
-import defaultImage from 'images/img-picture.png';
 
-export function AddImagePet() {
+export function AddImagePet({
+  handleFileInput = null,
+  imageUrl = '',
+  handleImageUrl = null,
+} = {}) {
+  const handleChangeFile = (e) => {
+    const { files } = e.target;
+    handleFileInput(files);
+    const tmpPath = URL.createObjectURL(files[0]);
+    handleImageUrl(tmpPath);
+  };
+
   return (
     <section className="flex flex-col gap-y-4 md:col-span-1">
       <div className="flex justify-center rounded-md border border-gray-300">
@@ -13,15 +23,17 @@ export function AddImagePet() {
           >
             <img
               className="w-44 md:w-full mb-2 aspect-square m-auto rounded-md object-cover object-center"
-              src={defaultImage}
+              src={imageUrl}
               alt="Mascota"
             />
             <span>Selecciona una foto de tu mascota</span>
             <input
               id="file-upload"
-              name="petFile"
+              name="file-upload"
               type="file"
+              accept=".jpg, .jpeg, .png, .webp"
               className="sr-only"
+              onChange={handleChangeFile}
             />
           </label>
         </div>

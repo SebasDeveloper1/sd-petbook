@@ -78,7 +78,7 @@ export const validatePetRepStatus = (values) =>
     'petRepStatus',
     'Debes seleccionar una de las opciones disponibles.'
   );
-export const validatePetDataForm = async (values) => {
+export const validatePetDataForm = (values) => {
   const errors = {
     ...validatePetName(values),
     ...validatePetRace(values),
