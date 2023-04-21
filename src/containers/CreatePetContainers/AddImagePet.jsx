@@ -34,6 +34,7 @@ export function AddImagePet({
               accept=".jpg, .jpeg, .png, .webp"
               className="sr-only"
               onChange={handleChangeFile}
+              required
             />
           </label>
         </div>
@@ -41,7 +42,7 @@ export function AddImagePet({
       <div className="p-4 rounded-md bg-sky-50 text-sky-600 border border-dashed border-sky-200">
         <Typography
           variant="p_sm"
-          value="Por favor, selecciona una foto de tu mascota que no contenga filtros o accesorios que dificulten su identificación."
+          value="Por favor, selecciona una foto de tu mascota en posición horizontal o de medidas 1:1(Cuadrada) y que no contenga filtros o accesorios que dificulten su identificación."
           styles="text-2xl tracking-tight"
         />
       </div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import {
   doc,
   getDoc,
@@ -71,6 +72,25 @@ export const createNewPet = async (newPet = {}) => {
   try {
     const docRef = collection(db, 'pets');
     return await addDoc(docRef, newPet);
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getPets = async (uid = '') => {
+  try {
+    const pets = [];
+    const docRef = collection(db, 'pets');
+    const q = query(docRef, where('uid', '==', uid));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      const pet = { ...doc.data() };
+      pet.docId = doc.id;
+      pets.push(pet);
+    });
+
+    return pets;
   } catch (error) {
     return error;
   }

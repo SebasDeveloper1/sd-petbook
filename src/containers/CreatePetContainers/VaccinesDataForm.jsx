@@ -2,6 +2,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { v4 as uuidV4 } from 'uuid';
 import { Typography, Button } from 'components/indexComponents';
 import { VaccinesInputs } from 'containers/indexContainers';
 
@@ -16,7 +17,7 @@ export function VaccinesDataForm({ defaultState, rows, setRows }) {
   };
 
   const handleOnAdd = () => {
-    setRows(rows.concat(defaultState));
+    setRows(rows.concat({ ...defaultState, id: uuidV4() }));
   };
 
   const handleOnRemove = (index) => {

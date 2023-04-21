@@ -9,6 +9,7 @@ import {
   PetDataForm,
   VaccinesDataForm,
   OwnerDataForm,
+  LoadingSkeletonCreatePet,
 } from 'containers/indexContainers';
 import { Typography, Button } from 'components/indexComponents';
 import { validatePetDataForm } from 'utils/PetformValidationFunctions';
@@ -17,7 +18,11 @@ import { imageLoadController } from 'utils/imageLoadController';
 import { createNewPet } from 'fbase/dbFunctions';
 import defaultImage from 'images/img-picture.png';
 
-export function CreateForm({ userInfo, handleGoToContinue } = {}) {
+export function CreateForm({
+  userInfo,
+  handleSubmittedForm,
+  handleGoToContinue,
+} = {}) {
   const [fileInput, setFileInput] = useState([]);
   const [imageUrl, setImageUrl] = useState(defaultImage);
   const [initialValues, setInitialValues] = useState({
@@ -59,8 +64,6 @@ export function CreateForm({ userInfo, handleGoToContinue } = {}) {
   });
   const [loading, setLoading] = useState(true);
   const [rows, setRows] = useState([]);
-  const [submittedForm, setSubmittedForm] = useState(false);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -113,11 +116,11 @@ export function CreateForm({ userInfo, handleGoToContinue } = {}) {
     });
 
     const tmpVaccinesList = await Promise.all(
-      newPet.vaccinesList.map(async (vaccine, index) => {
+      newPet.vaccinesList.map(async (vaccine) => {
         const tmpVaccine = { ...vaccine };
         tmpVaccine.image = await imageLoadController({
           fileInput: tmpVaccine.image,
-          fileName: index,
+          fileName: tmpVaccine?.id,
           petId: newPet?.id,
           type: 'vaccine',
           uid: userInfo?.uid,
@@ -129,23 +132,16 @@ export function CreateForm({ userInfo, handleGoToContinue } = {}) {
 
     const res = await createNewPet(newPet);
     newPet.docId = res.id;
-    setSubmittedForm(true);
-    // setTimeout(() => {
-    //   setSubmittedForm(false);
-    //   // navigate('/home');
-    // }, 2000);
+    handleGoToContinue();
+    handleSubmittedForm(true);
+    setTimeout(() => {
+      handleSubmittedForm(false);
+      handleGoToContinue();
+      navigate('/home');
+    }, 1000);
   };
   if (loading) {
-    return (
-      <div className="flex flex-col justify-center items-center w-full">
-        <div className="w-fit">
-          <InfinitySpin width="200" color="#0ea5e9" />
-        </div>
-        <span className="pb-4 text-3xl font-semibold tracking-tight text-sky-500">
-          Cargando perfil...
-        </span>
-      </div>
-    );
+    return <LoadingSkeletonCreatePet />;
   }
   return (
     <div className="w-11/12 md:w-10/12 m-auto py-12">
@@ -159,7 +155,7 @@ export function CreateForm({ userInfo, handleGoToContinue } = {}) {
           ...initialValues?.valuesPetForm,
           ...initialValues?.valuesOwner,
         }}
-        // validate={handleOnValidate}
+        validate={handleOnValidate}
         onSubmit={handleOnSubmit}
       >
         {({ errors, handleBlur, handleChange, touched, values }) => (
@@ -194,13 +190,6 @@ export function CreateForm({ userInfo, handleGoToContinue } = {}) {
                 touched={touched}
               />
             </section>
-            {submittedForm ? (
-              <Typography
-                variant="span_base"
-                value="✨ La mascota ha sido registrada 🎉"
-                styles="col-span-6 px-3 py-2 rounded-lg font-medium tracking-tight text-green-700 text-center bg-lime-300/30"
-              />
-            ) : null}
             <section className="col-span-3 flex flex-col md:flex-row md:justify-end gap-6 mt-8">
               <Button
                 type="submit"

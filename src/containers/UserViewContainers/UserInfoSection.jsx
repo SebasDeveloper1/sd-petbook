@@ -85,7 +85,7 @@ export function UserInfoSection({ userInfo = {} }) {
   ];
 
   const handleEditProfile = () => {
-    navigate(`/p/${username}/edit`);
+    navigate(`/p/edit`);
   };
 
   return (

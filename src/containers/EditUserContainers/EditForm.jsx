@@ -2,9 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
-import { InfinitySpin } from 'react-loader-spinner';
 import { Typography, Button } from 'components/indexComponents';
-import { TextFieldGenerator } from 'containers/indexContainers';
+import {
+  TextFieldGenerator,
+  LoadingSkeletonEditForm,
+} from 'containers/indexContainers';
 import { getStorageImageUrl } from 'fbase/storageFunctions';
 import { updateUser } from 'fbase/dbFunctions';
 import { validateUserDataForm } from 'utils/UserformValidationFunctions';
@@ -93,16 +95,7 @@ export function EditForm({ userInfo, handleUserInfo } = {}) {
   };
 
   if (loading) {
-    return (
-      <div className="flex flex-col justify-center items-center w-full">
-        <div className="w-fit">
-          <InfinitySpin width="200" color="#0ea5e9" />
-        </div>
-        <span className="pb-4 text-3xl font-semibold tracking-tight text-sky-500">
-          Cargando perfil...
-        </span>
-      </div>
-    );
+    return <LoadingSkeletonEditForm />;
   }
 
   return (

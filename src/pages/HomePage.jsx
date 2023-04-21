@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGetUserState } from 'hooks/useGetUserState';
+import { getPets } from 'fbase/dbFunctions';
 import {
   DashboardWrapper,
   HeaderList,
@@ -14,7 +15,9 @@ import { BsClipboardPlus } from 'react-icons/bs';
 export default function HomePage() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
+  const [petList, setPetList] = useState([]);
   const [loading, setLoading] = useState(true);
+
   /*
   Stages:
   0: initiated
@@ -24,8 +27,9 @@ export default function HomePage() {
   4: not logged
   5: exists usuername
 */
-  const handlerUserLoggedIn = (user) => {
+  const handlerUserLoggedIn = async (user) => {
     setCurrentUser(user);
+    setPetList(await getPets(user?.uid));
     setLoading(!loading);
     return 2;
   };
@@ -64,15 +68,18 @@ export default function HomePage() {
               <Button
                 type="button"
                 variant="outlined"
-                styles="shadow-lg flex-col py-8 border-dashed border-2 border-sky-500"
+                styles="shadow-lg flex-col py-8 rounded-xl border-dashed border-2 border-sky-500"
                 value="Agregar mascota"
                 startIcon={<BsClipboardPlus />}
                 handleOnClick={handleOnClick}
               />
-              <PetCart />
-              <PetCart />
-              <PetCart />
-              <PetCart />
+              {petList.map((pet) => (
+                <PetCart
+                  key={`petCart_${pet?.docId}`}
+                  petInfo={pet}
+                  userInfo={currentUser}
+                />
+              ))}
             </PetList>
           </section>
         </div>

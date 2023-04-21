@@ -1,38 +1,56 @@
-import React from 'react';
+/* eslint-disable no-shadow */
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Typography } from 'components/indexComponents';
+import { getStorageImageUrl } from 'fbase/storageFunctions';
+import { getPetAge } from 'utils/getPetAge';
+import defaultImage from 'images/profile-picture.png';
 
-export function PetCart() {
+export function PetCart({ petInfo = {}, userInfo = {} }) {
+  const { petImage, petName, petBirthdate } = petInfo;
+  const { username } = userInfo;
+  const [imageUrl, setImageUrl] = useState('');
+  const [birthdate, setBirthdate] = useState('');
+
+  useEffect(() => {
+    async function fetchUserInfo() {
+      if (petInfo) {
+        const urlImage = petImage
+          ? await getStorageImageUrl({ path: petImage })
+          : defaultImage;
+        setImageUrl(urlImage);
+      }
+    }
+
+    setBirthdate(getPetAge(petBirthdate));
+    fetchUserInfo();
+  }, [petInfo]);
+
   return (
     <Link
-      to="/home"
-      className="block p-4 space-y-3 border border-gray-200 rounded-md shadow-lg bg-white hover:bg-sky-50"
+      to={`/u/${username}/p/${petName}`}
+      className="group relative block overflow-hidden rounded-xl"
     >
-      <div className="flex items-center space-x-4 w-full">
-        <img
-          className="w-14 h-14 rounded-full shadow-lg object-cover object-center"
-          src="https://images.pexels.com/photos/160846/french-bulldog-summer-smile-joy-160846.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="Bonnie"
-        />
-        <div className="overflow-hidden w-full">
-          <Typography
-            variant="h5"
-            value="Merlin"
-            styles="text-2xl font-bold tracking-tight text-slate-900 truncate"
-          />
-          <Typography
-            variant="span_sm"
-            value="15/Julio/1999"
-            styles="font-medium tracking-tight text-slate-400 truncate"
-          />
+      <img
+        src={imageUrl}
+        alt={petName}
+        className="w-full aspect-video object-cover object-center transition-transform md:group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-gray-700/50 via-gray-900/50 to-black/50 transition-transform md:group-hover:-translate-y-full">
+        <div className="relative w-full h-full flex items-end p-2 sm:p-4">
+          <div className="w-full">
+            <Typography
+              variant="span_xl"
+              value={petName}
+              styles="text-2xl font-semibold tracking-tight text-white truncate capitalize"
+            />
+            <Typography
+              variant="span_sm"
+              value={birthdate}
+              styles="font-medium tracking-tight text-slate-50 truncate"
+            />
+          </div>
         </div>
-      </div>
-      <div>
-        <Typography
-          variant="p_base"
-          value="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-          styles="text-2xl font-medium tracking-tight text-slate-500 truncate"
-        />
       </div>
     </Link>
   );

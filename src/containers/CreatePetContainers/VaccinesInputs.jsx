@@ -10,7 +10,6 @@ export function VaccinesInputs({
   purpose = '',
   vet = '',
   contact = '',
-  image = '',
   onChange = null,
   onRemove = null,
 }) {

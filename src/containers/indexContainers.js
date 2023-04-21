@@ -27,6 +27,7 @@ import { OwnerDataForm } from './CreatePetContainers/OwnerDataForm';
 import { VaccinesDataForm } from './CreatePetContainers/VaccinesDataForm';
 import { VaccinesInputs } from './CreatePetContainers/VaccinesInputs';
 import { CreateForm } from './CreatePetContainers/CreateForm';
+import { LoadingSkeletonCreatePet } from './CreatePetContainers/LoadingSkeletonCreatePet';
 
 // UserViewContainers
 import { UserInfoSection } from './UserViewContainers/UserInfoSection';
@@ -34,6 +35,7 @@ import { LoadingSkeletonUserView } from './UserViewContainers/LoadingSkeletonUse
 
 // EditUserContainers
 import { EditForm } from './EditUserContainers/EditForm';
+import { LoadingSkeletonEditForm } from './EditUserContainers/LoadingSkeletonEditForm';
 
 // PetViewContainers
 import { HeroSection } from './PetViewContainers/HeroSection';
@@ -66,10 +68,11 @@ export {
   VaccinesDataForm,
   VaccinesInputs,
   CreateForm,
+  LoadingSkeletonCreatePet,
 };
 // UserViewContainers
 export { UserInfoSection, LoadingSkeletonUserView };
 // EditUserContainers
-export { EditForm };
+export { EditForm, LoadingSkeletonEditForm };
 // PetViewContainers
 export { HeroSection, VaccinesSection, OwnerInfoSection };

@@ -34,4 +34,5 @@ export const imageLoadController = async ({
       return res.metadata.fullPath;
     }
   }
+  return '';
 };
