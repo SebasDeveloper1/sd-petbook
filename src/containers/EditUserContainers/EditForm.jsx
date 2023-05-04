@@ -7,7 +7,10 @@ import {
   TextFieldGenerator,
   LoadingSkeletonEditForm,
 } from 'containers/indexContainers';
-import { getStorageImageUrl } from 'fbase/storageFunctions';
+import {
+  getStorageImageUrl,
+  setImageToStorageTypes,
+} from 'fbase/storageFunctions';
 import { updateUser } from 'fbase/dbFunctions';
 import { validateUserDataForm } from 'utils/UserformValidationFunctions';
 import { imageLoadController } from 'utils/imageLoadController';
@@ -23,7 +26,7 @@ export function EditForm({ userInfo, handleUserInfo } = {}) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function fetchUserInfo() {
+    const fetchUserInfo = async () => {
       if (userInfo) {
         const urlImage = userInfo.profilePicture
           ? await getStorageImageUrl({ path: userInfo.profilePicture })
@@ -48,7 +51,7 @@ export function EditForm({ userInfo, handleUserInfo } = {}) {
         setFormInitialValues(formValues);
         setLoading(false);
       }
-    }
+    };
     fetchUserInfo();
   }, [userInfo]);
 
@@ -81,12 +84,16 @@ export function EditForm({ userInfo, handleUserInfo } = {}) {
       address: values.address,
     };
 
-    newUserInfo.profilePicture = await imageLoadController({
-      fileInput,
-      type: 'user',
-      uid: userInfo?.uid,
-      fileName: `userPhoto_${userInfo?.uid}`,
-    });
+    if (fileInput.length > 0) {
+      newUserInfo.profilePicture = await imageLoadController({
+        fileInput,
+        type: setImageToStorageTypes.USER,
+        uid: userInfo?.uid,
+        fileName: `userPhoto_${userInfo?.uid}`,
+      });
+    } else {
+      newUserInfo.profilePicture = userInfo.profilePicture;
+    }
 
     await updateUser(newUserInfo);
     handleUserInfo(newUserInfo);

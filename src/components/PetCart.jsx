@@ -6,19 +6,22 @@ import { getStorageImageUrl } from 'fbase/storageFunctions';
 import { getPetAge } from 'utils/getPetAge';
 import defaultImage from 'images/profile-picture.png';
 
-export function PetCart({ petInfo = {}, userInfo = {} }) {
-  const { petImage, petName, petBirthdate } = petInfo;
-  const { username } = userInfo;
+export function PetCart({ petInfo = {} }) {
+  const { id: petId, petImage = '', petName, petBirthdate } = petInfo;
   const [imageUrl, setImageUrl] = useState('');
   const [birthdate, setBirthdate] = useState('');
 
   useEffect(() => {
     async function fetchUserInfo() {
-      if (petInfo) {
-        const urlImage = petImage
-          ? await getStorageImageUrl({ path: petImage })
-          : defaultImage;
-        setImageUrl(urlImage);
+      try {
+        if (petImage !== '') {
+          const urlImage = petImage
+            ? await getStorageImageUrl({ path: petImage })
+            : defaultImage;
+          setImageUrl(urlImage);
+        }
+      } catch (error) {
+        console.error(error);
       }
     }
 
@@ -28,11 +31,11 @@ export function PetCart({ petInfo = {}, userInfo = {} }) {
 
   return (
     <Link
-      to={`/u/${username}/p/${petName}`}
+      to={`/pet/${petName}+${petId}`}
       className="group relative block overflow-hidden rounded-xl"
     >
       <img
-        src={imageUrl}
+        src={imageUrl || defaultImage}
         alt={petName}
         className="w-full aspect-video object-cover object-center transition-transform md:group-hover:scale-105"
       />

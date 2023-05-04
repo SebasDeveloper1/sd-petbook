@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import { v4 as uuidV4 } from 'uuid';
-import { InfinitySpin } from 'react-loader-spinner';
 import {
   AddImagePet,
   PetDataForm,
   VaccinesDataForm,
+  AddImageOwner,
   OwnerDataForm,
   LoadingSkeletonCreatePet,
 } from 'containers/indexContainers';
@@ -16,15 +16,21 @@ import { validatePetDataForm } from 'utils/PetformValidationFunctions';
 import { validateOwnerPetForm } from 'utils/UserformValidationFunctions';
 import { imageLoadController } from 'utils/imageLoadController';
 import { createNewPet } from 'fbase/dbFunctions';
-import defaultImage from 'images/img-picture.png';
+import { setImageToStorageTypes } from 'fbase/storageFunctions';
 
 export function CreateForm({
   userInfo,
   handleSubmittedForm,
   handleGoToContinue,
 } = {}) {
-  const [fileInput, setFileInput] = useState([]);
-  const [imageUrl, setImageUrl] = useState(defaultImage);
+  const [fileInput, setFileInput] = useState({
+    petFileInput: [],
+    ownerFileInput: [],
+  });
+  const [imageUrl, setImageUrl] = useState({
+    petImage: '',
+    ownerImage: '',
+  });
   const [initialValues, setInitialValues] = useState({
     valuesPetForm: {
       petImage: '',
@@ -49,17 +55,18 @@ export function CreateForm({
       image: '',
     },
     valuesOwner: {
-      names: '',
-      surnames: '',
-      gender: '',
-      ccp: '',
-      cell: '',
-      email: '',
-      website: '',
-      country: '',
-      department: '',
-      city: '',
-      address: '',
+      ownerImage: '',
+      ownerNames: '',
+      ownerSurnames: '',
+      ownerGender: '',
+      ownerCcp: '',
+      ownerCell: '',
+      ownerEmail: '',
+      ownerWebsite: '',
+      ownerCountry: '',
+      ownerDepartment: '',
+      ownerCity: '',
+      ownerAddress: '',
     },
   });
   const [loading, setLoading] = useState(true);
@@ -72,20 +79,22 @@ export function CreateForm({
         const tmpFormValues = {
           ...initialValues,
           valuesOwner: {
-            names: userInfo.names,
-            surnames: userInfo.surnames,
-            gender: userInfo.gender,
-            ccp: userInfo.ccp,
-            cell: userInfo.cell,
-            email: userInfo.email,
-            website: userInfo.website,
-            country: userInfo.country,
-            department: userInfo.department,
-            city: userInfo.city,
-            address: userInfo.address,
+            ownerImage: userInfo.profilePicture,
+            ownerNames: userInfo.names,
+            ownerSurnames: userInfo.surnames,
+            ownerGender: userInfo.gender,
+            ownerCcp: userInfo.ccp,
+            ownerCell: userInfo.cell,
+            ownerEmail: userInfo.email,
+            ownerWebsite: userInfo.website,
+            ownerCountry: userInfo.country,
+            ownerDepartment: userInfo.department,
+            ownerCity: userInfo.city,
+            ownerAddress: userInfo.address,
           },
         };
         setInitialValues(tmpFormValues);
+        setImageUrl({ ...imageUrl, ownerImage: userInfo.profilePicture });
         setLoading(false);
       }
     }
@@ -107,28 +116,49 @@ export function CreateForm({
       id: uuidV4(),
       vaccinesList: [...rows],
     };
-    newPet.petImage = await imageLoadController({
-      fileInput,
-      fileName: newPet?.id,
-      petId: newPet?.id,
-      type: 'pet',
-      uid: userInfo?.uid,
-    });
 
-    const tmpVaccinesList = await Promise.all(
-      newPet.vaccinesList.map(async (vaccine) => {
-        const tmpVaccine = { ...vaccine };
-        tmpVaccine.image = await imageLoadController({
-          fileInput: tmpVaccine.image,
-          fileName: tmpVaccine?.id,
-          petId: newPet?.id,
-          type: 'vaccine',
-          uid: userInfo?.uid,
-        });
-        return tmpVaccine;
-      })
-    );
-    newPet.vaccinesList = tmpVaccinesList;
+    if (fileInput.petFileInput?.length > 0) {
+      newPet.petImage = await imageLoadController({
+        fileInput: fileInput.petFileInput,
+        fileName: newPet.id,
+        petId: newPet.id,
+        type: setImageToStorageTypes.PET,
+        uid: userInfo?.uid,
+      });
+    } else {
+      newPet.petImage = imageUrl?.petImage;
+    }
+
+    if (newPet.vaccinesList?.length > 0) {
+      const tmpVaccinesList = await Promise.all(
+        newPet.vaccinesList.map(async (vaccine) => {
+          const tmpVaccine = { ...vaccine };
+          if (tmpVaccine?.image?.length > 0) {
+            tmpVaccine.image = await imageLoadController({
+              fileInput: tmpVaccine?.image,
+              fileName: newPet.id,
+              petId: newPet.id,
+              type: setImageToStorageTypes.VACCINE,
+              uid: userInfo?.uid,
+            });
+          }
+          return tmpVaccine;
+        })
+      );
+      newPet.vaccinesList = tmpVaccinesList;
+    }
+
+    if (fileInput?.ownerFileInput?.length > 0) {
+      newPet.ownerImage = await imageLoadController({
+        fileInput: fileInput.ownerFileInput,
+        fileName: newPet.id,
+        petId: newPet.id,
+        type: setImageToStorageTypes.PET_OWNER,
+        uid: userInfo?.uid,
+      });
+    } else {
+      newPet.ownerImage = imageUrl?.ownerImage;
+    }
 
     const res = await createNewPet(newPet);
     newPet.docId = res.id;
@@ -140,6 +170,7 @@ export function CreateForm({
       navigate('/home');
     }, 1000);
   };
+
   if (loading) {
     return <LoadingSkeletonCreatePet />;
   }
@@ -160,11 +191,11 @@ export function CreateForm({
       >
         {({ errors, handleBlur, handleChange, touched, values }) => (
           <Form>
-            <section className="pb-6 border-b md:grid md:grid-cols-3 md:gap-x-12 md:gap-y-6">
+            <section className="py-6 border-b md:grid md:grid-cols-3 md:gap-x-12 md:gap-y-6">
               <AddImagePet
+                fileInput={fileInput}
                 handleFileInput={setFileInput}
                 imageUrl={imageUrl}
-                handleImageUrl={setImageUrl}
               />
               <PetDataForm
                 initialValues={values}
@@ -182,6 +213,16 @@ export function CreateForm({
               />
             </section>
             <section className="py-6 border-b md:grid md:grid-cols-3 md:gap-x-12 md:gap-y-6">
+              <Typography
+                variant="h4"
+                value="Información del Propietario"
+                styles="mb-4 col-span-3 text-2xl font-medium tracking-tight text-slate-900"
+              />
+              <AddImageOwner
+                fileInput={fileInput}
+                handleFileInput={setFileInput}
+                imageUrl={imageUrl}
+              />
               <OwnerDataForm
                 initialValues={values}
                 errors={errors}

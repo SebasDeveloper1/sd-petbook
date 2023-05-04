@@ -28,11 +28,7 @@ export function NavRoutes() {
             />
             <Route exact path="p/:username" element={<UserViewPage />} />
             <Route exact path="p/edit" element={<EditUserPage />} />
-            <Route
-              exact
-              path="/u/:username/p/:petName"
-              element={<PetViewPage />}
-            />
+            <Route exact path="pet/:petName" element={<PetViewPage />} />
             <Route exact path="create-pet" element={<CreatePetPage />} />
             <Route path="*" element={<Page404 />} />
           </Routes>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   FaUserAstronaut,
   FaPhone,
@@ -7,18 +7,50 @@ import {
   FaMapMarkerAlt,
 } from 'react-icons/fa';
 import { Typography } from 'components/indexComponents';
+import { getStorageImageUrl } from 'fbase/storageFunctions';
+import defaultImage from 'images/profile-picture.png';
 
-export function OwnerInfoSection() {
+export function OwnerInfoSection({ petInfo = {} }) {
+  const {
+    profilePicture = '',
+    username,
+    names,
+    surnames,
+    ccp,
+    cell,
+    email,
+    website,
+    country,
+    city,
+  } = petInfo;
+  const [pictureUrl, setPictureUrl] = useState(defaultImage);
+
+  useEffect(() => {
+    const fetchPictureUrl = async () => {
+      try {
+        if (profilePicture) {
+          const urlImage = await getStorageImageUrl({ path: profilePicture });
+          setPictureUrl(urlImage);
+        } else {
+          setPictureUrl(defaultImage);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchPictureUrl();
+  }, [profilePicture]);
   const ownerInfo = [
     {
       name: 'name',
       icon: <FaUserAstronaut />,
-      data: 'Jessica Lorena Casas Garcia',
+      data: `${names} ${surnames}`,
     },
-    { name: 'cell', icon: <FaPhone />, data: '12345678980' },
-    { name: 'email', icon: <FaEnvelope />, data: 'correo@correo.com' },
-    { name: 'website', icon: <FaLink />, data: 'facebook/jlcasas' },
-    { name: 'address', icon: <FaMapMarkerAlt />, data: 'Ubaté/Cundinamarca' },
+    { name: 'cell', icon: <FaPhone />, data: `${ccp} / ${cell}` },
+    { name: 'email', icon: <FaEnvelope />, data: email },
+    { name: 'website', icon: <FaLink />, data: website },
+    { name: 'address', icon: <FaMapMarkerAlt />, data: `${city} / ${country}` },
   ];
   return (
     <section className="w-full pt-12 pb-24 bg-slate-900">
@@ -44,8 +76,8 @@ export function OwnerInfoSection() {
             <img
               style={{ borderRadius: '30% 70% 67% 33% / 30% 30% 70% 70%' }}
               className="w-44 mx-auto aspect-square border-4 border-blue-500 shadow-lg object-cover object-center"
-              src="https://images.pexels.com/photos/160846/french-bulldog-summer-smile-joy-160846.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="Bonnie"
+              src={pictureUrl || defaultImage}
+              alt={username}
             />
           </figure>
 

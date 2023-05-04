@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useRef, useState, useEffect } from 'react';
@@ -13,7 +12,6 @@ import {
 import { useEvents } from 'hooks/useEvents';
 import { useOnClickOutside } from 'hooks/useOnClickOutside';
 import { useGetUserState } from 'hooks/useGetUserState';
-import submittedImage from 'images/Bunny_illustration.svg';
 
 export default function CreatePetPage() {
   const [currentUser, setCurrentUser] = useState(null);

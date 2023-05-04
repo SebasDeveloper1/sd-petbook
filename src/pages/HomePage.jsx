@@ -74,11 +74,7 @@ export default function HomePage() {
                 handleOnClick={handleOnClick}
               />
               {petList.map((pet) => (
-                <PetCart
-                  key={`petCart_${pet?.docId}`}
-                  petInfo={pet}
-                  userInfo={currentUser}
-                />
+                <PetCart key={`petCart_${pet?.docId}`} petInfo={pet} />
               ))}
             </PetList>
           </section>

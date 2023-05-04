@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Typography } from 'components/indexComponents';
+import { getStorageImageUrl } from 'fbase/storageFunctions';
+import defaultImagePet from 'images/img-picture.png';
 
 export function AddImagePet({
+  fileInput = {},
   handleFileInput = null,
   imageUrl = '',
-  handleImageUrl = null,
 } = {}) {
+  const [url, setUrl] = useState(defaultImagePet);
+
+  useEffect(() => {
+    const fetchImageUrl = async () => {
+      setUrl(
+        imageUrl?.petImage
+          ? await getStorageImageUrl({ path: imageUrl?.petImage })
+          : defaultImagePet
+      );
+    };
+    fetchImageUrl();
+  }, [imageUrl]);
+
   const handleChangeFile = (e) => {
     const { files } = e.target;
-    handleFileInput(files);
+    handleFileInput({ ...fileInput, petFileInput: files });
     const tmpPath = URL.createObjectURL(files[0]);
-    handleImageUrl(tmpPath);
+    setUrl(tmpPath);
   };
 
   return (
@@ -18,18 +33,18 @@ export function AddImagePet({
       <div className="flex justify-center rounded-md border border-gray-300">
         <div className="w-full text-center">
           <label
-            htmlFor="file-upload"
+            htmlFor="pet-file"
             className="block w-full p-4 cursor-pointer rounded-md font-medium text-sky-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-sky-500 focus-within:ring-offset-2 hover:text-sky-500"
           >
             <img
               className="w-44 md:w-full mb-2 aspect-square m-auto rounded-md object-cover object-center"
-              src={imageUrl}
+              src={url}
               alt="Mascota"
             />
             <span>Selecciona una foto de tu mascota</span>
             <input
-              id="file-upload"
-              name="file-upload"
+              id="pet-file"
+              name="pet-file"
               type="file"
               accept=".jpg, .jpeg, .png, .webp"
               className="sr-only"

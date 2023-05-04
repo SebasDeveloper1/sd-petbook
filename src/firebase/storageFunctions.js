@@ -1,6 +1,13 @@
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { storage } from 'fbase/firebase';
 
+export const setImageToStorageTypes = {
+  USER: 'user',
+  PET: 'pet',
+  PET_OWNER: 'petOwner',
+  VACCINE: 'vaccine',
+};
+
 export const setImageToStorage = async ({
   file = '',
   fileName = '',
@@ -10,16 +17,22 @@ export const setImageToStorage = async ({
 } = {}) => {
   try {
     let imageRef = '';
-    if (type === 'user') {
+    if (type === setImageToStorageTypes.USER) {
       imageRef = ref(storage, `images_${uid}/${fileName}`);
     }
-    if (type === 'pet') {
+    if (type === setImageToStorageTypes.PET) {
       imageRef = ref(
         storage,
         `images_${uid}/pet_${fileName}/petPhoto_${fileName}`
       );
     }
-    if (type === 'vaccine') {
+    if (type === setImageToStorageTypes.PET_OWNER) {
+      imageRef = ref(
+        storage,
+        `images_${uid}/pet_${petId}/petOwnerPhoto_${fileName}`
+      );
+    }
+    if (type === setImageToStorageTypes.VACCINE) {
       imageRef = ref(
         storage,
         `images_${uid}/pet_${petId}/vaccines/${fileName}`

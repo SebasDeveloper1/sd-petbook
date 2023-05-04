@@ -47,7 +47,7 @@ export const userformInputList = [
   },
   {
     inputComponent: componentTypes.TEXT_FIELD,
-    type: 'email',
+    type: 'text',
     labelValue: 'Email',
     name: 'email',
     placeholder: 'prueba@ejemplo.com',

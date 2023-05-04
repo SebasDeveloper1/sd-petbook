@@ -21,7 +21,7 @@ export const userExists = async ({ userUid: uid } = {}) => {
   }
 };
 
-export const existsUsername = async ({ username } = {}) => {
+export const existsUsername = async ({ username } = '') => {
   try {
     const users = [];
     const docsRef = collection(db, 'users');
@@ -68,6 +68,23 @@ export const getUserInfo = async ({ userUid: uid } = {}) => {
   }
 };
 
+export const getUserUidByUsername = async ({ username = '' }) => {
+  try {
+    const users = [];
+    const docsRef = collection(db, 'users');
+    const q = query(docsRef, where('username', '==', username));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((document) => {
+      users.push(document.data());
+    });
+
+    return users.length > 0 ? users[0]?.uid : null;
+  } catch (error) {
+    return error;
+  }
+};
+
 export const createNewPet = async (newPet = {}) => {
   try {
     const docRef = collection(db, 'pets');
@@ -91,6 +108,25 @@ export const getPets = async (uid = '') => {
     });
 
     return pets;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getPetInfo = async ({ petId = '' }) => {
+  try {
+    const pets = [];
+    const docRef = collection(db, 'pets');
+    const q = query(docRef, where('id', '==', petId));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      const pet = { ...doc.data() };
+      pet.docId = doc.id;
+      pets.push(pet);
+    });
+
+    return pets[0];
   } catch (error) {
     return error;
   }

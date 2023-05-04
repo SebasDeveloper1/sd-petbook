@@ -5,7 +5,7 @@ import {
   UserInfoSection,
   LoadingSkeletonUserView,
 } from 'containers/indexContainers';
-import { Typography, PetCart } from 'components/indexComponents';
+import { Typography } from 'components/indexComponents';
 
 export default function UserViewPage() {
   const [currentUser, setCurrentUser] = useState({});
@@ -62,10 +62,10 @@ export default function UserViewPage() {
                   styles="pb-8 max-w-prose font-semibold text-slate-900 truncate"
                 />
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full">
+                  {/* <PetCart />
                   <PetCart />
                   <PetCart />
-                  <PetCart />
-                  <PetCart />
+                  <PetCart /> */}
                 </ul>
               </div>
             </section>

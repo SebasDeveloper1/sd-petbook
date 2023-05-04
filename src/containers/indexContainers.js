@@ -21,11 +21,12 @@ import { PetList } from './HomeContainers/PetList';
 import { LoadingSkeletonHome } from './HomeContainers/LoadingSkeletonHome';
 
 // CreatePetContainers
-import { AddImagePet } from './CreatePetContainers/AddImagePet';
-import { PetDataForm } from './CreatePetContainers/PetDataForm';
-import { OwnerDataForm } from './CreatePetContainers/OwnerDataForm';
-import { VaccinesDataForm } from './CreatePetContainers/VaccinesDataForm';
-import { VaccinesInputs } from './CreatePetContainers/VaccinesInputs';
+import { AddImagePet } from './CreatePetContainers/PetData/AddImagePet';
+import { PetDataForm } from './CreatePetContainers/PetData/PetDataForm';
+import { AddImageOwner } from './CreatePetContainers/OwnerData/AddImageOwner';
+import { OwnerDataForm } from './CreatePetContainers/OwnerData/OwnerDataForm';
+import { VaccinesDataForm } from './CreatePetContainers/VaccinesData/VaccinesDataForm';
+import { VaccinesInputs } from './CreatePetContainers/VaccinesData/VaccinesInputs';
 import { CreateForm } from './CreatePetContainers/CreateForm';
 import { LoadingSkeletonCreatePet } from './CreatePetContainers/LoadingSkeletonCreatePet';
 
@@ -41,6 +42,7 @@ import { LoadingSkeletonEditForm } from './EditUserContainers/LoadingSkeletonEdi
 import { HeroSection } from './PetViewContainers/HeroSection';
 import { VaccinesSection } from './PetViewContainers/VaccinesSection';
 import { OwnerInfoSection } from './PetViewContainers/OwnerInfoSection';
+import { LoadingSkeletonPetView } from './PetViewContainers/LoadingSkeletonPetView';
 
 // --------- Exported Objects ---------
 // GlobalContainers
@@ -64,6 +66,7 @@ export { HeaderList, PetList, LoadingSkeletonHome };
 export {
   AddImagePet,
   PetDataForm,
+  AddImageOwner,
   OwnerDataForm,
   VaccinesDataForm,
   VaccinesInputs,
@@ -75,4 +78,9 @@ export { UserInfoSection, LoadingSkeletonUserView };
 // EditUserContainers
 export { EditForm, LoadingSkeletonEditForm };
 // PetViewContainers
-export { HeroSection, VaccinesSection, OwnerInfoSection };
+export {
+  HeroSection,
+  VaccinesSection,
+  OwnerInfoSection,
+  LoadingSkeletonPetView,
+};
