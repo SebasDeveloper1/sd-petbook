@@ -56,7 +56,7 @@ export function UserInfoSection({ userInfo = {} }) {
       type: dataTypes.TEXT,
       name: 'gender',
       icon: <FaHeart />,
-      data: gender || msmByDefault,
+      data: gender && msmByDefault,
     },
     {
       type: dataTypes.TEXT,
@@ -68,19 +68,19 @@ export function UserInfoSection({ userInfo = {} }) {
       type: dataTypes.TEXT,
       name: 'email',
       icon: <FaEnvelope />,
-      data: email || msmByDefault,
+      data: email && msmByDefault,
     },
     {
       type: dataTypes.URL,
       name: 'website',
       icon: <FaLink />,
-      data: website || msmByDefault,
+      data: website && msmByDefault,
     },
     {
       type: dataTypes.TEXT,
       name: 'address',
       icon: <FaMapMarkerAlt />,
-      data: address || msmByDefault,
+      data: address && msmByDefault,
     },
   ];
 
@@ -99,7 +99,7 @@ export function UserInfoSection({ userInfo = {} }) {
       <div className="w-full text-center">
         <Typography
           variant="h4"
-          value={username || msmByDefault}
+          value={username && msmByDefault}
           styles="w-full mb-1 font-semibold tracking-tight text-slate-900 truncate"
         />
         <Typography

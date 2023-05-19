@@ -17,6 +17,7 @@ import { validateOwnerPetForm } from 'utils/UserformValidationFunctions';
 import { imageLoadController } from 'utils/imageLoadController';
 import { createNewPet } from 'fbase/dbFunctions';
 import { setImageToStorageTypes } from 'fbase/storageFunctions';
+import { getDateInMilliseconds } from 'utils/dateFunctions';
 
 export function CreateForm({
   userInfo,
@@ -110,11 +111,20 @@ export function CreateForm({
   };
 
   const handleOnSubmit = async (values) => {
+    const tmpRows = rows.map((row) => {
+      const tmpRow = { ...row };
+      if (tmpRow.date) {
+        tmpRow.date = getDateInMilliseconds(tmpRow.date);
+      }
+      return tmpRow;
+    });
+
     const newPet = {
       ...values,
       uid: userInfo?.uid,
       id: uuidV4(),
-      vaccinesList: [...rows],
+      petBirthdate: getDateInMilliseconds(values?.petBirthdate),
+      vaccinesList: [...tmpRows],
     };
 
     if (fileInput.petFileInput?.length > 0) {

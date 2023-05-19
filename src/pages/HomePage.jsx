@@ -68,7 +68,7 @@ export default function HomePage() {
               <Button
                 type="button"
                 variant="outlined"
-                styles="shadow-lg flex-col py-8 rounded-xl border-dashed border-2 border-sky-500"
+                styles="shadow-lg flex-col py-8 rounded-xl border-dashed border-2 border-sky-500 md:hover:-translate-y-4 transition-all duration-300"
                 value="Agregar mascota"
                 startIcon={<BsClipboardPlus />}
                 handleOnClick={handleOnClick}

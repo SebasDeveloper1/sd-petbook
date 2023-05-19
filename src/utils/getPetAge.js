@@ -5,8 +5,7 @@ const getMonthDifference = (startDate, endDate) => {
 };
 
 export const getPetAge = (dateValue) => {
-  const dateInMilliseconds = Date.parse(dateValue.replace(/-/g, '/'));
-  const date = new Date(dateInMilliseconds);
+  const date = new Date(dateValue);
   const today = new Date();
   const differenceInMonths = getMonthDifference(date, today);
   if (differenceInMonths > 12) {

@@ -47,7 +47,6 @@ export function HeroSection({ petInfo = {} }) {
         console.error(error);
       }
     };
-
     fetchPictureUrl();
   }, [petImage]);
 
@@ -67,13 +66,13 @@ export function HeroSection({ petInfo = {} }) {
   ];
 
   return (
-    <div className="flex flex-col md:flex-row-reverse w-full min-h-screen bg-slate-900 ">
+    <div className="grid grid-cols-2 w-full min-h-screen bg-slate-900">
       <img
-        className="w-full lg:w-3/5 md:h-screen object-cover"
+        className="col-span-2 md:col-span-1 w-full md:min-h-screen object-cover shadow-lg"
         src={pictureUrl || defaultImage}
         alt={petName}
       />
-      <div className="flex flex-col items-center w-full sm:1/2 lg:w-2/5 my-9">
+      <div className="col-span-2 md:col-span-1 flex flex-col items-center w-full py-12">
         <div className="w-11/12 space-y-12">
           <div className="flex items-center gap-3">
             <IconContext.Provider

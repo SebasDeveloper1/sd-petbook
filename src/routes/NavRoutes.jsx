@@ -9,6 +9,7 @@ const ChooseUserNamePage = lazy(() => import('pages/ChooseUserNamePage'));
 const UserViewPage = lazy(() => import('pages/UserViewPage'));
 const EditUserPage = lazy(() => import('pages/EditUserPage'));
 const CreatePetPage = lazy(() => import('pages/CreatePetPage'));
+const EditPetPage = lazy(() => import('pages/EditPetPage'));
 const PetViewPage = lazy(() => import('pages/PetViewPage'));
 const Page404 = lazy(() => import('pages/Page404'));
 
@@ -30,6 +31,7 @@ export function NavRoutes() {
             <Route exact path="p/edit" element={<EditUserPage />} />
             <Route exact path="pet/:petName" element={<PetViewPage />} />
             <Route exact path="create-pet" element={<CreatePetPage />} />
+            <Route exact path="edit-pet/:petId" element={<EditPetPage />} />
             <Route path="*" element={<Page404 />} />
           </Routes>
         </ScrollWrapper>
