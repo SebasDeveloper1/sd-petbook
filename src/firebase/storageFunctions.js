@@ -1,4 +1,9 @@
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import {
+  getDownloadURL,
+  ref,
+  uploadBytes,
+  deleteObject,
+} from 'firebase/storage';
 import { storage } from 'fbase/firebase';
 
 export const setImageToStorageTypes = {
@@ -45,12 +50,20 @@ export const setImageToStorage = async ({
     return error;
   }
 };
-
 export const getStorageImageUrl = async ({ path = '' } = {}) => {
   try {
     const imageRef = ref(storage, path);
     const url = await getDownloadURL(imageRef);
     return url;
+  } catch (error) {
+    return error;
+  }
+};
+export const deleteStorageImage = async ({ path = '' } = {}) => {
+  try {
+    const imageRef = ref(storage, path);
+    return await deleteObject(imageRef);
+    // Archivo eliminado exitosamente
   } catch (error) {
     return error;
   }

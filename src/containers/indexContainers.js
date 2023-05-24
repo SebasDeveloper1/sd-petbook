@@ -28,6 +28,7 @@ import { OwnerDataForm } from './CreatePetContainers/OwnerData/OwnerDataForm';
 import { VaccinesDataForm } from './CreatePetContainers/VaccinesData/VaccinesDataForm';
 import { VaccinesInputs } from './CreatePetContainers/VaccinesData/VaccinesInputs';
 import { CreateForm } from './CreatePetContainers/CreateForm';
+import { EditForm as EditPetForm } from './CreatePetContainers/EditForm';
 import { LoadingSkeletonCreatePet } from './CreatePetContainers/LoadingSkeletonCreatePet';
 
 // UserViewContainers
@@ -71,6 +72,7 @@ export {
   VaccinesDataForm,
   VaccinesInputs,
   CreateForm,
+  EditPetForm,
   LoadingSkeletonCreatePet,
 };
 // UserViewContainers

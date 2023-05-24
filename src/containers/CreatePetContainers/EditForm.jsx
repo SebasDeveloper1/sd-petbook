@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import { v4 as uuidV4 } from 'uuid';
 import {
@@ -15,11 +15,14 @@ import { Typography, Button } from 'components/indexComponents';
 import { validatePetDataForm } from 'utils/PetformValidationFunctions';
 import { validateOwnerPetForm } from 'utils/UserformValidationFunctions';
 import { imageLoadController } from 'utils/imageLoadController';
-import { createNewPet } from 'fbase/dbFunctions';
+import { getPetInfo, updatePet } from 'fbase/dbFunctions';
 import { setImageToStorageTypes } from 'fbase/storageFunctions';
-import { getDateInMilliseconds } from 'utils/dateFunctions';
+import {
+  getDateInMilliseconds,
+  getMillisecondsInDate,
+} from 'utils/dateFunctions';
 
-export function CreateForm({
+export function EditForm({
   userInfo,
   handleSubmittedForm,
   handleGoToContinue,
@@ -70,37 +73,78 @@ export function CreateForm({
       ownerAddress: '',
     },
   });
+  const [petInf, setPetInf] = useState({});
   const [loading, setLoading] = useState(true);
   const [rows, setRows] = useState([]);
   const navigate = useNavigate();
+  const { petId } = useParams();
 
   useEffect(() => {
-    async function fetchUserInfo() {
-      if (userInfo) {
-        const tmpFormValues = {
-          ...initialValues,
-          valuesOwner: {
-            ownerImage: userInfo.profilePicture,
-            ownerNames: userInfo.names,
-            ownerSurnames: userInfo.surnames,
-            ownerGender: userInfo.gender,
-            ownerCcp: userInfo.ccp,
-            ownerCell: userInfo.cell,
-            ownerEmail: userInfo.email,
-            ownerWebsite: userInfo.website,
-            ownerCountry: userInfo.country,
-            ownerDepartment: userInfo.department,
-            ownerCity: userInfo.city,
-            ownerAddress: userInfo.address,
-          },
-        };
-        setInitialValues(tmpFormValues);
-        setImageUrl({ ...imageUrl, ownerImage: userInfo.profilePicture });
-        setLoading(false);
+    const fetchUserInfo = async () => {
+      if (!userInfo || !petId) {
+        return;
       }
-    }
+
+      const petInfo = await getPetInfo({ petId });
+      setPetInf(petInfo);
+
+      if (userInfo.uid !== petInfo.uid) {
+        navigate(-1);
+        return;
+      }
+
+      const tmpRows =
+        petInfo.vaccinesList?.map((row) => {
+          const tmpRow = { ...row };
+          if (tmpRow.date) {
+            tmpRow.date = getMillisecondsInDate(tmpRow.date);
+          }
+          return tmpRow;
+        }) || [];
+      setRows(tmpRows);
+
+      const tmpInitialValues = {
+        ...initialValues,
+        valuesPetForm: {
+          petImage: petInfo.petImage,
+          petName: petInfo.petName,
+          petRace: petInfo.petRace,
+          petColor: petInfo.petColor,
+          petSpecie: petInfo.petSpecie,
+          petWeight: petInfo.petWeight,
+          petHeight: petInfo.petHeight,
+          petBirthdate: getMillisecondsInDate(petInfo.petBirthdate),
+          petSex: petInfo.petSex,
+          petRepStatus: petInfo.petRepStatus,
+          petDesc: petInfo.petDesc,
+          petObserv: petInfo.petObserv,
+        },
+        valuesOwner: {
+          ownerImage: petInfo.ownerImage,
+          ownerNames: petInfo.ownerNames,
+          ownerSurnames: petInfo.ownerSurnames,
+          ownerGender: petInfo.ownerGender,
+          ownerCcp: petInfo.ownerCcp,
+          ownerCell: petInfo.ownerCell,
+          ownerEmail: petInfo.ownerEmail,
+          ownerWebsite: petInfo.ownerWebsite,
+          ownerCountry: petInfo.ownerCountry,
+          ownerDepartment: petInfo.ownerDepartment,
+          ownerCity: petInfo.ownerCity,
+          ownerAddress: petInfo.ownerAddress,
+        },
+      };
+      setInitialValues(tmpInitialValues);
+      setImageUrl({
+        petImage: petInfo.petImage,
+        ownerImage: petInfo.ownerImage,
+      });
+
+      setLoading(false);
+    };
+
     fetchUserInfo();
-  }, [userInfo]);
+  }, [userInfo, petId]);
 
   const handleOnValidate = (values) => {
     const errors = {
@@ -122,7 +166,7 @@ export function CreateForm({
     const newPet = {
       ...values,
       uid: userInfo?.uid,
-      id: uuidV4(),
+      id: petId,
       petBirthdate: getDateInMilliseconds(values?.petBirthdate),
       vaccinesList: [...tmpRows],
     };
@@ -170,8 +214,8 @@ export function CreateForm({
       newPet.ownerImage = imageUrl?.ownerImage;
     }
 
-    const res = await createNewPet(newPet);
-    newPet.docId = res.id;
+    newPet.docId = petInf?.docId;
+    await updatePet(newPet);
     handleGoToContinue();
     handleSubmittedForm(true);
     setTimeout(() => {
@@ -206,7 +250,6 @@ export function CreateForm({
                 fileInput={fileInput}
                 handleFileInput={setFileInput}
                 imageUrl={imageUrl}
-                req
               />
               <PetDataForm
                 initialValues={values}

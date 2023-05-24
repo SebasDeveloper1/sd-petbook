@@ -8,8 +8,10 @@ import {
   getDocs,
   setDoc,
   addDoc,
+  deleteDoc,
 } from 'firebase/firestore';
 import { db } from 'fbase/firebase';
+import { deleteStorageImage } from 'fbase/storageFunctions';
 
 export const userExists = async ({ userUid: uid } = {}) => {
   try {
@@ -94,6 +96,16 @@ export const createNewPet = async (newPet = {}) => {
   }
 };
 
+export const updatePet = async (newPet = {}) => {
+  try {
+    const collectionRef = collection(db, 'pets');
+    const docRef = doc(collectionRef, newPet?.docId);
+    return await setDoc(docRef, newPet);
+  } catch (error) {
+    return error;
+  }
+};
+
 export const getPets = async (uid = '') => {
   try {
     const pets = [];
@@ -127,6 +139,18 @@ export const getPetInfo = async ({ petId = '' }) => {
     });
 
     return pets[0];
+  } catch (error) {
+    return error;
+  }
+};
+
+export const deletePet = async ({ uid = '', docId = '', petId = '' }) => {
+  try {
+    deleteStorageImage({
+      path: `images_${uid}/pet_${petId}/petPhoto_${petId}`,
+    });
+    const docRef = doc(db, 'pets', docId);
+    return await deleteDoc(docRef);
   } catch (error) {
     return error;
   }

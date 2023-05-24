@@ -7,6 +7,7 @@ export function AddImagePet({
   fileInput = {},
   handleFileInput = null,
   imageUrl = '',
+  req = false,
 } = {}) {
   const [url, setUrl] = useState(defaultImagePet);
 
@@ -49,7 +50,7 @@ export function AddImagePet({
               accept=".jpg, .jpeg, .png, .webp"
               className="sr-only"
               onChange={handleChangeFile}
-              required
+              required={req}
             />
           </label>
         </div>
