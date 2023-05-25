@@ -146,7 +146,7 @@ export function CreateForm({
           if (tmpVaccine?.image?.length > 0) {
             tmpVaccine.image = await imageLoadController({
               fileInput: tmpVaccine?.image,
-              fileName: newPet.id,
+              fileName: `${vaccine?.id}=${newPet.id}`,
               petId: newPet.id,
               type: setImageToStorageTypes.VACCINE,
               uid: userInfo?.uid,

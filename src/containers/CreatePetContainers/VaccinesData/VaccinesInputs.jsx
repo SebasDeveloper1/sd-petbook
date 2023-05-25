@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useId } from 'react';
+import React, { useState, useEffect, useId } from 'react';
 import { MdClose } from 'react-icons/md';
 import { Typography, TextField, IconButton } from 'components/indexComponents';
+import { getStorageImageUrl } from 'fbase/storageFunctions';
 import defaultImage from 'images/img-picture.png';
 
 export function VaccinesInputs({
@@ -10,12 +11,21 @@ export function VaccinesInputs({
   purpose = '',
   vet = '',
   contact = '',
+  image = '',
   onChange = null,
   onRemove = null,
 }) {
   const [imageUrl, setImageUrl] = useState(defaultImage);
-
   const imageId = useId();
+
+  useEffect(() => {
+    (async () => {
+      if (image) {
+        const tmpPath = await getStorageImageUrl({ path: image });
+        setImageUrl(tmpPath);
+      }
+    })();
+  }, []);
 
   const handleChangeFile = (e) => {
     const { files } = e.target;
@@ -113,7 +123,7 @@ export function VaccinesInputs({
               <img
                 className="h-10 aspect-square object-cover object-center"
                 src={imageUrl || defaultImage}
-                alt=""
+                alt="Vacuna"
               />
               <input
                 id={`petImage_${imageId}`}

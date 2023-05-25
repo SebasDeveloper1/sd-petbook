@@ -1,45 +1,55 @@
-/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import { Typography, Button } from 'components/indexComponents';
 import { VaccinesInputs } from 'containers/indexContainers';
 
-export function VaccinesDataForm({ defaultState, rows, setRows }) {
-  const handleOnChange = (index, name, value) => {
-    const copyRows = [...rows];
-    copyRows[index] = {
-      ...copyRows[index],
-      [name]: value,
-    };
-    setRows(copyRows);
+export function VaccinesDataForm({
+  defaultState,
+  rows,
+  setRows,
+  deleteRowsImage,
+  setDeleteRowsImage,
+}) {
+  const handleOnChange = (id, name, value) => {
+    const updatedRows = rows.map((row) => {
+      if (row.id === id) {
+        return {
+          ...row,
+          [name]: value,
+        };
+      }
+      return row;
+    });
+    setRows(updatedRows);
   };
 
   const handleOnAdd = () => {
-    setRows(rows.concat({ ...defaultState, id: uuidV4() }));
+    const newVacuna = { ...defaultState, id: uuidV4() };
+    setRows([...rows, newVacuna]);
   };
 
-  const handleOnRemove = (index) => {
-    const copyRows = [...rows];
-    copyRows.splice(index, 1);
-    setRows(copyRows);
+  const handleOnRemove = (id) => {
+    const removedRow = rows.find((row) => row.id === id);
+    const updatedRows = rows.filter((row) => row.id !== id);
+    setRows(updatedRows);
+    setDeleteRowsImage([...deleteRowsImage, removedRow.image]);
   };
 
   return (
-    <section className=" md:col-span-3">
+    <section className="md:col-span-3">
       <div className="flex flex-col gap-4 py-4 md:px-4 md:pt-0">
         <Typography
           variant="h4"
           value="Historial de Vacunación (Opcional)"
           styles="mb-2 col-span-3 text-2xl font-medium tracking-tight text-slate-900"
         />
-        {rows.map((row, index) => (
+        {rows.map((row) => (
           <VaccinesInputs
             {...row}
-            onChange={(name, value) => handleOnChange(index, name, value)}
-            onRemove={() => handleOnRemove(index)}
-            key={index}
+            onChange={(name, value) => handleOnChange(row.id, name, value)}
+            onRemove={() => handleOnRemove(row.id)}
+            key={row.id}
           />
         ))}
         <Button

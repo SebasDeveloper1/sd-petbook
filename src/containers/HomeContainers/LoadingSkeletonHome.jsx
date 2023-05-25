@@ -23,7 +23,7 @@ export function LoadingSkeletonHome() {
             styles="relative border-b pt-12 pb-4 max-w-prose whitespace-nowrap text-2xl font-semibold text-slate-900 truncate after:absolute after:top-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-32 after:h-1 after:rounded-full after:bg-cover after:bg-sky-400"
           />
           <ul className="animate-pulse mt-14 mx-auto grid grid-cols-1 gap-6 w-full sm:gap-8 md:grid-cols-3 lg:grid-cols-5">
-            {[1, 2, 3, 4].map((key) => (
+            {[1, 2, 3, 4, 5].map((key) => (
               <li
                 key={key}
                 className="flex flex-col bg-gray-200 h-72 rounded-lg"

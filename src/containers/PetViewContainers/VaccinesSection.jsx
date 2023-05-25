@@ -67,7 +67,7 @@ export function VaccinesSection({ petInfo = {} }) {
                   alt="vaccine"
                   loading="lazy"
                 />
-                <div className=" w-full  flex flex-col justify-between gap-2 p-3 bg-slate-900 shadow-lg">
+                <div className=" w-full h-full flex flex-col justify-between gap-2 p-3 bg-slate-900 shadow-lg">
                   <div>
                     <Typography
                       variant="span_base"
@@ -89,7 +89,7 @@ export function VaccinesSection({ petInfo = {} }) {
               </li>
             ))
           ) : (
-            <li className="col-span-2 flex justify-center items-center w-full h-20 rounded-xl border-dashed border-2 border-slate-300">
+            <li className="col-span-1 md:col-span-2 lg:col-span-5 flex justify-center items-center w-full h-20 rounded-xl border-dashed border-2 border-slate-300">
               <Typography
                 variant="span_xl"
                 value="Historial no disponible"

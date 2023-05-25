@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import {
   getDownloadURL,
   ref,
@@ -61,9 +62,11 @@ export const getStorageImageUrl = async ({ path = '' } = {}) => {
 };
 export const deleteStorageImage = async ({ path = '' } = {}) => {
   try {
-    const imageRef = ref(storage, path);
-    return await deleteObject(imageRef);
-    // Archivo eliminado exitosamente
+    if (path !== '') {
+      const imageRef = ref(storage, path);
+      return await deleteObject(imageRef);
+      // Archivo eliminado exitosamente
+    }
   } catch (error) {
     return error;
   }

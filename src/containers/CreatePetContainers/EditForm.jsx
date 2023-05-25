@@ -16,7 +16,10 @@ import { validatePetDataForm } from 'utils/PetformValidationFunctions';
 import { validateOwnerPetForm } from 'utils/UserformValidationFunctions';
 import { imageLoadController } from 'utils/imageLoadController';
 import { getPetInfo, updatePet } from 'fbase/dbFunctions';
-import { setImageToStorageTypes } from 'fbase/storageFunctions';
+import {
+  setImageToStorageTypes,
+  deleteStorageImage,
+} from 'fbase/storageFunctions';
 import {
   getDateInMilliseconds,
   getMillisecondsInDate,
@@ -76,6 +79,7 @@ export function EditForm({
   const [petInf, setPetInf] = useState({});
   const [loading, setLoading] = useState(true);
   const [rows, setRows] = useState([]);
+  const [deleteRowsImage, setDeleteRowsImage] = useState([]);
   const navigate = useNavigate();
   const { petId } = useParams();
 
@@ -155,6 +159,11 @@ export function EditForm({
   };
 
   const handleOnSubmit = async (values) => {
+    if (deleteRowsImage.length > 0) {
+      deleteRowsImage.map(async (image) => {
+        deleteStorageImage({ path: image });
+      });
+    }
     const tmpRows = rows.map((row) => {
       const tmpRow = { ...row };
       if (tmpRow.date) {
@@ -187,10 +196,13 @@ export function EditForm({
       const tmpVaccinesList = await Promise.all(
         newPet.vaccinesList.map(async (vaccine) => {
           const tmpVaccine = { ...vaccine };
-          if (tmpVaccine?.image?.length > 0) {
+          if (
+            tmpVaccine?.image?.length > 0 &&
+            typeof tmpVaccine?.image !== 'string'
+          ) {
             tmpVaccine.image = await imageLoadController({
               fileInput: tmpVaccine?.image,
-              fileName: newPet.id,
+              fileName: `${vaccine?.id}=${newPet.id}`,
               petId: newPet.id,
               type: setImageToStorageTypes.VACCINE,
               uid: userInfo?.uid,
@@ -264,6 +276,8 @@ export function EditForm({
                 defaultState={initialValues?.valuesVaccines}
                 rows={rows}
                 setRows={setRows}
+                deleteRowsImage={deleteRowsImage}
+                setDeleteRowsImage={setDeleteRowsImage}
               />
             </section>
             <section className="py-6 border-b md:grid md:grid-cols-3 md:gap-x-12 md:gap-y-6">

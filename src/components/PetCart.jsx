@@ -66,7 +66,7 @@ export function PetCart({ petInfo = {}, handleDelete }) {
     e.preventDefault();
     if (!deleteOptions.status) {
       setDeleteOptions({
-        transition: '-translate-y-0',
+        transition: 'translate-y-0',
         status: true,
       });
     }
