@@ -69,11 +69,11 @@ export default function UserViewPage() {
                   value="Mascotas registradas"
                   styles="pb-8 max-w-prose font-semibold text-slate-900 truncate"
                 />
-                <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 sm:gap-8 w-full">
+                <ul className="w-full grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
                   <Button
                     type="button"
                     variant="outlined"
-                    styles="shadow-lg flex-col min-h-[14rem] h-full py-8 rounded-xl border-dashed border-2 border-sky-500 md:hover:-translate-y-4 transition-all duration-300"
+                    styles="shadow-lg flex-col h-full py-8 rounded-xl border-dashed border-2 border-sky-500 md:hover:-translate-y-4 transition-all duration-300"
                     value="Agregar mascota"
                     startIcon={<BsClipboardPlus />}
                     handleOnClick={handleOnClick}

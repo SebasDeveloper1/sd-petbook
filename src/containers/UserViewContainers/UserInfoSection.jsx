@@ -20,10 +20,6 @@ const dataTypes = {
 const msmByDefault = 'No disponible';
 
 export function UserInfoSection({ userInfo = {} }) {
-  console.log(
-    '🚀 ~ file: UserInfoSection.jsx:23 ~ UserInfoSection ~ userInfo:',
-    userInfo
-  );
   const {
     profilePicture = '',
     username = '',

@@ -37,11 +37,11 @@ export function LoadingSkeletonUserView() {
               value="Mascotas registradas"
               styles="pb-8 max-w-prose font-semibold text-slate-900 truncate"
             />
-            <ul className="animate-pulse grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full">
+            <ul className="animate-pulse grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 w-full">
               {[1, 2, 3, 4].map((key) => (
                 <li
                   key={key}
-                  className="flex flex-col bg-gray-200 h-40 rounded-lg"
+                  className="flex flex-col bg-gray-200 h-60 rounded-lg"
                 />
               ))}
             </ul>
