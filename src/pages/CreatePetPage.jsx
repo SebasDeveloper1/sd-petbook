@@ -34,13 +34,15 @@ export default function CreatePetPage() {
     return 2;
   };
 
-  const handlerUserNotRegistered = () =>
-    // navigate('/login');
-    3;
+  const handlerUserNotRegistered = () => {
+    navigate('/login');
+    return 3;
+  };
 
-  const handlerUserNotLoggedIn = () =>
-    // navigate('/login');
-    4;
+  const handlerUserNotLoggedIn = () => {
+    navigate('/login');
+    return 4;
+  };
 
   const { getStateUser } = useGetUserState({
     onUserLoggedIn: handlerUserLoggedIn,

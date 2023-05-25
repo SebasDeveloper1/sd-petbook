@@ -31,13 +31,15 @@ export default function EditPetPage() {
     return 2;
   };
 
-  const handlerUserNotRegistered = () =>
-    // navigate('/login');
-    3;
+  const handlerUserNotRegistered = () => {
+    navigate('/login');
+    return 3;
+  };
 
-  const handlerUserNotLoggedIn = () =>
-    // navigate('/login');
-    4;
+  const handlerUserNotLoggedIn = () => {
+    navigate('/login');
+    return 4;
+  };
 
   const { getStateUser } = useGetUserState({
     onUserLoggedIn: handlerUserLoggedIn,
@@ -77,7 +79,7 @@ export default function EditPetPage() {
               <Typography
                 variant="span_xl"
                 styles="px-3 py-2 rounded-lg font-medium tracking-tight text-green-700 bg-lime-300/30"
-                value="✨ La mascota ha sido registrada 🎉"
+                value="✨ Los cambios se han guardado 🎉"
               />
               <div className="flex items-center">
                 <svg

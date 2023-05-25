@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { DashboardWrapper, EditForm } from 'containers/indexContainers';
 import { useGetUserState } from 'hooks/useGetUserState';
 
 export default function EditUserPage() {
   const [currentUser, setCurrentUser] = useState(null);
+  const navigate = useNavigate();
 
   /*
   Stages:
@@ -19,13 +21,15 @@ export default function EditUserPage() {
     return 2;
   };
 
-  const handlerUserNotRegistered = () =>
-    // navigate('/login');
-    3;
+  const handlerUserNotRegistered = () => {
+    navigate('/login');
+    return 3;
+  };
 
-  const handlerUserNotLoggedIn = () =>
-    // navigate('/login');
-    4;
+  const handlerUserNotLoggedIn = () => {
+    navigate('/login');
+    return 4;
+  };
 
   const { getStateUser } = useGetUserState({
     onUserLoggedIn: handlerUserLoggedIn,

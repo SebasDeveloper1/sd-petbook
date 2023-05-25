@@ -2,9 +2,9 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
+import { Logo, Button, Typography } from 'components/indexComponents';
 import { loginWithGoogle } from 'fbase/authFunctions';
 import { useGetUserState } from 'hooks/useGetUserState';
-import { Logo, Button, Typography } from 'components/indexComponents';
 import coverLogin from 'images/cover-login.jpg';
 
 export default function LoginPage() {

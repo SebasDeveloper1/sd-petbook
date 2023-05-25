@@ -49,3 +49,34 @@ export const getMillisecondsInDate = (milliseconds) => {
   const day = String(date.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
 };
+
+export const getTimePassed = (timestamp) => {
+  const now = Date.now();
+  const timeDiff = now - timestamp;
+
+  if (timeDiff < 60000) {
+    // Menos de un minuto
+    return 'menos de un minuto';
+  }
+  if (timeDiff < 3600000) {
+    // Minutos
+    const minutes = Math.floor(timeDiff / 60000);
+    if (minutes === 1) {
+      return `${minutes} minuto`;
+    }
+    return `${minutes} minutos`;
+  }
+  if (timeDiff < 86400000) {
+    // Horas
+    const hours = Math.floor(timeDiff / 3600000);
+    return `${hours} horas`;
+  }
+  if (timeDiff < 604800000) {
+    // Días
+    const days = Math.floor(timeDiff / 86400000);
+    return `${days} días`;
+  }
+  // Semanas
+  const weeks = Math.floor(timeDiff / 604800000);
+  return `${weeks} semanas`;
+};

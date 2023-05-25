@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Typography } from 'components/Typography';
+import { Typography, VaccineCard } from 'components/IndexComponents';
 import { getStorageImageUrl } from 'fbase/storageFunctions';
 import { getDate } from 'utils/dateFunctions';
 import defaultImage from 'images/profile-picture.png';
@@ -57,36 +57,10 @@ export function VaccinesSection({ petInfo = {} }) {
         <ul className="mt-12 mx-auto grid grid-cols-1 gap-6 w-full sm:gap-8 md:grid-cols-2 lg:grid-cols-5">
           {vaccines.length > 0 ? (
             vaccines.map((vaccine) => (
-              <li
-                key={vaccine?.id}
-                className="overflow-hidden flex flex-col items-center w-full rounded-xl"
-              >
-                <img
-                  className="w-full aspect-square object-cover object-center"
-                  src={vaccine?.image || defaultImage}
-                  alt="vaccine"
-                  loading="lazy"
-                />
-                <div className=" w-full h-full flex flex-col justify-between gap-2 p-3 bg-slate-900 shadow-lg">
-                  <div>
-                    <Typography
-                      variant="span_base"
-                      value={vaccine?.vaccine}
-                      styles="font-semibold text-white capitalize"
-                    />
-                    <Typography
-                      variant="span_sm"
-                      value={vaccine?.date}
-                      styles="w-fit mb-3 font-medium text-sky-400"
-                    />
-                    <Typography
-                      variant="span_sm"
-                      value={vaccine?.purpose}
-                      styles="font-normal text-slate-400"
-                    />
-                  </div>
-                </div>
-              </li>
+              <VaccineCard
+                key={`VaccineCard-${vaccine.id}`}
+                vaccineInfo={vaccine}
+              />
             ))
           ) : (
             <li className="col-span-1 md:col-span-2 lg:col-span-5 flex justify-center items-center w-full h-20 rounded-xl border-dashed border-2 border-slate-300">

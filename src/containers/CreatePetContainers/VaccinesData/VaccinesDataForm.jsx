@@ -10,7 +10,7 @@ export function VaccinesDataForm({
   setRows,
   deleteRowsImage,
   setDeleteRowsImage,
-}) {
+} = {}) {
   const handleOnChange = (id, name, value) => {
     const updatedRows = rows.map((row) => {
       if (row.id === id) {

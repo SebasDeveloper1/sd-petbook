@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
-import { useGetUserState } from 'hooks/useGetUserState';
 import { useNavigate } from 'react-router-dom';
-import { updateUser } from 'fbase/dbFunctions';
 import { UsernameForm, ConfirmationLayout } from 'containers/indexContainers';
+import { updateUser } from 'fbase/dbFunctions';
+import { useGetUserState } from 'hooks/useGetUserState';
 
 export default function ChooseUserNamePage() {
   const navigate = useNavigate();

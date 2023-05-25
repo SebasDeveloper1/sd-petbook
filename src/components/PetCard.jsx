@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import { MdMoreVert } from 'react-icons/md';
-import { Link } from 'react-router-dom';
 import { Typography, Button } from 'components/indexComponents';
 import { getStorageImageUrl } from 'fbase/storageFunctions';
 import { deletePet } from 'fbase/dbFunctions';
@@ -10,7 +10,7 @@ import { getPetAge } from 'utils/getPetAge';
 import { useOnClickOutside } from 'hooks/useOnClickOutside';
 import defaultImage from 'images/profile-picture.png';
 
-export function PetCart({ petInfo = {}, handleDelete }) {
+export function PetCard({ petInfo = {}, handleDelete } = {}) {
   const {
     uid,
     docId,
@@ -90,7 +90,10 @@ export function PetCart({ petInfo = {}, handleDelete }) {
 
   return (
     <div className="relative group overflow-hidden rounded-lg shadow-lg md:hover:-translate-y-4 transition-transform duration-300">
-      <Link to={`/pet/${petName}+${petId}`} className="block bg-slate-900">
+      <Link
+        to={`/pet/${petName}+${petId}`}
+        className="block w-full h-full bg-slate-900"
+      >
         <figure
           className="overflow-hidden w-full aspect-square border-4 border-sky-400 -translate-x-5 -translate-y-5"
           style={{ borderRadius: '30% 70% 67% 33% / 30% 30% 70% 70%' }}

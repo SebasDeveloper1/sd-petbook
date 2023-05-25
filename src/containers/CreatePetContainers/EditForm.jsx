@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import { v4 as uuidV4 } from 'uuid';
+import { Typography, Button } from 'components/indexComponents';
 import {
   AddImagePet,
   PetDataForm,
@@ -11,18 +12,18 @@ import {
   OwnerDataForm,
   LoadingSkeletonCreatePet,
 } from 'containers/indexContainers';
-import { Typography, Button } from 'components/indexComponents';
-import { validatePetDataForm } from 'utils/PetformValidationFunctions';
-import { validateOwnerPetForm } from 'utils/UserformValidationFunctions';
-import { imageLoadController } from 'utils/imageLoadController';
 import { getPetInfo, updatePet } from 'fbase/dbFunctions';
 import {
   setImageToStorageTypes,
   deleteStorageImage,
 } from 'fbase/storageFunctions';
+import { validatePetDataForm } from 'utils/PetformValidationFunctions';
+import { validateOwnerPetForm } from 'utils/UserformValidationFunctions';
+import { imageLoadController } from 'utils/imageLoadController';
 import {
   getDateInMilliseconds,
   getMillisecondsInDate,
+  getTimePassed,
 } from 'utils/dateFunctions';
 
 export function EditForm({
@@ -76,7 +77,7 @@ export function EditForm({
       ownerAddress: '',
     },
   });
-  const [petInf, setPetInf] = useState({});
+  const [petInfo, setPetInfo] = useState({});
   const [loading, setLoading] = useState(true);
   const [rows, setRows] = useState([]);
   const [deleteRowsImage, setDeleteRowsImage] = useState([]);
@@ -89,16 +90,16 @@ export function EditForm({
         return;
       }
 
-      const petInfo = await getPetInfo({ petId });
-      setPetInf(petInfo);
+      const pet = await getPetInfo({ petId });
+      setPetInfo(pet);
 
-      if (userInfo.uid !== petInfo.uid) {
+      if (userInfo.uid !== pet.uid) {
         navigate(-1);
         return;
       }
 
       const tmpRows =
-        petInfo.vaccinesList?.map((row) => {
+        pet.vaccinesList?.map((row) => {
           const tmpRow = { ...row };
           if (tmpRow.date) {
             tmpRow.date = getMillisecondsInDate(tmpRow.date);
@@ -110,38 +111,38 @@ export function EditForm({
       const tmpInitialValues = {
         ...initialValues,
         valuesPetForm: {
-          petImage: petInfo.petImage,
-          petName: petInfo.petName,
-          petRace: petInfo.petRace,
-          petColor: petInfo.petColor,
-          petSpecie: petInfo.petSpecie,
-          petWeight: petInfo.petWeight,
-          petHeight: petInfo.petHeight,
-          petBirthdate: getMillisecondsInDate(petInfo.petBirthdate),
-          petSex: petInfo.petSex,
-          petRepStatus: petInfo.petRepStatus,
-          petDesc: petInfo.petDesc,
-          petObserv: petInfo.petObserv,
+          petImage: pet.petImage,
+          petName: pet.petName,
+          petRace: pet.petRace,
+          petColor: pet.petColor,
+          petSpecie: pet.petSpecie,
+          petWeight: pet.petWeight,
+          petHeight: pet.petHeight,
+          petBirthdate: getMillisecondsInDate(pet.petBirthdate),
+          petSex: pet.petSex,
+          petRepStatus: pet.petRepStatus,
+          petDesc: pet.petDesc,
+          petObserv: pet.petObserv,
         },
         valuesOwner: {
-          ownerImage: petInfo.ownerImage,
-          ownerNames: petInfo.ownerNames,
-          ownerSurnames: petInfo.ownerSurnames,
-          ownerGender: petInfo.ownerGender,
-          ownerCcp: petInfo.ownerCcp,
-          ownerCell: petInfo.ownerCell,
-          ownerEmail: petInfo.ownerEmail,
-          ownerWebsite: petInfo.ownerWebsite,
-          ownerCountry: petInfo.ownerCountry,
-          ownerDepartment: petInfo.ownerDepartment,
-          ownerCity: petInfo.ownerCity,
-          ownerAddress: petInfo.ownerAddress,
+          ownerImage: pet.ownerImage,
+          ownerNames: pet.ownerNames,
+          ownerSurnames: pet.ownerSurnames,
+          ownerGender: pet.ownerGender,
+          ownerCcp: pet.ownerCcp,
+          ownerCell: pet.ownerCell,
+          ownerEmail: pet.ownerEmail,
+          ownerWebsite: pet.ownerWebsite,
+          ownerCountry: pet.ownerCountry,
+          ownerDepartment: pet.ownerDepartment,
+          ownerCity: pet.ownerCity,
+          ownerAddress: pet.ownerAddress,
         },
       };
       setInitialValues(tmpInitialValues);
       setImageUrl({
-        petImage: petInfo.petImage,
-        ownerImage: petInfo.ownerImage,
+        petImage: pet.petImage,
+        ownerImage: pet.ownerImage,
       });
 
       setLoading(false);
@@ -178,6 +179,7 @@ export function EditForm({
       id: petId,
       petBirthdate: getDateInMilliseconds(values?.petBirthdate),
       vaccinesList: [...tmpRows],
+      editedAt: new Date().getTime(),
     };
 
     if (fileInput.petFileInput?.length > 0) {
@@ -226,7 +228,7 @@ export function EditForm({
       newPet.ownerImage = imageUrl?.ownerImage;
     }
 
-    newPet.docId = petInf?.docId;
+    newPet.docId = petInfo?.docId;
     await updatePet(newPet);
     handleGoToContinue();
     handleSubmittedForm(true);
@@ -244,8 +246,15 @@ export function EditForm({
     <div className="w-11/12 md:w-10/12 m-auto py-12">
       <Typography
         variant="h3"
-        value="Crear mascota"
-        styles="pb-4 col-span-3 text-2xl font-semibold tracking-tight text-slate-900"
+        value="Editar mascota"
+        styles="col-span-3 text-2xl font-semibold tracking-tight text-slate-900"
+      />
+      <Typography
+        variant="span_base"
+        value={`Editado por última vez hace ${getTimePassed(
+          petInfo?.editedAt
+        )}.`}
+        styles="mb-6 font-medium tracking-tight text-sky-500"
       />
       <Formik
         initialValues={{
@@ -304,7 +313,7 @@ export function EditForm({
                 type="submit"
                 variant="contained"
                 styles="w-full md:w-fit"
-                value="Guardar mascota"
+                value="Guardar cambios"
               />
               <Button
                 type="button"

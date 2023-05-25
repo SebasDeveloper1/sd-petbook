@@ -42,7 +42,7 @@ export const useGetUserState = ({
             displayName: user?.displayName,
             profilePicture: '',
             username: '',
-            names: '',
+            names: user?.displayName,
             surnames: '',
             gender: '',
             ccp: '',
@@ -54,6 +54,8 @@ export const useGetUserState = ({
             city: '',
             address: '',
             processCompleted: false,
+            createdAt: new Date().getTime(),
+            editedAt: new Date().getTime(),
           });
           setUserState({ statusCode: onUserNotRegistered(user) });
         }

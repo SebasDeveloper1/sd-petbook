@@ -70,7 +70,7 @@ export const getUserInfo = async ({ userUid: uid } = {}) => {
   }
 };
 
-export const getUserUidByUsername = async ({ username = '' }) => {
+export const getUserUidByUsername = async ({ username = '' } = {}) => {
   try {
     const users = [];
     const docsRef = collection(db, 'users');
@@ -144,7 +144,7 @@ export const getPetInfo = async ({ petId = '' }) => {
   }
 };
 
-export const deletePet = async ({ uid = '', docId = '', petId = '' }) => {
+export const deletePet = async ({ uid = '', docId = '', petId = '' } = {}) => {
   try {
     deleteStorageImage({
       path: `images_${uid}/pet_${petId}/petPhoto_${petId}`,

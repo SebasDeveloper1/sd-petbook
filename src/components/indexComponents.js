@@ -4,7 +4,8 @@ import { IconButton } from './IconButton';
 import { Typography } from './Typography';
 import { TextField } from './TextField';
 import { TextSelection } from './TextSelection';
-import { PetCart } from './PetCart';
+import { PetCard } from './PetCard';
+import { VaccineCard } from './VaccineCard';
 
 export {
   Logo,
@@ -13,5 +14,6 @@ export {
   Typography,
   TextField,
   TextSelection,
-  PetCart,
+  PetCard,
+  VaccineCard,
 };

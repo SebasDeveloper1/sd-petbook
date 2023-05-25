@@ -125,6 +125,8 @@ export function CreateForm({
       id: uuidV4(),
       petBirthdate: getDateInMilliseconds(values?.petBirthdate),
       vaccinesList: [...tmpRows],
+      createdAt: new Date().getTime(),
+      editedAt: new Date().getTime(),
     };
 
     if (fileInput.petFileInput?.length > 0) {

@@ -7,8 +7,8 @@ import {
   OwnerInfoSection,
   LoadingSkeletonPetView,
 } from 'containers/indexContainers';
-import { useGetUserState } from 'hooks/useGetUserState';
 import { getPetInfo } from 'fbase/dbFunctions';
+import { useGetUserState } from 'hooks/useGetUserState';
 
 export default function PetViewPage() {
   // eslint-disable-next-line no-unused-vars
@@ -32,13 +32,9 @@ export default function PetViewPage() {
     return 2;
   };
 
-  const handlerUserNotRegistered = () =>
-    // navigate('/login');
-    3;
+  const handlerUserNotRegistered = () => 3;
 
-  const handlerUserNotLoggedIn = () =>
-    // navigate('/login');
-    4;
+  const handlerUserNotLoggedIn = () => 4;
 
   const { getStateUser } = useGetUserState({
     onUserLoggedIn: handlerUserLoggedIn,

@@ -65,6 +65,8 @@ export function HeroSection({ petInfo = {} }) {
     { name: 'Altura', icon: <FaRuler />, data: `${petHeight} cm` },
   ];
 
+  const capitalizeFirstLetter = (string) =>
+    string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
   return (
     <div className="grid grid-cols-2 w-full min-h-screen bg-slate-900">
       <img
@@ -111,7 +113,9 @@ export function HeroSection({ petInfo = {} }) {
                   {item?.icon}
                   <Typography
                     variant="span_base"
-                    value={`${item?.name}: ${item?.data}`}
+                    value={`${capitalizeFirstLetter(
+                      item?.name
+                    )}: ${capitalizeFirstLetter(item?.data)}`}
                     styles="text-slate-400"
                   />
                 </article>

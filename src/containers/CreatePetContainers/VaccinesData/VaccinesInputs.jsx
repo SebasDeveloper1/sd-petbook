@@ -14,7 +14,7 @@ export function VaccinesInputs({
   image = '',
   onChange = null,
   onRemove = null,
-}) {
+} = {}) {
   const [imageUrl, setImageUrl] = useState(defaultImage);
   const imageId = useId();
 

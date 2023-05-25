@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useGetUserState } from 'hooks/useGetUserState';
-import { getPets, deletePet } from 'fbase/dbFunctions';
+import { BsClipboardPlus } from 'react-icons/bs';
+import { Button, PetCard } from 'components/indexComponents';
 import {
   DashboardWrapper,
   HeaderList,
   PetList,
   LoadingSkeletonHome,
 } from 'containers/indexContainers';
-import { Button, PetCart } from 'components/indexComponents';
-import { BsClipboardPlus } from 'react-icons/bs';
+import { getPets, deletePet } from 'fbase/dbFunctions';
+import { useGetUserState } from 'hooks/useGetUserState';
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -71,8 +71,8 @@ export default function HomePage() {
                 handleOnClick={handleOnClick}
               />
               {petList.map((pet) => (
-                <PetCart
-                  key={`petCart_${pet?.docId}`}
+                <PetCard
+                  key={`PetCard_${pet?.docId}`}
                   petInfo={pet}
                   handleDelete={handleDeletePet}
                 />

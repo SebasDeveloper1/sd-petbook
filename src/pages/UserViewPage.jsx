@@ -1,48 +1,56 @@
 import React, { useEffect, useState } from 'react';
-import { useGetUserState } from 'hooks/useGetUserState';
+import { useNavigate } from 'react-router-dom';
+import { BsClipboardPlus } from 'react-icons/bs';
+import { Typography, Button, PetCard } from 'components/indexComponents';
 import {
   DashboardWrapper,
   UserInfoSection,
   LoadingSkeletonUserView,
 } from 'containers/indexContainers';
-import { Typography } from 'components/indexComponents';
+import { getPets, deletePet } from 'fbase/dbFunctions';
+import { useGetUserState } from 'hooks/useGetUserState';
 
 export default function UserViewPage() {
+  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
+  const [petList, setPetList] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  /*
-    Stages:
-    0: initiated
-    1: loading
-    2: login completed
-    3: login but no username
-    4: not logged
-    5: exists usuername
-  */
-  const handlerUserLoggedIn = (user) => {
+  const handleUserLoggedIn = async (user) => {
     setCurrentUser(user);
+    const pets = await getPets(user?.uid);
+    setPetList(pets);
     setLoading(false);
-    return 2;
   };
 
-  const handlerUserNotRegistered = () =>
-    // navigate('/login');
-    3;
+  const handleUserNotRegistered = () => {
+    navigate('/login');
+  };
 
-  const handlerUserNotLoggedIn = () =>
-    // navigate('/login');
-    4;
+  const handleUserNotLoggedIn = () => {
+    navigate('/login');
+  };
 
   const { getStateUser } = useGetUserState({
-    onUserLoggedIn: handlerUserLoggedIn,
-    onUserNotLoggedIn: handlerUserNotLoggedIn,
-    onUserNotRegistered: handlerUserNotRegistered,
+    onUserLoggedIn: handleUserLoggedIn,
+    onUserNotLoggedIn: handleUserNotLoggedIn,
+    onUserNotRegistered: handleUserNotRegistered,
   });
 
   useEffect(() => {
     getStateUser();
   }, []);
+
+  const handleDeletePet = async (petId) => {
+    await deletePet({ petId });
+    setPetList((prevPetList) =>
+      prevPetList.filter((pet) => pet.docId !== petId)
+    );
+  };
+
+  const handleOnClick = () => {
+    navigate('/create-pet');
+  };
 
   return (
     <DashboardWrapper>
@@ -61,11 +69,22 @@ export default function UserViewPage() {
                   value="Mascotas registradas"
                   styles="pb-8 max-w-prose font-semibold text-slate-900 truncate"
                 />
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full">
-                  {/* <PetCart />
-                  <PetCart />
-                  <PetCart />
-                  <PetCart /> */}
+                <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 w-full">
+                  <Button
+                    type="button"
+                    variant="outlined"
+                    styles="shadow-lg flex-col min-h-[14rem] h-full py-8 rounded-xl border-dashed border-2 border-sky-500 md:hover:-translate-y-4 transition-all duration-300"
+                    value="Agregar mascota"
+                    startIcon={<BsClipboardPlus />}
+                    handleOnClick={handleOnClick}
+                  />
+                  {petList.map((pet) => (
+                    <PetCard
+                      key={`PetCard_${pet?.docId}`}
+                      petInfo={pet}
+                      handleDelete={handleDeletePet}
+                    />
+                  ))}
                 </ul>
               </div>
             </section>

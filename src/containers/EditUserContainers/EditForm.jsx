@@ -7,13 +7,14 @@ import {
   TextFieldGenerator,
   LoadingSkeletonEditForm,
 } from 'containers/indexContainers';
+import { updateUser } from 'fbase/dbFunctions';
 import {
   getStorageImageUrl,
   setImageToStorageTypes,
 } from 'fbase/storageFunctions';
-import { updateUser } from 'fbase/dbFunctions';
 import { validateUserDataForm } from 'utils/UserformValidationFunctions';
 import { imageLoadController } from 'utils/imageLoadController';
+import { getTimePassed } from 'utils/dateFunctions';
 import defaultImage from 'images/profile-picture.png';
 import { userformInputList } from './formInputList';
 
@@ -65,7 +66,7 @@ export function EditForm({ userInfo, handleUserInfo } = {}) {
   const handleOnValidate = (values) =>
     validateUserDataForm({ values, uid: userInfo.uid });
 
-  const handelToGoBack = () => navigate(`/p/${userInfo.username}`);
+  const handelGoBack = () => navigate(`/p/${userInfo.username}`);
 
   const handleOnSubmit = async (values) => {
     const newUserInfo = {
@@ -82,8 +83,8 @@ export function EditForm({ userInfo, handleUserInfo } = {}) {
       department: values.department,
       city: values.city,
       address: values.address,
+      editedAt: new Date().getTime(),
     };
-
     if (fileInput.length > 0) {
       newUserInfo.profilePicture = await imageLoadController({
         fileInput,
@@ -116,7 +117,14 @@ export function EditForm({ userInfo, handleUserInfo } = {}) {
           <Typography
             variant="h4"
             value="Editar perfil"
-            styles="pb-4 text-2xl font-semibold tracking-tight text-slate-900"
+            styles="text-2xl font-semibold tracking-tight text-slate-900"
+          />
+          <Typography
+            variant="span_base"
+            value={`Editado por última vez hace ${getTimePassed(
+              userInfo?.editedAt
+            )}.`}
+            styles="mb-6 font-medium tracking-tight text-sky-500"
           />
           <section className="grid grid-cols-3 gap-8 md:gap-16 divide-y md:divide-x md:divide-y-0">
             <section className="col-span-3 md:col-span-1 flex flex-col gap-y-4">
@@ -190,7 +198,7 @@ export function EditForm({ userInfo, handleUserInfo } = {}) {
                     variant="text"
                     styles="w-full md:w-fit button-text-secondary"
                     value="Volver al perfil"
-                    handleOnClick={handelToGoBack}
+                    handleOnClick={handelGoBack}
                   />
                 </section>
               </div>
