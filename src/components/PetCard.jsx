@@ -108,7 +108,7 @@ export function PetCard({ petInfo = {}, handleDelete } = {}) {
         <div className="grid grid-cols-5 justify-center items-center w-full p-3 pt-0">
           <div className="col-span-4 mr-1">
             <Typography
-              variant="span_base"
+              variant="h5"
               value={petName}
               styles="text-2xl font-semibold tracking-tight text-white truncate capitalize"
             />

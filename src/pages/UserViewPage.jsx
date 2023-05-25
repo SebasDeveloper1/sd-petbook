@@ -69,7 +69,7 @@ export default function UserViewPage() {
                   value="Mascotas registradas"
                   styles="pb-8 max-w-prose font-semibold text-slate-900 truncate"
                 />
-                <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 w-full">
+                <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 sm:gap-8 w-full">
                   <Button
                     type="button"
                     variant="outlined"
