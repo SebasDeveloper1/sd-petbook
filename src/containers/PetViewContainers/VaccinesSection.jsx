@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, VaccineCard } from 'components/IndexComponents';
+import { Typography, VaccineCard } from 'components/indexComponents';
 import { getStorageImageUrl } from 'fbase/storageFunctions';
 import { getDate } from 'utils/dateFunctions';
 import defaultImage from 'images/profile-picture.png';
