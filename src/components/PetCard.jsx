@@ -28,6 +28,7 @@ export function PetCard({ petInfo = {}, handleDelete } = {}) {
 
   const deleteOptionsRef = useRef(null);
   const menuOptionsRef = useRef(null);
+  const menuOptionsRef2 = useRef(null);
 
   useEffect(() => {
     async function fetchUserInfo() {
@@ -77,7 +78,15 @@ export function PetCard({ petInfo = {}, handleDelete } = {}) {
   };
 
   useOnClickOutside(deleteOptionsRef, () => setDeleteOptions(false));
-  useOnClickOutside(menuOptionsRef, () => setMenuOptions(false));
+
+  useOnClickOutside(
+    menuOptionsRef,
+    () => {
+      setMenuOptions(false);
+      setMoreOptions(false);
+    },
+    menuOptionsRef2
+  );
 
   return (
     <div className="relative group overflow-hidden rounded-lg shadow-lg md:hover:-translate-y-4 transition-transform duration-300">
@@ -133,6 +142,7 @@ export function PetCard({ petInfo = {}, handleDelete } = {}) {
             />
           </div>
           <button
+            ref={menuOptionsRef2}
             type="button"
             className="col-span-1 flex items-center justify-center w-12 h-12 rounded-full text-3xl text-slate-500 hover:text-white hover:bg-slate-700/20"
             title="Opciones"
