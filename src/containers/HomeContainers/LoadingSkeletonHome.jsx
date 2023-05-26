@@ -9,7 +9,7 @@ export function LoadingSkeletonHome() {
           <div className="z-10 w-11/12">
             <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-center md:text-start">
               <div className="w-32 aspect-square animate-pulse bg-gray-400 rounded-full lg:w-44 lg:h-44" />
-              <div className="overflow-hidden w-full">
+              <div className="overflow-hidden w-full flex flex-col justify-center md:items-start items-center">
                 <div className="animate-pulse w-40 h-6 bg-gray-400 mb-4 rounded" />
                 <div className="animate-pulse w-48 h-8 bg-gray-400 rounded" />
               </div>
@@ -22,8 +22,8 @@ export function LoadingSkeletonHome() {
             value="Mis mascotas"
             styles="relative border-b pt-12 pb-4 max-w-prose whitespace-nowrap text-2xl font-semibold text-slate-900 truncate after:absolute after:top-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-32 after:h-1 after:rounded-full after:bg-cover after:bg-sky-400"
           />
-          <ul className="animate-pulse mt-14 mx-auto grid grid-cols-2 gap-6 w-full sm:gap-8 md:grid-cols-3 lg:grid-cols-5">
-            {[1, 2, 3, 4, 5].map((key) => (
+          <ul className="animate-pulse w-full mt-14 mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6">
+            {[1, 2, 3, 4].map((key) => (
               <li
                 key={key}
                 className="flex flex-col bg-gray-200 h-52 rounded-lg"

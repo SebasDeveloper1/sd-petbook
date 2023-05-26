@@ -1,3 +1,6 @@
 {
-  "recommendations": ["orta.vscode-jest"]
+  "recommendations": [
+    "orta.vscode-jest",
+    "zixuanchen.vitest-explorer"
+  ]
 }

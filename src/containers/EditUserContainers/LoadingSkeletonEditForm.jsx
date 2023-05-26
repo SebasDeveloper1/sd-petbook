@@ -10,11 +10,11 @@ export function LoadingSkeletonEditForm() {
         styles="pb-4 text-2xl font-semibold tracking-tight text-slate-900"
       />
       <section className="grid grid-cols-3 gap-8 md:gap-16 divide-y md:divide-x md:divide-y-0">
-        <section className="flex flex-col gap-y-4 md:col-span-1">
-          <div className="w-44 md:w-full aspect-square m-auto rounded-md object-cover object-center bg-gray-300" />
+        <section className="flex flex-col gap-y-4 col-span-3 md:col-span-1">
+          <div className="w-full aspect-video m-auto rounded-md object-cover object-center bg-gray-300" />
           <div className="p-4 rounded-md border border-dashed border-slate-200">
             <div className="h-8 w-full bg-gray-300 rounded-md" />
-            <div className="h-8 w-5/6 bg-gray-300 rounded-md mt-4" />
+            <div className="h-8 w-full bg-gray-300 rounded-md mt-4" />
           </div>
         </section>
         <section className="col-span-3 md:col-span-2 pt-8 md:pl-16 md:py-0">

@@ -14,7 +14,7 @@ export function LoadingSkeletonCreatePet() {
           <div className="w-44 md:w-full aspect-square m-auto rounded-md object-cover object-center bg-gray-300" />
           <div className="p-4 rounded-md border border-dashed border-slate-200">
             <div className="h-8 w-full bg-gray-300 rounded-md" />
-            <div className="h-8 w-5/6 bg-gray-300 rounded-md mt-4" />
+            <div className="h-8 w-full bg-gray-300 rounded-md mt-4" />
           </div>
         </section>
         <section className="md:col-span-2">

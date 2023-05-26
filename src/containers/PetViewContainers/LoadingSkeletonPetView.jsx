@@ -4,36 +4,18 @@ import { Typography } from 'components/indexComponents';
 export function LoadingSkeletonPetView() {
   return (
     <div>
-      <section className="flex flex-col md:flex-row-reverse w-full min-h-screen bg-slate-900">
-        <div className="w-full lg:w-3/5 md:h-screen bg-gray-700 animate-pulse" />
-        <div className="flex flex-col items-center w-full sm:1/2 lg:w-2/5 my-9">
+      <section className="flex flex-col md:flex-row w-full min-h-screen bg-slate-900">
+        <div className="w-full lg:w-2/4 h-60 md:h-screen bg-gray-700 animate-pulse" />
+        <div className="flex flex-col items-center w-full sm:1/2 lg:w-2/4 my-9">
           <div className="w-11/12 space-y-12">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-gray-700 animate-pulse" />
+              <div className="w-14 h-14 rounded-full bg-gray-700 animate-pulse" />
               <div className="z-10 relative w-full">
                 <div className="w-full h-8 rounded bg-gray-700" />
                 <div className="w-1/2 h-6 mt-1 rounded bg-gray-700 animate-pulse" />
               </div>
             </div>
-            <div className="space-y-6 p-6 rounded-lg border border-slate-800 bg-gray-700 animate-pulse">
-              <div className="grid grid-cols-2 gap-4 w-full text-xl text-sky-400">
-                {Array.from({ length: 4 }).map((_, i) => (
-                  <div
-                    // eslint-disable-next-line react/no-array-index-key
-                    key={`skeleton_${i}`}
-                    className="w-full h-8 rounded bg-gray-700 animate-pulse"
-                  />
-                ))}
-              </div>
-              <div className="space-y-3">
-                <div className="w-full h-8 rounded bg-gray-700 animate-pulse" />
-                <div className="w-full h-32 mt-2 rounded bg-gray-700 animate-pulse" />
-              </div>
-              <div className="space-y-3">
-                <div className="w-full h-8 rounded bg-gray-700 animate-pulse" />
-                <div className="w-full h-32 mt-2 rounded bg-gray-700" />
-              </div>
-            </div>
+            <div className="h-60 space-y-6 p-6 rounded-lg border border-slate-800 bg-gray-700 animate-pulse" />
           </div>
         </div>
       </section>
