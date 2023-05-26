@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
-import { MdMoreVert } from 'react-icons/md';
+import { MdMoreHoriz } from 'react-icons/md';
 import { Typography, Button } from 'components/indexComponents';
 import { getStorageImageUrl } from 'fbase/storageFunctions';
 import { deletePet } from 'fbase/dbFunctions';
@@ -89,21 +89,38 @@ export function PetCard({ petInfo = {}, handleDelete } = {}) {
   );
 
   return (
-    <div className="relative group overflow-hidden rounded-lg shadow-lg md:hover:-translate-y-4 transition-transform duration-300">
+    <div className="relative group overflow-hidden rounded-xl shadow-lg md:hover:-translate-y-4 transition-transform duration-300">
       <Link
         to={`/pet/${petName}+${petId}`}
         className="block w-full h-full bg-slate-900"
       >
-        <figure className="relative overflow-hidden w-full aspect-square">
+        <figure className="relative w-full aspect-square">
           <img
             src={imageUrl || defaultImage}
             alt={petName}
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full  object-cover object-center"
           />
+          <button
+            ref={menuOptionsRef2}
+            type="button"
+            className="absolute top-full right-2 -translate-y-6 flex items-center justify-center w-12 h-12 rounded-full text-3xl bg-sky-500 hover:bg-sky-500 transition-colors duration-300"
+            title="Opciones"
+            onClick={handlerMoreOptions}
+          >
+            <IconContext.Provider
+              value={{
+                className: `transition-all ${
+                  moreOptions ? 'transform rotate-90 text-white' : 'text-white'
+                } hover:text-slate-50`,
+              }}
+            >
+              <MdMoreHoriz />
+            </IconContext.Provider>
+          </button>
           <section
             ref={menuOptionsRef}
-            className={`absolute inset-x-0 bottom-0 h-fit rounded-t-md shadow-lg p-2 bg-slate-900/80 ${
-              menuOptions ? 'translate-y-0' : 'translate-y-full'
+            className={`absolute inset-x-0 top-0 h-fit rounded-b-md shadow-lg p-2 bg-slate-900/80 ${
+              menuOptions ? 'translate-y-0' : '-translate-y-full'
             } transition-all duration-300`}
           >
             <ul className="space-y-1">
@@ -128,7 +145,7 @@ export function PetCard({ petInfo = {}, handleDelete } = {}) {
             </ul>
           </section>
         </figure>
-        <div className="grid grid-cols-5 justify-center items-center w-full p-3">
+        <section className="w-full px-3 py-4">
           <div className="col-span-4 mr-1">
             <Typography
               variant="span_xl"
@@ -138,29 +155,10 @@ export function PetCard({ petInfo = {}, handleDelete } = {}) {
             <Typography
               variant="span_base"
               value={birthdate}
-              styles="font-medium tracking-tight text-slate-400 truncate"
+              styles="font-medium tracking-tight text-sky-400 truncate"
             />
           </div>
-          <button
-            ref={menuOptionsRef2}
-            type="button"
-            className="col-span-1 flex items-center justify-center w-12 h-12 rounded-full text-3xl text-slate-500 hover:text-white hover:bg-slate-700/20"
-            title="Opciones"
-            onClick={handlerMoreOptions}
-          >
-            <IconContext.Provider
-              value={{
-                className: `transition-all ${
-                  moreOptions
-                    ? 'transform rotate-90 text-white'
-                    : 'text-slate-400'
-                }`,
-              }}
-            >
-              <MdMoreVert />
-            </IconContext.Provider>
-          </button>
-        </div>
+        </section>
       </Link>
       <section
         ref={deleteOptionsRef}
@@ -171,7 +169,7 @@ export function PetCard({ petInfo = {}, handleDelete } = {}) {
         <div className="w-fill h-full flex flex-col justify-evenly items-center">
           <Typography
             variant="span_base"
-            value="¿Estas seguro de eliminar esta mascota?"
+            value="¿Estás seguro de eliminar esta mascota?"
             styles="tracking-tight text-center text-white"
           />
           <section className="flex flex-col items-center justify-center w-full gap-2 mt-4">
@@ -179,7 +177,7 @@ export function PetCard({ petInfo = {}, handleDelete } = {}) {
               type="submit"
               variant="contained"
               styles="w-full"
-              value="Si"
+              value="Sí"
               handleOnClick={handleDeletePet}
             />
             <Button
