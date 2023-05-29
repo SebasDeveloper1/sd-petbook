@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DashboardWrapperNoLogin } from 'containers/indexContainers';
+import { DashboardWrapperNoLogin, HeroMain } from 'containers/indexContainers';
 import { useGetUserState } from 'hooks/useGetUserState';
 
 export default function MainPage() {
@@ -31,5 +31,9 @@ export default function MainPage() {
   useEffect(() => {
     getStateUser();
   }, []);
-  return <DashboardWrapperNoLogin>Hola</DashboardWrapperNoLogin>;
+  return (
+    <DashboardWrapperNoLogin>
+      <HeroMain />
+    </DashboardWrapperNoLogin>
+  );
 }

@@ -28,6 +28,7 @@ module.exports = {
         GenericBlue: 'url("/src/assets/images/background-blue.jpg")',
         GenericWhite: 'url("/src/assets/images/background-white-1.jpg")',
         BlurCyan: 'url("/src/assets/images/blur-cyan.png")',
+        BlurCyan2: 'url("/src/assets/images/blur-cyan2.png")',
         BeamsCover: 'url("/src/assets/images/beams-cover@95.jpg")',
         BeamsHome: 'url("/src/assets/images/beams-home@95.jpg")',
         illustrationPet1: 'url("/src/assets/images/pet-illustration.svg")',

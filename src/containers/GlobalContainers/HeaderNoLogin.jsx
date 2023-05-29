@@ -31,10 +31,10 @@ export function HeaderNoLogin() {
   };
 
   return (
-    <header className="z-20 sticky top-0 flex items-center w-full h-16 px-4 border-b border-slate-50/[0.06] bg-slate-900">
+    <header className="z-20 sticky top-0 flex items-center w-full h-16 px-4 border-b border-slate-600/[0.05] bg-slate-900">
       <nav className="relative flex justify-between w-full">
         <div className="flex justify-between items-center w-full md:gap-x-12">
-          <NavLink className="w-28 md:w-36" to="/home">
+          <NavLink className="w-28 md:w-36" to="/">
             <Logo className="w-full" alt="PetBook" />
           </NavLink>
           <div className="h-full flex items-center gap-x-3">

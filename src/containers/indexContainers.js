@@ -17,6 +17,9 @@ import { NavBarSM } from './HeaderContainers/NavBarSM';
 // ChooseUsernameContainers
 import { UsernameForm } from './ChooseUsernameContainers/UsernameForm';
 
+// MainPageContainers
+import { HeroMain } from './MainPageContainers/HeroMain';
+
 // HomePageContainers
 import { HeaderList } from './HomeContainers/HeaderList';
 import { PetList } from './HomeContainers/PetList';
@@ -65,6 +68,8 @@ export {
 export { NavBarLG, NavBarSM };
 // ChooseUsernameContainers
 export { UsernameForm };
+// MainPageContainers
+export { HeroMain };
 // HomePageContainers
 export { HeaderList, PetList, LoadingSkeletonHome };
 // CreatePetContainers
