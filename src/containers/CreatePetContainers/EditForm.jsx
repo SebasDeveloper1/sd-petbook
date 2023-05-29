@@ -59,7 +59,7 @@ export function EditForm({
       vaccine: '',
       purpose: '',
       vet: '',
-      contact: '',
+      professionalCard: '',
       image: '',
     },
     valuesOwner: {
@@ -179,6 +179,7 @@ export function EditForm({
       id: petId,
       petBirthdate: getDateInMilliseconds(values?.petBirthdate),
       vaccinesList: [...tmpRows],
+      createdAt: petInfo?.createdAt,
       editedAt: new Date().getTime(),
     };
 

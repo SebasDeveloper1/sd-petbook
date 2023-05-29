@@ -14,6 +14,7 @@ export function TextField({
   exceptionMessage = '',
   handleOnChange = () => {},
   handleOnBlur = () => {},
+  required = false,
 } = {}) {
   const textFieldId = useId();
 
@@ -46,6 +47,7 @@ export function TextField({
           }
           placeholder={placeholder}
           value={defaultValue}
+          required={required}
           onChange={handleOnChange}
           onBlur={handleOnBlur}
         />
@@ -62,6 +64,7 @@ export function TextField({
           }
           placeholder={placeholder}
           value={defaultValue}
+          required={required}
           onChange={handleOnChange}
           onBlur={handleOnBlur}
         />

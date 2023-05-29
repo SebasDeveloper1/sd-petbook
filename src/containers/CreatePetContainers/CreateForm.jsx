@@ -52,7 +52,7 @@ export function CreateForm({
       vaccine: '',
       purpose: '',
       vet: '',
-      contact: '',
+      professionalCard: '',
       image: '',
     },
     valuesOwner: {

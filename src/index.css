@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .navbar-item-dark {
-  @apply block w-fit h-fit rounded-md py-1 px-2 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-slate-200;
+  @apply block w-fit h-fit rounded-xl py-1 px-2 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-slate-200;
 }
 
 .navbar-item-light {
-  @apply inline-block rounded-md py-1 px-2 text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900;
+  @apply inline-block rounded-xl py-1 px-2 text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900;
 }
 
 .navbar-more-options-item-container {
@@ -15,7 +15,7 @@
 }
 
 .navbar-more-options-item {
-  @apply block w-full py-2 px-2 rounded-md text-start text-base font-medium;
+  @apply block w-full py-2 px-2 rounded-xl text-start text-base font-medium;
 }
 
 .label-input-form {
@@ -23,7 +23,7 @@
 }
 
 .input-form {
-  @apply block appearance-none text-slate-900 bg-white rounded-md w-full px-3 mt-2 min-h-[2.5rem] shadow-sm sm:text-sm focus:outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200;
+  @apply block appearance-none text-slate-900 bg-white rounded-xl w-full px-3 mt-2 min-h-[2.5rem] shadow-sm sm:text-sm focus:outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200;
 }
 
 .input-form-warning {
@@ -47,4 +47,8 @@
 }
 .button-text-secondary {
   @apply text-sky-500 hover:bg-sky-100;
+}
+
+.button-text-third {
+  @apply w-fit h-fit rounded-xl text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-slate-200;
 }

@@ -1,9 +1,11 @@
 // GlobalContainers
 import { Layout } from './GlobalContainers/Layout';
 import { Header } from './GlobalContainers/Header';
+import { HeaderNoLogin } from './GlobalContainers/HeaderNoLogin';
 import { Footer } from './GlobalContainers/Footer';
 import { Modal } from './GlobalContainers/Modal';
 import { DashboardWrapper } from './GlobalContainers/DashboardWrapper';
+import { DashboardWrapperNoLogin } from './GlobalContainers/DashboardWrapperNoLogin';
 import { GoToBackLayout } from './GlobalContainers/GoToBackLayout';
 import { ConfirmationLayout } from './GlobalContainers/ConfirmationLayout';
 import { TextFieldGenerator } from './GlobalContainers/TextFieldGenerator';
@@ -49,10 +51,12 @@ import { LoadingSkeletonPetView } from './PetViewContainers/LoadingSkeletonPetVi
 // GlobalContainers
 export {
   Header,
+  HeaderNoLogin,
   Layout,
   Footer,
   Modal,
   DashboardWrapper,
+  DashboardWrapperNoLogin,
   GoToBackLayout,
   ConfirmationLayout,
   TextFieldGenerator,

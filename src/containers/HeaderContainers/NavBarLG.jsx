@@ -5,7 +5,7 @@ import { IconContext } from 'react-icons';
 import { MdOutlineExpandMore } from 'react-icons/md';
 import { useOnClickOutside } from 'hooks/useOnClickOutside';
 import { getStorageImageUrl } from 'fbase/storageFunctions';
-import defaultImage from 'images/profile-picture.png';
+import defaultImage from 'images/loading-image.gif';
 
 export function NavBarLG({
   navList = [],

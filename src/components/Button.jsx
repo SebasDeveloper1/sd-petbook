@@ -15,9 +15,9 @@ export function Button({
   refElement = null,
 } = {}) {
   const buttonVariant = {
-    contained: 'button-contained rounded-md py-2.5 px-6',
-    outlined: 'button-outlined rounded-md py-2.5 px-6',
-    text: 'button-text rounded-md py-2.5 px-6',
+    contained: 'button-contained rounded-xl py-2.5 px-6',
+    outlined: 'button-outlined rounded-xl py-2.5 px-6',
+    text: 'button-text rounded-xl py-2.5 px-6',
   };
   return (
     <button

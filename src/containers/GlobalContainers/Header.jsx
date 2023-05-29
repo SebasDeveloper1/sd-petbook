@@ -41,7 +41,7 @@ export function Header() {
 
   const handlerSignOut = async () => {
     await signOutWithGoogle();
-    navigate('/login');
+    navigate('/');
   };
 
   return (

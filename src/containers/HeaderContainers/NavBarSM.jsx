@@ -22,7 +22,6 @@ export function NavBarSM({
             </NavLink>
           </li>
         ))}
-
         <div className="mt-4 pt-4 border-t">
           <li className="navbar-item-light">
             <NavLink

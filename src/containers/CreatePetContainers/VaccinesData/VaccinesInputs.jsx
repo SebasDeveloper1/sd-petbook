@@ -10,7 +10,7 @@ export function VaccinesInputs({
   vaccine = '',
   purpose = '',
   vet = '',
-  contact = '',
+  professionalCard = '',
   image = '',
   onChange = null,
   onRemove = null,
@@ -61,6 +61,7 @@ export function VaccinesInputs({
             status="normal"
             handleOnChange={(e) => onChange('date', e.target.value)}
             defaultValue={date}
+            required
           />
         </div>
 
@@ -73,6 +74,7 @@ export function VaccinesInputs({
             status="normal"
             handleOnChange={(e) => onChange('vaccine', e.target.value)}
             defaultValue={vaccine}
+            required
           />
         </div>
 
@@ -85,6 +87,7 @@ export function VaccinesInputs({
             status="normal"
             handleOnChange={(e) => onChange('purpose', e.target.value)}
             defaultValue={purpose}
+            required
           />
         </div>
 
@@ -97,18 +100,20 @@ export function VaccinesInputs({
             status="normal"
             handleOnChange={(e) => onChange('vet', e.target.value)}
             defaultValue={vet}
+            required
           />
         </div>
 
         <div className="col-span-3 md:col-span-1">
           <TextField
-            labelValue="Contacto"
+            labelValue="Tarjeta Profesional"
             type="text"
-            name="vetContact"
-            placeholder="Teléfono, Dirección, correo, etc."
+            name="vetProfessionalCard"
+            placeholder="Numero Tarjeta profesional"
             status="normal"
-            handleOnChange={(e) => onChange('contact', e.target.value)}
-            defaultValue={contact}
+            handleOnChange={(e) => onChange('professionalCard', e.target.value)}
+            defaultValue={professionalCard}
+            required
           />
         </div>
 

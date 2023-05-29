@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   DashboardWrapper,
+  DashboardWrapperNoLogin,
   HeroSection,
   VaccinesSection,
   OwnerInfoSection,
@@ -12,7 +13,7 @@ import { useGetUserState } from 'hooks/useGetUserState';
 
 export default function PetViewPage() {
   // eslint-disable-next-line no-unused-vars
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState(null);
   const [petInfo, setPetInfo] = useState({});
   const [loading, setLoading] = useState(true);
   const { petName } = useParams();
@@ -54,8 +55,12 @@ export default function PetViewPage() {
     fetchInfo();
   }, []);
 
+  const WrapperComponent = currentUser
+    ? DashboardWrapper
+    : DashboardWrapperNoLogin;
+
   return (
-    <DashboardWrapper>
+    <WrapperComponent>
       <section className="flex justify-center w-full">
         <div className="overflow-hidden w-full">
           {loading ? (
@@ -69,6 +74,6 @@ export default function PetViewPage() {
           )}
         </div>
       </section>
-    </DashboardWrapper>
+    </WrapperComponent>
   );
 }

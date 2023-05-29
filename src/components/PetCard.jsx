@@ -8,7 +8,7 @@ import { getStorageImageUrl } from 'fbase/storageFunctions';
 import { deletePet } from 'fbase/dbFunctions';
 import { getPetAge } from 'utils/getPetAge';
 import { useOnClickOutside } from 'hooks/useOnClickOutside';
-import defaultImage from 'images/profile-picture.png';
+import defaultImage from 'images/loading-image.gif';
 
 export function PetCard({ petInfo = {}, handleDelete } = {}) {
   const {
@@ -89,7 +89,7 @@ export function PetCard({ petInfo = {}, handleDelete } = {}) {
   );
 
   return (
-    <div className="relative group overflow-hidden rounded-xl shadow-lg md:hover:-translate-y-4 transition-transform duration-300">
+    <div className="relative group overflow-hidden rounded-xl shadow-lg md:hover:scale-105 transition-all duration-300">
       <Link
         to={`/pet/${petName}+${petId}`}
         className="block w-full h-full bg-slate-900"
@@ -99,6 +99,7 @@ export function PetCard({ petInfo = {}, handleDelete } = {}) {
             src={imageUrl || defaultImage}
             alt={petName}
             className="w-full h-full  object-cover object-center"
+            loading="lazy"
           />
           <button
             ref={menuOptionsRef2}

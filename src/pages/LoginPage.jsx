@@ -51,7 +51,7 @@ export default function LoginPage() {
             <Typography
               variant="span_lg"
               styles="text-center text-slate-400"
-              value="Inicia sesión con tu cuenta para continuar"
+              value="Inicia sesión con tu cuenta de Google para continuar"
             />
           </section>
           <form>
