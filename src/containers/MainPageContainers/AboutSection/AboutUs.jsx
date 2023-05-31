@@ -1,6 +1,6 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
-import { Typography } from 'components/IndexComponents';
+import { Typography } from 'components/indexComponents';
 import image1 from 'images/main-hero2.png';
 
 export function AboutUs() {
