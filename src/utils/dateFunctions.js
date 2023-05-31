@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
 const MONTHS = [
   'Enero',
   'Febrero',
@@ -51,32 +53,29 @@ export const getMillisecondsInDate = (milliseconds) => {
 };
 
 export const getTimePassed = (timestamp) => {
-  const now = Date.now();
-  const timeDiff = now - timestamp;
+  const DATE_UNITS = {
+    year: 31557600000,
+    month: 2629800000,
+    week: 604800000,
+    day: 86400000,
+    hour: 3600000,
+    minute: 60000,
+    second: 1000,
+  };
 
-  if (timeDiff < 60000) {
-    // Menos de un minuto
-    return 'menos de un minuto';
+  const rtf = new Intl.RelativeTimeFormat('es', { numeric: 'auto' });
+  const now = Date.now();
+  const timeDiff = timestamp - now;
+
+  const unit = Object.keys(DATE_UNITS).find((unit) => {
+    const absoluteDiff = Math.abs(timeDiff);
+    return absoluteDiff > DATE_UNITS[unit] || unit === 'second';
+  });
+
+  if (unit) {
+    const relativeTime = Math.round(timeDiff / DATE_UNITS[unit]);
+    return rtf.format(relativeTime, unit);
   }
-  if (timeDiff < 3600000) {
-    // Minutos
-    const minutes = Math.floor(timeDiff / 60000);
-    if (minutes === 1) {
-      return `${minutes} minuto`;
-    }
-    return `${minutes} minutos`;
-  }
-  if (timeDiff < 86400000) {
-    // Horas
-    const hours = Math.floor(timeDiff / 3600000);
-    return `${hours} horas`;
-  }
-  if (timeDiff < 604800000) {
-    // Días
-    const days = Math.floor(timeDiff / 86400000);
-    return `${days} días`;
-  }
-  // Semanas
-  const weeks = Math.floor(timeDiff / 604800000);
-  return `${weeks} semanas`;
+
+  return '';
 };
