@@ -6,7 +6,7 @@ import imageHero2 from 'images/main-hero2.png';
 export function HeroMain() {
   return (
     <section className="overflow-hidden bg-slate-900">
-      <div className="flex flex-col md:flex-row justify-center items-center min-h-[50vh] md:min-h-[70vh] py-8 bg-BlurCyan2 bg-cover bg-center">
+      <div className="flex flex-col md:flex-row justify-center items-center min-h-[50vh] md:min-h-[80vh] py-8 bg-BlurCyan2 bg-cover bg-center">
         <div className="w-full md:w-1/4 md:h-[60vh]">
           <img
             className="hidden md:block w-full h-full object-cover object-right animate-slide-in-right"
@@ -24,7 +24,7 @@ export function HeroMain() {
           <Logo className="w-72 md:w-96 mb-10" alt="PetBook" />
           <Typography
             variant="span_lg"
-            value="La plataforma ideal para guardar y gestionar la información de tus mascotas."
+            value="¡Amor y cuidado para tus peluditos al alcance de tu mano!"
             styles="w-10/12 mb-8 font-medium tracking-tight text-slate-200 text-center"
           />
         </div>

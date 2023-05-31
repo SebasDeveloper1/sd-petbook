@@ -19,6 +19,8 @@ import { UsernameForm } from './ChooseUsernameContainers/UsernameForm';
 
 // MainPageContainers
 import { HeroMain } from './MainPageContainers/HeroMain';
+import { AboutUsSection } from './MainPageContainers/AboutUsSection';
+import { AuthorSection } from './MainPageContainers/AuthorSection';
 
 // HomePageContainers
 import { HeaderList } from './HomeContainers/HeaderList';
@@ -69,7 +71,7 @@ export { NavBarLG, NavBarSM };
 // ChooseUsernameContainers
 export { UsernameForm };
 // MainPageContainers
-export { HeroMain };
+export { HeroMain, AboutUsSection, AuthorSection };
 // HomePageContainers
 export { HeaderList, PetList, LoadingSkeletonHome };
 // CreatePetContainers

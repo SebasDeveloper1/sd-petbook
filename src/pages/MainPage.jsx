@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DashboardWrapperNoLogin, HeroMain } from 'containers/indexContainers';
+import {
+  DashboardWrapperNoLogin,
+  HeroMain,
+  AboutUsSection,
+  AuthorSection,
+} from 'containers/indexContainers';
 import { useGetUserState } from 'hooks/useGetUserState';
 
 export default function MainPage() {
@@ -33,7 +38,11 @@ export default function MainPage() {
   }, []);
   return (
     <DashboardWrapperNoLogin>
-      <HeroMain />
+      <div className="w-full bg-slate-900">
+        <HeroMain />
+        <AboutUsSection />
+        <AuthorSection />
+      </div>
     </DashboardWrapperNoLogin>
   );
 }

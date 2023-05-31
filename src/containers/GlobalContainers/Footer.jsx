@@ -1,11 +1,13 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
 import React from 'react';
-import { FaGithub, FaLink } from 'react-icons/fa';
+import { IconContext } from 'react-icons';
+import { FaGithub } from 'react-icons/fa';
 import { Typography } from 'components/indexComponents';
 
 export function Footer() {
   return (
-    <footer className="flex flex-col justify-center items-center w-full h-64 text-center bg-slate-800">
-      <div className="flex flex-col items-center gap-3 w-11/12 ">
+    <footer className="w-full py-20 bg-slate-800">
+      <div className="flex flex-col items-center gap-3 w-11/12 h-full mx-auto">
         <Typography
           variant="span_lg"
           value="PetBook ◉ @SebasDeveloper ◉ 2023"
@@ -24,16 +26,9 @@ export function Footer() {
             rel="noopener noreferrer"
             className="hover:text-slate-50"
           >
-            <FaGithub />
-          </a>
-          <a
-            href="https://linktr.ee/sebasdeveloperoficial"
-            title="@SebasDeveloper contact"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-slate-50"
-          >
-            <FaLink />
+            <IconContext.Provider value={{ className: 'text-4xl' }}>
+              <FaGithub />
+            </IconContext.Provider>
           </a>
         </div>
       </div>

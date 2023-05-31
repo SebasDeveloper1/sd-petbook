@@ -86,6 +86,24 @@
   }
 }
 
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 .animate-slide-in-right {
   animation: slideInRight 1s ease-out;
 }
@@ -95,4 +113,20 @@
 }
 .animate-slide-in-top {
   animation: slideInTop 1s ease-out;
+}
+
+.animate-spin-slower {
+  animation: spin 6s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 4s linear infinite;
+}
+
+.animate-spin-reverse-slower {
+  animation: spin-reverse 6s linear infinite;
+}
+
+.animate-grow {
+  animation: grow 1.5s ease-in-out;
 }
