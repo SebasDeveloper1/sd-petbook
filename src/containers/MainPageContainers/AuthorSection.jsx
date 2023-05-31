@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography } from 'components/IndexComponents';
+import { Typography } from 'components/indexComponents';
 import authorImage from 'images/about-img.jpg';
 
 export function AuthorSection() {
