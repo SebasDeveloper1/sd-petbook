@@ -1,12 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 import { Typography, Button, MetaHead } from 'components/indexComponents';
-import { DashboardWrapper } from 'containers/indexContainers';
+import {
+  DashboardWrapper,
+  DashboardWrapperNoLogin,
+} from 'containers/indexContainers';
+import { useGetUserState } from 'hooks/useGetUserState';
 import illustration404 from 'images/404Not-Found.svg';
 
 export default function Page404() {
+  const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
+
+  /*
+  Stages:
+  0: initiated
+  1: loading
+  2: login completed
+  3: login but no username
+  4: not logged
+  5: exists usuername
+*/
+  const handlerUserLoggedIn = async (user) => {
+    setCurrentUser(user);
+    return 2;
+  };
+
+  const handlerUserNotRegistered = () => 3;
+
+  const handlerUserNotLoggedIn = () => 4;
+
+  const { getStateUser } = useGetUserState({
+    onUserLoggedIn: handlerUserLoggedIn,
+    onUserNotLoggedIn: handlerUserNotLoggedIn,
+    onUserNotRegistered: handlerUserNotRegistered,
+  });
+
+  useEffect(() => {
+    getStateUser();
+  }, []);
+
+  const WrapperComponent = currentUser
+    ? DashboardWrapper
+    : DashboardWrapperNoLogin;
 
   const handlerGoToBack = () => {
     navigate(-1);
@@ -21,7 +58,7 @@ export default function Page404() {
         type="article"
         url={document.location.href}
       />
-      <DashboardWrapper>
+      <WrapperComponent>
         <section className="flex justify-center items-center w-full min-h-screen bg-slate-900">
           <div className="flex flex-col justify-center items-center gap-8 w-11/12 text-center">
             <img
@@ -51,7 +88,7 @@ export default function Page404() {
             />
           </div>
         </section>
-      </DashboardWrapper>
+      </WrapperComponent>
     </>
   );
 }

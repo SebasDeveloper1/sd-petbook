@@ -9,6 +9,7 @@ import {
   OwnerInfoSection,
   LoadingSkeletonPetView,
 } from 'containers/indexContainers';
+import Page404 from 'pages/Page404';
 import { getPetInfo } from 'fbase/dbFunctions';
 import { useGetUserState } from 'hooks/useGetUserState';
 
@@ -60,30 +61,33 @@ export default function PetViewPage() {
     ? DashboardWrapper
     : DashboardWrapperNoLogin;
 
-  return (
-    <>
-      <MetaHead
-        title={`PetBook | Hoja de vida de ${petId[0]}`}
-        description="Plataforma para el almacenamiento y gestión de hojas de vida de mascotas."
-        name="petbook"
-        type="article"
-        url={document.location.href}
-      />
-      <WrapperComponent>
-        <section className="flex justify-center w-full">
-          <div className="overflow-hidden w-full">
-            {loading ? (
-              <LoadingSkeletonPetView />
-            ) : (
-              <>
-                <HeroSection petInfo={petInfo} />
-                <VaccinesSection petInfo={petInfo} />
-                <OwnerInfoSection petInfo={petInfo} />
-              </>
-            )}
-          </div>
-        </section>
-      </WrapperComponent>
-    </>
-  );
+  if (petInfo) {
+    return (
+      <>
+        <MetaHead
+          title={`PetBook | Hoja de vida de ${petId[0]}`}
+          description="Plataforma para el almacenamiento y gestión de hojas de vida de mascotas."
+          name="petbook"
+          type="article"
+          url={document.location.href}
+        />
+        <WrapperComponent>
+          <section className="flex justify-center w-full">
+            <div className="overflow-hidden w-full">
+              {loading ? (
+                <LoadingSkeletonPetView />
+              ) : (
+                <>
+                  <HeroSection petInfo={petInfo} />
+                  <VaccinesSection petInfo={petInfo} />
+                  <OwnerInfoSection petInfo={petInfo} />
+                </>
+              )}
+            </div>
+          </section>
+        </WrapperComponent>
+      </>
+    );
+  }
+  return <Page404 />;
 }

@@ -66,14 +66,14 @@ export default function HomePage() {
         {loading ? (
           <LoadingSkeletonHome />
         ) : (
-          <div className="relative flex flex-col items-center w-full min-h-screen bg-BeamsCover bg-cover bg-top bg-no-repeat">
-            <section className="flex flex-col justify-center items-center w-full">
-              <HeaderList userInfo={currentUser} />
+          <div className="relative w-full min-h-screen bg-slate-900">
+            <HeaderList userInfo={currentUser} />
+            <section className="flex flex-col justify-center items-center w-full bg-BeamsCover bg-cover bg-top bg-no-repeat">
               <PetList>
                 <Button
                   type="button"
                   variant="outlined"
-                  styles="shadow-lg flex-col h-full py-8 rounded-xl border-dashed border-2 border-sky-500 bg-white md:hover:scale-105 transition-all duration-300"
+                  styles="shadow-lg flex-col min-h-[290px] h-full py-8 rounded-xl border-dashed border-2 border-sky-500 bg-white md:hover:scale-105 transition-all duration-300"
                   value="Agregar mascota"
                   startIcon={<BsClipboardPlus />}
                   handleOnClick={handleOnClick}
