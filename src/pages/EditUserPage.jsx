@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { MetaHead } from 'components/indexComponents';
 import { DashboardWrapper, EditForm } from 'containers/indexContainers';
 import { useGetUserState } from 'hooks/useGetUserState';
 
@@ -42,10 +43,19 @@ export default function EditUserPage() {
   }, []);
 
   return (
-    <DashboardWrapper>
-      <div className="flex justify-center w-full min-h-screen py-10 md:py-16 bg-BeamsCover bg-contain bg-top bg-no-repeat">
-        <EditForm userInfo={currentUser} handleUserInfo={setCurrentUser} />
-      </div>
-    </DashboardWrapper>
+    <>
+      <MetaHead
+        title={`PetBook | Editar información de ${currentUser?.username}`}
+        description="Plataforma para el almacenamiento y gestión de hojas de vida de mascotas."
+        name="petbook"
+        type="article"
+        url={document.location.href}
+      />
+      <DashboardWrapper>
+        <div className="flex justify-center w-full min-h-screen py-10 md:py-16 bg-BeamsCover bg-contain bg-top bg-no-repeat">
+          <EditForm userInfo={currentUser} handleUserInfo={setCurrentUser} />
+        </div>
+      </DashboardWrapper>
+    </>
   );
 }

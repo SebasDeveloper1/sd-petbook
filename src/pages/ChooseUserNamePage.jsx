@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { MetaHead } from 'components/indexComponents';
 import { UsernameForm, ConfirmationLayout } from 'containers/indexContainers';
 import { updateUser } from 'fbase/dbFunctions';
 import { useGetUserState } from 'hooks/useGetUserState';
@@ -54,16 +55,32 @@ export default function ChooseUserNamePage() {
   }, []);
 
   return (
-    <div className="relative flex justify-center items-center p-4 h-screen bg-ChooseUsernamePage bg-center bg-cover bg-no-repeat after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-t from-sky-500 to-indigo-500 after:opacity-20">
-      {!registerCompleted ? (
-        <UsernameForm handleSubmitForm={handlerRegister} />
-      ) : (
-        <ConfirmationLayout
-          title="Registro exitoso"
-          paragraph="¡Felicidades! Has terminado el proceso de registro, presiona el botón para continuar."
-          handlerButton={handlerContinue}
-        />
-      )}
-    </div>
+    <>
+      <MetaHead
+        title="PetBook | Escoge un nombre de usuario"
+        description="Plataforma para el almacenamiento y gestión de hojas de vida de mascotas."
+        name="petbook"
+        type="article"
+        url={document.location.href}
+      />
+      <MetaHead
+        title="PetBook | Home"
+        description="Plataforma para el almacenamiento y gestión de hojas de vida de mascotas."
+        name="petbook"
+        type="article"
+        url={document.location.href}
+      />
+      <div className="relative flex justify-center items-center p-4 h-screen bg-ChooseUsernamePage bg-center bg-cover bg-no-repeat after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-t from-sky-500 to-indigo-500 after:opacity-20">
+        {!registerCompleted ? (
+          <UsernameForm handleSubmitForm={handlerRegister} />
+        ) : (
+          <ConfirmationLayout
+            title="Registro exitoso"
+            paragraph="¡Felicidades! Has terminado el proceso de registro, presiona el botón para continuar."
+            handlerButton={handlerContinue}
+          />
+        )}
+      </div>
+    </>
   );
 }

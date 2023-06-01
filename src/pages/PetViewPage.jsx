@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { MetaHead } from 'components/indexComponents';
 import {
   DashboardWrapper,
   DashboardWrapperNoLogin,
@@ -60,20 +61,29 @@ export default function PetViewPage() {
     : DashboardWrapperNoLogin;
 
   return (
-    <WrapperComponent>
-      <section className="flex justify-center w-full">
-        <div className="overflow-hidden w-full">
-          {loading ? (
-            <LoadingSkeletonPetView />
-          ) : (
-            <>
-              <HeroSection petInfo={petInfo} />
-              <VaccinesSection petInfo={petInfo} />
-              <OwnerInfoSection petInfo={petInfo} />
-            </>
-          )}
-        </div>
-      </section>
-    </WrapperComponent>
+    <>
+      <MetaHead
+        title={`PetBook | Hoja de vida de ${petId[0]}`}
+        description="Plataforma para el almacenamiento y gestión de hojas de vida de mascotas."
+        name="petbook"
+        type="article"
+        url={document.location.href}
+      />
+      <WrapperComponent>
+        <section className="flex justify-center w-full">
+          <div className="overflow-hidden w-full">
+            {loading ? (
+              <LoadingSkeletonPetView />
+            ) : (
+              <>
+                <HeroSection petInfo={petInfo} />
+                <VaccinesSection petInfo={petInfo} />
+                <OwnerInfoSection petInfo={petInfo} />
+              </>
+            )}
+          </div>
+        </section>
+      </WrapperComponent>
+    </>
   );
 }

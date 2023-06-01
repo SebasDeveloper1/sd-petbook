@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BsClipboardPlus } from 'react-icons/bs';
-import { Button, PetCard } from 'components/indexComponents';
+import { Button, PetCard, MetaHead } from 'components/indexComponents';
 import {
   DashboardWrapper,
   HeaderList,
@@ -25,11 +25,11 @@ export default function HomePage() {
   };
 
   const handleUserNotRegistered = () => {
-    navigate('/login');
+    navigate('/');
   };
 
   const handleUserNotLoggedIn = () => {
-    navigate('/login');
+    navigate('/');
   };
 
   const { getStateUser } = useGetUserState({
@@ -54,33 +54,42 @@ export default function HomePage() {
   };
 
   return (
-    <DashboardWrapper>
-      {loading ? (
-        <LoadingSkeletonHome />
-      ) : (
-        <div className="relative flex flex-col items-center w-full min-h-screen bg-BeamsCover bg-cover bg-top bg-no-repeat">
-          <section className="flex flex-col justify-center items-center w-full">
-            <HeaderList userInfo={currentUser} />
-            <PetList>
-              <Button
-                type="button"
-                variant="outlined"
-                styles="shadow-lg flex-col h-full py-8 rounded-xl border-dashed border-2 border-sky-500 bg-white md:hover:scale-105 transition-all duration-300"
-                value="Agregar mascota"
-                startIcon={<BsClipboardPlus />}
-                handleOnClick={handleOnClick}
-              />
-              {petList.map((pet) => (
-                <PetCard
-                  key={`PetCard_${pet?.docId}`}
-                  petInfo={pet}
-                  handleDelete={handleDeletePet}
+    <>
+      <MetaHead
+        title="PetBook | Home"
+        description="Plataforma para el almacenamiento y gestión de hojas de vida de mascotas."
+        name="petbook"
+        type="article"
+        url={document.location.href}
+      />
+      <DashboardWrapper>
+        {loading ? (
+          <LoadingSkeletonHome />
+        ) : (
+          <div className="relative flex flex-col items-center w-full min-h-screen bg-BeamsCover bg-cover bg-top bg-no-repeat">
+            <section className="flex flex-col justify-center items-center w-full">
+              <HeaderList userInfo={currentUser} />
+              <PetList>
+                <Button
+                  type="button"
+                  variant="outlined"
+                  styles="shadow-lg flex-col h-full py-8 rounded-xl border-dashed border-2 border-sky-500 bg-white md:hover:scale-105 transition-all duration-300"
+                  value="Agregar mascota"
+                  startIcon={<BsClipboardPlus />}
+                  handleOnClick={handleOnClick}
                 />
-              ))}
-            </PetList>
-          </section>
-        </div>
-      )}
-    </DashboardWrapper>
+                {petList.map((pet) => (
+                  <PetCard
+                    key={`PetCard_${pet?.docId}`}
+                    petInfo={pet}
+                    handleDelete={handleDeletePet}
+                  />
+                ))}
+              </PetList>
+            </section>
+          </div>
+        )}
+      </DashboardWrapper>
+    </>
   );
 }

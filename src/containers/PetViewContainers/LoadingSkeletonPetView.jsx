@@ -5,7 +5,6 @@ export function LoadingSkeletonPetView() {
   return (
     <div>
       <section className="flex flex-col md:flex-row w-full min-h-screen bg-slate-900">
-        <div className="w-full lg:w-2/4 h-60 md:h-screen bg-gray-700 animate-pulse" />
         <div className="flex flex-col items-center w-full sm:1/2 lg:w-2/4 my-9">
           <div className="w-11/12 space-y-12">
             <div className="flex items-center gap-3">
@@ -18,6 +17,7 @@ export function LoadingSkeletonPetView() {
             <div className="h-60 space-y-6 p-6 rounded-lg border border-slate-800 bg-gray-700 animate-pulse" />
           </div>
         </div>
+        <div className="w-full lg:w-2/4 h-60 md:h-screen bg-gray-700 animate-pulse" />
       </section>
       <section className="pt-12 pb-24">
         <div className="w-11/12 m-auto">

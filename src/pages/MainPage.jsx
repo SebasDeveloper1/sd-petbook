@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { MetaHead } from 'components/indexComponents';
 import {
   DashboardWrapperNoLogin,
   HeroMain,
@@ -37,12 +38,21 @@ export default function MainPage() {
     getStateUser();
   }, []);
   return (
-    <DashboardWrapperNoLogin>
-      <div className="w-full bg-slate-900">
-        <HeroMain />
-        <AboutUsSection />
-        <AuthorSection />
-      </div>
-    </DashboardWrapperNoLogin>
+    <>
+      <MetaHead
+        title="PetBook"
+        description="Plataforma para el almacenamiento y gestión de hojas de vida de mascotas."
+        name="petbook"
+        type="article"
+        url={document.location.href}
+      />
+      <DashboardWrapperNoLogin>
+        <div className="w-full bg-slate-900">
+          <HeroMain />
+          <AboutUsSection />
+          <AuthorSection />
+        </div>
+      </DashboardWrapperNoLogin>
+    </>
   );
 }

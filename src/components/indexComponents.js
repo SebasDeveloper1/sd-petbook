@@ -6,6 +6,7 @@ import { TextField } from './TextField';
 import { TextSelection } from './TextSelection';
 import { PetCard } from './PetCard';
 import { VaccineCard } from './VaccineCard';
+import { MetaHead } from './MetaHead';
 
 export {
   Logo,
@@ -16,4 +17,5 @@ export {
   TextSelection,
   PetCard,
   VaccineCard,
+  MetaHead,
 };
