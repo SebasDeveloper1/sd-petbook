@@ -171,18 +171,16 @@ export function PetCard({ petInfo = {}, handleDelete = null }) {
             </section>
           </figure>
           <section className="w-full px-3 py-4">
-            <div className="col-span-4 mr-1">
-              <Typography
-                variant="span_xl"
-                value={petName}
-                styles="text-2xl font-semibold tracking-tight text-white truncate capitalize"
-              />
-              <Typography
-                variant="span_base"
-                value={birthdate}
-                styles="font-medium tracking-tight text-sky-400 truncate"
-              />
-            </div>
+            <Typography
+              variant="span_xl"
+              value={petName}
+              styles="text-2xl font-semibold tracking-tight text-white truncate capitalize"
+            />
+            <Typography
+              variant="span_base"
+              value={birthdate}
+              styles="font-medium tracking-tight text-sky-400 truncate"
+            />
           </section>
         </Link>
         <section
