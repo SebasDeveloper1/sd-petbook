@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Typography } from 'components/indexComponents';
 import { getStorageImageUrl } from 'fbase/storageFunctions';
-import defaultImagePet from 'images/img-picture.png';
+import defaultImagePet from 'images/img-picture.webp';
 
 export function AddImagePet({
   fileInput = {},
@@ -41,6 +41,7 @@ export function AddImagePet({
               className="w-44 md:w-full mb-2 aspect-square m-auto rounded-md object-cover object-center"
               src={url}
               alt="Mascota"
+              loading="lazy"
             />
             <span>Selecciona una foto de tu mascota</span>
             <input

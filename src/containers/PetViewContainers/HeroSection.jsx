@@ -151,6 +151,7 @@ export function HeroSection({ petInfo = {} }) {
             className="w-full md:h-full aspect-square md:aspect-auto object-cover"
             src={pictureUrl || defaultImage}
             alt={petName}
+            loading="lazy"
           />
           <div className="absolute top-0 left-0 w-full h-full">
             <div className="w-8 h-full bg-gradient-to-r from-slate-900/70 to-transparent" />

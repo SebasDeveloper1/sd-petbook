@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Typography } from 'components/indexComponents';
 import { getStorageImageUrl } from 'fbase/storageFunctions';
-import defaultImage from 'images/profile-picture.png';
+import defaultImage from 'images/profile-picture.webp';
 
 export function HeaderList({ userInfo } = {}) {
   const { profilePicture = '', username } = userInfo;
@@ -33,6 +33,7 @@ export function HeaderList({ userInfo } = {}) {
             className="w-32 h-32 shadow-lg object-cover object-center lg:w-44 lg:h-44"
             src={profileUrl}
             alt={username}
+            loading="lazy"
           />
           <div className="overflow-hidden w-full">
             <Typography

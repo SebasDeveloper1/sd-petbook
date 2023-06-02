@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { FaPhone, FaEnvelope, FaLink, FaMapMarkerAlt } from 'react-icons/fa';
 import { Typography } from 'components/indexComponents';
 import { getStorageImageUrl } from 'fbase/storageFunctions';
-import defaultImage from 'images/profile-picture.png';
+import defaultImage from 'images/profile-picture.webp';
 
 const dataTypes = {
   TEXT: 'text',
@@ -96,6 +96,7 @@ export function OwnerInfoSection({ petInfo = {} }) {
               className="w-3/5 md:w-4/5 mx-auto aspect-square object-cover object-center"
               src={pictureUrl || defaultImage}
               alt={ownerNames}
+              loading="lazy"
             />
           </figure>
 

@@ -11,6 +11,7 @@ export function AuthorSection() {
           className="w-32 aspect-square mb-6 shadow-lg object-cover object-center"
           src={authorImage}
           alt="SebasDeveloper"
+          loading="lazy"
         />
         <Typography
           variant="h2"

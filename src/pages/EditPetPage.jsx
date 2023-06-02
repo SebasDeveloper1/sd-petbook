@@ -51,8 +51,6 @@ export default function EditPetPage() {
     getStateUser();
   }, []);
 
-  useEffect(() => {}, []);
-
   const handleGoToBack = () => {
     navigate('/home');
   };

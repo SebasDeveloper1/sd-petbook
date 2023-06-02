@@ -15,7 +15,7 @@ import {
 import { validateUserDataForm } from 'utils/UserformValidationFunctions';
 import { imageLoadController } from 'utils/imageLoadController';
 import { getTimePassed } from 'utils/dateFunctions';
-import defaultImage from 'images/profile-picture.png';
+import defaultImage from 'images/profile-picture.webp';
 import { userformInputList } from './formInputList';
 
 export function EditForm({ userInfo, handleUserInfo } = {}) {
@@ -137,6 +137,7 @@ export function EditForm({ userInfo, handleUserInfo } = {}) {
                     className="w-40 mb-3 aspect-square m-auto rounded-full object-cover object-center"
                     src={profileUrl || defaultImage}
                     alt="Perfil"
+                    loading="lazy"
                   />
                   <span>Selecciona una foto</span>
                   <input

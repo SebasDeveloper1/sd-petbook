@@ -1,7 +1,7 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Typography } from 'components/indexComponents';
-import image1 from 'images/main-hero2.png';
+import image1 from 'images/main-hero2.webp';
 
 export function AboutUs() {
   const { ref, inView } = useInView({
@@ -108,6 +108,7 @@ export function AboutUs() {
           className="w-full aspect-square object-contain object-center drop-shadow-xl"
           src={inView ? image1 : ''}
           alt="about us 1"
+          loading="lazy"
         />
       </figure>
     </article>

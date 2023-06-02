@@ -2,131 +2,145 @@
 @tailwind components;
 @tailwind utilities;
 
-.navbar-item-dark {
-  @apply block w-fit h-fit rounded-xl py-1 px-2 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-slate-200;
-}
-
-.navbar-item-light {
-  @apply inline-block rounded-xl py-1 px-2 text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900;
-}
-
-.navbar-more-options-item-container {
-  @apply block w-full h-fit text-slate-400 hover:bg-slate-700/50;
-}
-
-.navbar-more-options-item {
-  @apply block w-full py-2 px-2 rounded-xl text-start text-base font-medium;
-}
-
-.label-input-form {
-  @apply block text-sm font-normal leading-6 text-slate-900;
-}
-
-.input-form {
-  @apply block appearance-none text-slate-900 bg-white rounded-xl w-full px-3 mt-2 min-h-[2.5rem] shadow-sm sm:text-sm focus:outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200;
-}
-
-.input-form-warning {
-  @apply bg-yellow-50 placeholder:text-yellow-600 placeholder:font-medium focus:ring-2 focus:ring-yellow-500 ring-yellow-500;
-}
-
-.input-form-error {
-  @apply bg-red-50 placeholder:text-red-500 placeholder:font-medium focus:ring-2 focus:ring-red-500 ring-red-500;
-}
-
-.button-contained {
-  @apply inline-flex items-center justify-center gap-2 text-base font-medium text-white bg-sky-500 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 hover:text-slate-50 hover:bg-sky-400 focus-visible:outline-sky-500;
-}
-
-.button-outlined {
-  @apply inline-flex items-center justify-center gap-2 ring-1 text-base font-medium text-slate-700 ring-slate-200 bg-white focus:outline-none hover:text-slate-900 hover:ring-slate-300 hover:bg-sky-50 focus-visible:outline-sky-500 focus-visible:ring-slate-300;
-}
-
-.button-text {
-  @apply inline-flex items-center justify-center gap-2 text-base font-medium focus:outline-none focus-visible:outline-sky-500;
-}
-.button-text-secondary {
-  @apply text-sky-500 hover:bg-sky-100;
-}
-
-.button-text-third {
-  @apply w-fit h-fit rounded-xl text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-slate-200;
-}
-
-@keyframes slideInRight {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
+@layer utilities {
+  .focus {
+    @apply focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500;
   }
 }
 
-@keyframes slideInLeft {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
+@layer components {
+  .navbar-item-dark {
+    @apply block w-fit h-fit rounded-xl py-1 px-2 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-slate-200;
   }
-  to {
-    transform: translateX(0);
-    opacity: 1;
+
+  .navbar-item-light {
+    @apply inline-block rounded-xl py-1 px-2 text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900;
+  }
+
+  .navbar-more-options-item-container {
+    @apply block w-full h-fit text-slate-400 hover:bg-slate-700/50;
+  }
+
+  .navbar-more-options-item {
+    @apply block w-full py-2 px-2 rounded-xl text-start text-base font-medium;
+  }
+
+  .label-input-form {
+    @apply block text-sm font-normal leading-6 text-slate-900;
+  }
+
+  .input-form {
+    @apply block appearance-none text-slate-900 bg-white rounded-xl w-full px-3 mt-2 min-h-[2.5rem] shadow-sm sm:text-sm focus:outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200;
+  }
+
+  .input-form-warning {
+    @apply bg-yellow-50 placeholder:text-yellow-600 placeholder:font-medium focus:ring-2 focus:ring-yellow-500 ring-yellow-500;
+  }
+
+  .input-form-error {
+    @apply bg-red-50 placeholder:text-red-500 placeholder:font-medium focus:ring-2 focus:ring-red-500 ring-red-500;
+  }
+
+  .button-contained {
+    @apply inline-flex items-center justify-center gap-2 text-base font-medium text-white bg-sky-500 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 hover:text-slate-50 hover:bg-sky-400 focus-visible:outline-sky-500;
+  }
+
+  .button-outlined {
+    @apply inline-flex items-center justify-center gap-2 ring-1 text-base font-medium text-slate-700 ring-slate-200 bg-white focus:outline-none hover:text-slate-900 hover:ring-slate-300 hover:bg-sky-50 focus-visible:outline-sky-500 focus-visible:ring-slate-300;
+  }
+
+  .button-text {
+    @apply inline-flex items-center justify-center gap-2 text-base font-medium focus:outline-none focus-visible:outline-sky-500;
+  }
+
+  .button-text-secondary {
+    @apply text-sky-500 hover:bg-sky-100;
+  }
+
+  .button-text-third {
+    @apply w-fit h-fit rounded-xl text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-slate-200;
   }
 }
 
-@keyframes slideInTop {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
+@layer keyframes {
+  @keyframes slideInRight {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
-  to {
-    transform: translateY(0);
-    opacity: 1;
+
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInTop {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes spin-reverse {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes grow {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
   }
 }
 
-@keyframes spin-reverse {
-  from {
-    transform: rotate(360deg);
+@layer utilities {
+  .animate-slide-in-right {
+    animation: slideInRight 1s ease-out;
   }
-  to {
-    transform: rotate(0deg);
+
+  .animate-slide-in-left {
+    animation: slideInLeft 1s ease-out;
   }
-}
 
-@keyframes grow {
-  from {
-    transform: scale(0);
+  .animate-slide-in-top {
+    animation: slideInTop 1s ease-out;
   }
-  to {
-    transform: scale(1);
+
+  .animate-spin-slower {
+    animation: spin 6s linear infinite;
   }
-}
 
-.animate-slide-in-right {
-  animation: slideInRight 1s ease-out;
-}
+  .animate-spin-slow {
+    animation: spin 4s linear infinite;
+  }
 
-.animate-slide-in-left {
-  animation: slideInLeft 1s ease-out;
-}
-.animate-slide-in-top {
-  animation: slideInTop 1s ease-out;
-}
+  .animate-spin-reverse-slower {
+    animation: spin-reverse 6s linear infinite;
+  }
 
-.animate-spin-slower {
-  animation: spin 6s linear infinite;
-}
-
-.animate-spin-slow {
-  animation: spin 4s linear infinite;
-}
-
-.animate-spin-reverse-slower {
-  animation: spin-reverse 6s linear infinite;
-}
-
-.animate-grow {
-  animation: grow 1.5s ease-in-out;
+  .animate-grow {
+    animation: grow 1.5s ease-in-out;
+  }
 }

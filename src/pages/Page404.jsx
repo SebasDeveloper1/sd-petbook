@@ -65,6 +65,7 @@ export default function Page404() {
               className="w-full max-w-sm aspect-square"
               src={illustration404}
               alt="Page not found"
+              loading="lazy"
             />
             <div className="flex flex-col justify-center items-center gap-3 w-full">
               <Typography

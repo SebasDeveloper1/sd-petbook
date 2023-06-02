@@ -1,26 +1,27 @@
 import { useReducer } from 'react';
 
 export function useEvents() {
-  /* Setting the initial state of the store. */
+  /* Definir el estado inicial del store. */
   const initialState = {
     openModal: { modalInfo: {}, modalState: false },
   };
 
-  /* An object that contains the action types that are being used in the reducer. */
+  /* Definir los tipos de acciones que se utilizan en el reducer. */
   const actionTypes = {
-    click_modal: 'CLICK_MODAL',
+    CLICK_MODAL: 'CLICK_MODAL',
   };
 
   /**
-   * If the action type is click_modal, then return a new state object with the openModal property set to
-   * the payload of the action.
-   * @param state - The current state of the store.
-   * @param action - This is the action object that is dispatched.
-   * @returns The state is being returned.
+   * El reducer actualiza el estado basado en las acciones que se envían.
+   * Si el tipo de acción es CLICK_MODAL, se devuelve un nuevo objeto de estado con la propiedad openModal
+   * establecida según el valor del campo payload de la acción.
+   * @param state - El estado actual del store.
+   * @param action - El objeto de acción que se despacha.
+   * @returns El nuevo estado.
    */
   const reducer = (state, action) => {
     switch (action.type) {
-      case actionTypes.click_modal:
+      case actionTypes.CLICK_MODAL:
         return {
           ...state,
           openModal: action.payload,
@@ -31,13 +32,14 @@ export function useEvents() {
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
+
   /**
-   * It takes an object with a modalChild and modalInfo property,
-   * and then dispatches an action with a
+   * Esta función toma un objeto con las propiedades modalInfo y modalState,
+   * y luego despacha una acción con el tipo CLICK_MODAL y el campo payload correspondiente.
    */
   const handlerModal = ({ modalInfo = {} } = {}) => {
     dispatch({
-      type: actionTypes.click_modal,
+      type: actionTypes.CLICK_MODAL,
       payload: {
         modalInfo,
         modalState: !state.openModal.modalState,

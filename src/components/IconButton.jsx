@@ -7,8 +7,9 @@ export function IconButton({
   type = 'button',
   variant = 'contained',
   styles = '',
-  icon = null,
   title = '',
+  ariaLabel = '',
+  icon = null,
   disabled = null,
   handleOnClick = null,
   refElement = null,
@@ -30,6 +31,7 @@ export function IconButton({
       }
       onClick={handleOnClick}
       title={title}
+      aria-label={ariaLabel}
     >
       <IconContext.Provider value={{ className: 'text-3xl' }}>
         {icon}

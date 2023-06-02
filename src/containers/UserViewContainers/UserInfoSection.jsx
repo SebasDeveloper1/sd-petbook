@@ -10,7 +10,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { Typography, Button } from 'components/indexComponents';
 import { getStorageImageUrl } from 'fbase/storageFunctions';
-import defaultImage from 'images/profile-picture.png';
+import defaultImage from 'images/profile-picture.webp';
 
 const dataTypes = {
   TEXT: 'text',
@@ -95,6 +95,7 @@ export function UserInfoSection({ userInfo = {} }) {
         className="w-60 aspect-square shadow-lg object-cover object-center"
         src={profileUrl}
         alt={username}
+        loading="lazy"
       />
       <div className="w-full text-center">
         <Typography

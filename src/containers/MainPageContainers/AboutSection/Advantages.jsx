@@ -9,7 +9,7 @@ import {
   MdOutlinePets,
 } from 'react-icons/md';
 import { Typography } from 'components/indexComponents';
-import image2 from 'images/main-hero3.png';
+import image2 from 'images/main-hero3.webp';
 
 export function Advantages() {
   const { ref, inView } = useInView({
@@ -113,6 +113,7 @@ export function Advantages() {
             className="w-full h-full object-contain object-center drop-shadow-xl"
             src={inView ? image2 : null}
             alt="about us 2"
+            loading="lazy"
           />
         ) : null}
       </figure>

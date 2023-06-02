@@ -8,7 +8,7 @@ import {
   MdOutlinePets,
 } from 'react-icons/md';
 import { Typography } from 'components/indexComponents';
-import image4 from 'images/main-hero4.png';
+import image4 from 'images/main-hero4.webp';
 
 export function HowWeWork() {
   const { ref, inView } = useInView({
@@ -128,6 +128,7 @@ export function HowWeWork() {
           className="w-full aspect-square object-contain object-center drop-shadow-xl"
           src={image4}
           alt="about us 1"
+          loading="lazy"
         />
       </figure>
     </article>

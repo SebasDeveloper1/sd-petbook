@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Logo } from 'components/indexComponents';
-import imageHero1 from 'images/main-hero1.png';
-import imageHero2 from 'images/main-hero2.png';
+import imageHero1 from 'images/main-hero1.webp';
+import imageHero2 from 'images/main-hero2.webp';
 
 export function HeroMain() {
   return (
@@ -12,6 +12,7 @@ export function HeroMain() {
             className="hidden md:block w-full h-full object-cover object-right animate-slide-in-right"
             src={imageHero1}
             alt="hero"
+            loading="lazy"
           />
         </div>
 
@@ -34,6 +35,7 @@ export function HeroMain() {
             className="w-full h-full object-cover object-left animate-slide-in-left"
             src={imageHero2}
             alt="hero"
+            loading="lazy"
           />
         </div>
       </div>

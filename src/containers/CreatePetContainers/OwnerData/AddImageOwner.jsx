@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Typography } from 'components/indexComponents';
 import { getStorageImageUrl } from 'fbase/storageFunctions';
-import defaultImageOwner from 'images/profile-picture.png';
+import defaultImageOwner from 'images/profile-picture.webp';
 
 export function AddImageOwner({
   fileInput = {},
@@ -40,6 +40,7 @@ export function AddImageOwner({
               className="w-44  mb-2 aspect-square m-auto rounded-full object-cover object-center"
               src={url}
               alt="Mascota"
+              loading="lazy"
             />
             <span>Selecciona una foto</span>
             <input

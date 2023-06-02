@@ -3,7 +3,7 @@ import React, { useState, useEffect, useId } from 'react';
 import { MdClose } from 'react-icons/md';
 import { Typography, TextField, IconButton } from 'components/indexComponents';
 import { getStorageImageUrl } from 'fbase/storageFunctions';
-import defaultImage from 'images/img-picture.png';
+import defaultImage from 'images/img-picture.webp';
 
 export function VaccinesInputs({
   date = '',
@@ -129,6 +129,7 @@ export function VaccinesInputs({
                 className="h-10 aspect-square object-cover object-center"
                 src={imageUrl || defaultImage}
                 alt="Vacuna"
+                loading="lazy"
               />
               <input
                 id={`petImage_${imageId}`}

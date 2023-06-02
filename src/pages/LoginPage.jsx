@@ -5,7 +5,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { Logo, Button, Typography, MetaHead } from 'components/indexComponents';
 import { loginWithGoogle } from 'fbase/authFunctions';
 import { useGetUserState } from 'hooks/useGetUserState';
-import coverLogin from 'images/cover-login.jpg';
+import coverLogin from 'images/cover-login.webp';
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -45,6 +45,7 @@ export default function LoginPage() {
             className="w-full h-full object-cover object-center"
             src={coverLogin}
             alt="banner pets"
+            loading="lazy"
           />
         </figure>
         <section className="flex justify-center w-full lg:w-2/5 lg:h-scree">

@@ -84,6 +84,7 @@ export function NavBarLG({
             className="w-8 aspect-square rounded-full"
             src={profileUrl}
             alt="User"
+            loading="lazy"
           />
           <IconContext.Provider
             value={{

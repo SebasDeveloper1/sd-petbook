@@ -8,6 +8,7 @@ export function Button({
   variant = 'contained',
   styles = '',
   value = '',
+  ariaLabel = '',
   startIcon = null,
   endIcon = null,
   disabled = null,
@@ -30,6 +31,7 @@ export function Button({
           : `${buttonVariant[variant]} ${styles}`
       }
       onClick={handleOnClick}
+      aria-label={ariaLabel}
     >
       <IconContext.Provider value={{ className: 'text-3xl' }}>
         {startIcon}

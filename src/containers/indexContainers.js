@@ -9,6 +9,7 @@ import { DashboardWrapperNoLogin } from './GlobalContainers/DashboardWrapperNoLo
 import { GoToBackLayout } from './GlobalContainers/GoToBackLayout';
 import { ConfirmationLayout } from './GlobalContainers/ConfirmationLayout';
 import { TextFieldGenerator } from './GlobalContainers/TextFieldGenerator';
+import { QrLayout } from './GlobalContainers/QrLayout';
 
 // HeaderContainers
 import { NavBarLG } from './HeaderContainers/NavBarLG';
@@ -65,6 +66,7 @@ export {
   GoToBackLayout,
   ConfirmationLayout,
   TextFieldGenerator,
+  QrLayout,
 };
 // HeaderContainers
 export { NavBarLG, NavBarSM };

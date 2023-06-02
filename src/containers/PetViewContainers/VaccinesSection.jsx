@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Typography, VaccineCard } from 'components/indexComponents';
 import { getStorageImageUrl } from 'fbase/storageFunctions';
 import { getDate } from 'utils/dateFunctions';
-import defaultImage from 'images/no_image_available.png';
+import defaultImage from 'images/no_image_available.webp';
 
 export function VaccinesSection({ petInfo = {} }) {
   const { vaccinesList = [] } = petInfo;
