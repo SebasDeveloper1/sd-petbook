@@ -156,7 +156,7 @@ export function PetCard({ petInfo = {}, handleDelete = null }) {
                   <li key={`button-${button.value}`} className="w-full">
                     <button
                       type="button"
-                      className="flex items-center justify-between w-full py-0.5 text-start text-base font-medium tracking-tight text-slate-400 hover:text-white"
+                      className="flex items-center justify-between w-full py-1 text-start text-base font-medium tracking-tight text-slate-400 hover:text-white"
                       onClick={button.handler}
                       role="menuitem"
                     >
