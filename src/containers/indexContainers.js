@@ -48,7 +48,8 @@ import { EditForm } from './EditUserContainers/EditForm';
 import { LoadingSkeletonEditForm } from './EditUserContainers/LoadingSkeletonEditForm';
 
 // PetViewContainers
-import { HeroSection } from './PetViewContainers/HeroSection';
+import { PetInfoSection } from './PetViewContainers/PetInfoSection';
+import { PetDesc } from './PetViewContainers/PetDesc';
 import { VaccinesSection } from './PetViewContainers/VaccinesSection';
 import { OwnerInfoSection } from './PetViewContainers/OwnerInfoSection';
 import { LoadingSkeletonPetView } from './PetViewContainers/LoadingSkeletonPetView';
@@ -94,7 +95,8 @@ export { UserInfoSection, LoadingSkeletonUserView };
 export { EditForm, LoadingSkeletonEditForm };
 // PetViewContainers
 export {
-  HeroSection,
+  PetInfoSection,
+  PetDesc,
   VaccinesSection,
   OwnerInfoSection,
   LoadingSkeletonPetView,

@@ -31,6 +31,7 @@ module.exports = {
         BeamsCover: 'url("/src/assets/images/beams-cover@95.webp")',
         BeamsHome: 'url("/src/assets/images/beams-home@95.webp")',
         illustrationPet1: 'url("/src/assets/images/pet-illustration.svg")',
+        BgDark: 'url("/src/assets/images/bg-dark.png")',
       },
     },
   },
