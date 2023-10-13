@@ -46,14 +46,14 @@ export function VaccinesSection({ petInfo = {} }) {
   }, [vaccinesList]);
 
   return (
-    <section className="pb-24">
+    <section>
       <Typography
         variant="h3"
         value="Historial de Vacunación"
         styles="relative border-b pt-8 pb-4 max-w-prose font-semibold text-slate-900 after:absolute after:top-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-32 after:h-1 after:rounded-full after:bg-cover after:bg-sky-400"
       />
 
-      <ul className="mt-12 mx-auto grid grid-cols-1 gap-6 w-full sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-12 mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 w-full sm:gap-8">
         {vaccines.length > 0 ? (
           vaccines.map((vaccine) => (
             <VaccineCard
@@ -62,7 +62,7 @@ export function VaccinesSection({ petInfo = {} }) {
             />
           ))
         ) : (
-          <li className="col-span-1 md:col-span-2 lg:col-span-5 flex justify-center items-center w-full h-20 rounded-xl border-dashed border-2 border-slate-300">
+          <li className="col-span-2 flex justify-center items-center w-full h-20 rounded-xl border-dashed border-2 border-slate-300">
             <Typography
               variant="span_xl"
               value="Historial no disponible"

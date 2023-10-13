@@ -77,7 +77,7 @@ export default function PetViewPage() {
               <LoadingSkeletonPetView />
             ) : (
               <>
-                <section className="flex justify-center w-full min-h-screen py-12 bg-BeamsCover bg-contain bg-top bg-no-repeat">
+                <section className="flex justify-center w-full min-h-screen pt-12 pb-24  bg-BeamsCover bg-contain bg-top bg-no-repeat">
                   <div className="w-11/12">
                     <section className="grid grid-cols-3 justify-center gap-6 divide-y md:divide-x md:divide-y-0">
                       <div className="col-span-3 md:col-span-1 flex flex-col items-center gap-6 ">
