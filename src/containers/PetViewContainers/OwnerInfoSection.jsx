@@ -71,82 +71,118 @@ export function OwnerInfoSection({ petInfo = {} }) {
     },
   ];
   return (
-    <section className="w-full pt-12 pb-24 bg-slate-900">
-      <div className="flex flex-col justify-center items-center w-11/12 m-auto">
-        <div className="relative max-w-xl mb-8">
-          <Typography
-            variant="h3"
-            value="Información del Propietario"
-            styles="z-10 relative pt-12 pb-12 max-w-prose font-semibold text-white after:absolute after:top-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-32 after:h-1 after:rounded-full after:bg-
-            cover after:bg-slate-800"
+    <section className="w-full pb-24">
+      <div className="relative overflow-hidden grid grid-cols-3 justify-center items-center gap-4 md:gap-0 w-full p-5 md:p-0 mx-auto rounded-xl bg-slate-900 shadow-lg">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="icon icon-tabler icon-tabler-paw-filled absolute -top-10 -right-10 transform -rotate-45 text-sky-400/10"
+          width={380}
+          height={380}
+          viewBox="0 0 24 24"
+          strokeWidth={2}
+          stroke="currentColor"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M12 10c-1.32 0 -1.983 .421 -2.931 1.924l-.244 .398l-.395 .688a50.89 50.89 0 0 0 -.141 .254c-.24 .434 -.571 .753 -1.139 1.142l-.55 .365c-.94 .627 -1.432 1.118 -1.707 1.955c-.124 .338 -.196 .853 -.193 1.28c0 1.687 1.198 2.994 2.8 2.994l.242 -.006c.119 -.006 .234 -.017 .354 -.034l.248 -.043l.132 -.028l.291 -.073l.162 -.045l.57 -.17l.763 -.243l.455 -.136c.53 -.15 .94 -.222 1.283 -.222c.344 0 .753 .073 1.283 .222l.455 .136l.764 .242l.569 .171l.312 .084c.097 .024 .187 .045 .273 .062l.248 .043c.12 .017 .235 .028 .354 .034l.242 .006c1.602 0 2.8 -1.307 2.8 -3c0 -.427 -.073 -.939 -.207 -1.306c-.236 -.724 -.677 -1.223 -1.48 -1.83l-.257 -.19l-.528 -.38c-.642 -.47 -1.003 -.826 -1.253 -1.278l-.27 -.485l-.252 -.432c-1.011 -1.696 -1.618 -2.099 -3.053 -2.099z"
+            strokeWidth={0}
+            fill="currentColor"
           />
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 418 42"
-            className="absolute bottom-7 left-0 h-[2em] w-full fill-sky-400"
-            preserveAspectRatio="none"
-          >
-            <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z" />
-          </svg>
-        </div>
-        <div className="overflow-hidden grid grid-cols-3 justify-center items-center gap-8 w-fit max-w-3xl px-8 py-10 rounded-xl bg-slate-800 shadow-lg">
-          <figure className="col-span-3 md:col-span-1">
-            <img
-              style={{ borderRadius: '30% 70% 67% 33% / 30% 30% 70% 70%' }}
-              className="w-3/5 md:w-4/5 mx-auto aspect-square object-cover object-center"
-              src={pictureUrl || defaultImage}
-              alt={ownerNames}
-              loading="lazy"
-            />
-          </figure>
+          <path
+            d="M19.78 7h-.03c-1.219 .02 -2.35 1.066 -2.908 2.504c-.69 1.775 -.348 3.72 1.075 4.333c.256 .109 .527 .163 .801 .163c1.231 0 2.38 -1.053 2.943 -2.504c.686 -1.774 .34 -3.72 -1.076 -4.332a2.05 2.05 0 0 0 -.804 -.164z"
+            strokeWidth={0}
+            fill="currentColor"
+          />
+          <path
+            d="M9.025 3c-.112 0 -.185 .002 -.27 .015l-.093 .016c-1.532 .206 -2.397 1.989 -2.108 3.855c.272 1.725 1.462 3.114 2.92 3.114l.187 -.005a1.26 1.26 0 0 0 .084 -.01l.092 -.016c1.533 -.206 2.397 -1.989 2.108 -3.855c-.27 -1.727 -1.46 -3.114 -2.92 -3.114z"
+            strokeWidth={0}
+            fill="currentColor"
+          />
+          <path
+            d="M14.972 3c-1.459 0 -2.647 1.388 -2.916 3.113c-.29 1.867 .574 3.65 2.174 3.867c.103 .013 .2 .02 .296 .02c1.39 0 2.543 -1.265 2.877 -2.883l.041 -.23c.29 -1.867 -.574 -3.65 -2.174 -3.867a2.154 2.154 0 0 0 -.298 -.02z"
+            strokeWidth={0}
+            fill="currentColor"
+          />
+          <path
+            d="M4.217 7c-.274 0 -.544 .054 -.797 .161c-1.426 .615 -1.767 2.562 -1.078 4.335c.563 1.451 1.71 2.504 2.941 2.504c.274 0 .544 -.054 .797 -.161c1.426 -.615 1.767 -2.562 1.078 -4.335c-.563 -1.451 -1.71 -2.504 -2.941 -2.504z"
+            strokeWidth={0}
+            fill="currentColor"
+          />
+        </svg>
 
-          <section className="col-span-3 md:col-span-2 md:px-0 md:py-6 space-y-3 text-blue-50 text-xl">
+        <figure className="z-10 col-span-3 md:col-span-1 flex justify-center items-center h-full">
+          <img
+            className="w-3/5 md:w-auto md:h-full rounded-full border-4 border-sky-400 md:rounded-none md:border-none aspect-square object-cover object-center"
+            src={pictureUrl || defaultImage}
+            alt={ownerNames}
+            loading="lazy"
+          />
+        </figure>
+
+        <section className="z-10 col-span-3 md:col-span-2 md:p-8 space-y-3 text-blue-50 text-xl">
+          <div className="w-full pb-2 leading-3">
             <Typography
-              variant="h3"
-              value={`${ownerNames} ${ownerSurnames}` || msmByDefault}
-              styles="pb-2 font-semibold text-white capitalize text-center md:text-start"
+              variant="span_sm"
+              value="Responsable"
+              styles="text-sky-400 capitalize text-center md:text-start"
             />
-            {ownerInfo.map((item) =>
-              item.type === dataTypes.TEXT ? (
-                <article
-                  key={`petFearures_${item?.name}`}
-                  className="col-span-2 md:col-span-1 flex items-center gap-3 text-slate-400"
+            <Typography
+              variant="h5"
+              value={`${ownerNames} ${ownerSurnames}` || msmByDefault}
+              styles="font-semibold text-white capitalize text-center md:text-start"
+            />
+          </div>
+          {ownerInfo.map((item) =>
+            item.type === dataTypes.TEXT ? (
+              <article
+                key={`petFearures_${item?.name}`}
+                className="col-span-2 md:col-span-1 flex items-center gap-3 text-slate-300"
+              >
+                {item?.icon}
+                <Typography
+                  variant="span_base"
+                  value={item?.data}
+                  styles="truncate capitalize"
+                />
+              </article>
+            ) : item?.data !== msmByDefault ? (
+              <article
+                key={`petFearures_${item?.name}`}
+                className="group col-span-2 md:col-span-1 flex items-center gap-3 text-slate-300 hover:text-sky-500"
+              >
+                {item?.icon}
+                <a
+                  href={
+                    item?.type === dataTypes.URL
+                      ? item?.data
+                      : item?.type === dataTypes.MAIL
+                      ? `mailto:${item?.data}`
+                      : `tel:${item?.data}`
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full truncate"
+                  title={
+                    item?.type === dataTypes.URL
+                      ? 'Ir a sitio web'
+                      : item?.type === dataTypes.MAIL
+                      ? 'Enviar correo electrónico'
+                      : 'Llamar'
+                  }
                 >
-                  {item?.icon}
                   <Typography
                     variant="span_base"
                     value={item?.data}
-                    styles="truncate capitalize"
+                    styles="hover:text-sky-500 group-hover:underline truncate"
                   />
-                </article>
-              ) : item?.data !== msmByDefault ? (
-                <article
-                  key={`petFearures_${item?.name}`}
-                  className="group col-span-2 md:col-span-1 flex items-center gap-3 text-slate-400 hover:text-sky-500"
-                >
-                  {item?.icon}
-                  <a
-                    href={
-                      item?.type === dataTypes.URL
-                        ? item?.data
-                        : item?.type === dataTypes.MAIL
-                        ? `mailto:${item?.data}`
-                        : `tel:${item?.data}`
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Typography
-                      variant="span_base"
-                      value={item?.data}
-                      styles="hover:text-sky-500 group-hover:underline truncate"
-                    />
-                  </a>
-                </article>
-              ) : null
-            )}
-          </section>
-        </div>
+                </a>
+              </article>
+            ) : null
+          )}
+        </section>
       </div>
     </section>
   );

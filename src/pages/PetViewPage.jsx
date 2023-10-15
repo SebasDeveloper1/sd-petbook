@@ -76,21 +76,19 @@ export default function PetViewPage() {
             {loading ? (
               <LoadingSkeletonPetView />
             ) : (
-              <>
-                <section className="flex justify-center w-full min-h-screen pt-12 pb-24  bg-BeamsCover bg-contain bg-top bg-no-repeat">
-                  <div className="w-11/12">
-                    <section className="grid grid-cols-3 justify-center gap-6 divide-y md:divide-x md:divide-y-0">
-                      <div className="col-span-3 md:col-span-1 flex flex-col items-center gap-6 ">
-                        <PetInfoSection petInfo={petInfo} />
-                      </div>
-                      <div className="col-span-3 md:col-span-2 pt-6 md:pl-6 md:py-0">
-                        <VaccinesSection petInfo={petInfo} />
-                      </div>
-                    </section>
-                  </div>
-                </section>
-                <OwnerInfoSection petInfo={petInfo} />
-              </>
+              <section className="flex justify-center w-full min-h-screen pt-12 pb-24  bg-BeamsCover bg-contain bg-top bg-no-repeat">
+                <div className="w-11/12">
+                  <section className="grid grid-cols-3 justify-center gap-10 divide-y md:divide-x md:divide-y-0">
+                    <div className="col-span-3 md:col-span-1 flex flex-col items-center gap-6 ">
+                      <PetInfoSection petInfo={petInfo} />
+                    </div>
+                    <div className="col-span-3 md:col-span-2 pt-6 md:pl-10 md:py-0">
+                      <OwnerInfoSection petInfo={petInfo} />
+                      <VaccinesSection petInfo={petInfo} />
+                    </div>
+                  </section>
+                </div>
+              </section>
             )}
           </section>
         </WrapperComponent>
