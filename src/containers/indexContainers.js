@@ -10,6 +10,7 @@ import { GoToBackLayout } from './GlobalContainers/GoToBackLayout';
 import { ConfirmationLayout } from './GlobalContainers/ConfirmationLayout';
 import { TextFieldGenerator } from './GlobalContainers/TextFieldGenerator';
 import { QrLayout } from './GlobalContainers/QrLayout';
+import { VaccineDetails } from './GlobalContainers/VaccineDetails';
 
 // HeaderContainers
 import { NavBarLG } from './HeaderContainers/NavBarLG';
@@ -68,6 +69,7 @@ export {
   ConfirmationLayout,
   TextFieldGenerator,
   QrLayout,
+  VaccineDetails,
 };
 // HeaderContainers
 export { NavBarLG, NavBarSM };

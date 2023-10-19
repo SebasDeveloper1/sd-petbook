@@ -125,7 +125,7 @@ export function PetCard({ petInfo = {}, handleDelete = null }) {
             <img
               src={imageUrl || defaultImage}
               alt={petName}
-              className="w-full h-full  object-cover object-center"
+              className="w-full h-full object-cover object-center"
               loading="lazy"
             />
             <button

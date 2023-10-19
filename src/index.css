@@ -62,6 +62,17 @@
   }
 }
 
+*::-webkit-scrollbar {
+  inline-size: 8px;
+}
+*::-webkit-scrollbar-track {
+  background-color: #0f172a;
+}
+*::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #0ea5e9;
+}
+
 @layer keyframes {
   @keyframes slideInRight {
     from {
