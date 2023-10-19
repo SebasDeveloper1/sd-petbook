@@ -11,10 +11,11 @@ import {
   FaWeight,
   FaRuler,
 } from 'react-icons/fa';
-import { Typography } from 'components/indexComponents';
-import { PetDesc } from 'containers/indexContainers';
+import { Typography, ImageViewDetails } from 'components/indexComponents';
+import { PetDesc, Modal } from 'containers/indexContainers';
 import { getStorageImageUrl } from 'fbase/storageFunctions';
 import { getPetAge } from 'utils/getPetAge';
+import { useEvents } from 'hooks/useEvents';
 import defaultImage from 'images/loading-image.gif';
 
 export function PetInfoSection({ petInfo = {} }) {
@@ -31,6 +32,9 @@ export function PetInfoSection({ petInfo = {} }) {
     petRepStatus,
   } = petInfo;
   const [pictureUrl, setPictureUrl] = useState(defaultImage);
+
+  const { stateEvents, handlerModal } = useEvents();
+  const { openModal } = stateEvents;
 
   useEffect(() => {
     const fetchPictureUrl = async () => {
@@ -61,16 +65,31 @@ export function PetInfoSection({ petInfo = {} }) {
   const capitalizeFirstLetter = (string) =>
     string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 
+  const handlerGoToModal = (e) => {
+    e.preventDefault();
+
+    handlerModal({
+      modalInfo: {
+        imageTitle: petName,
+        imageData: pictureUrl,
+      },
+    });
+  };
+
   return (
     <>
-      <figure className="flex justify-center items-center w-full">
+      <button
+        type="button"
+        style={{ borderRadius: '30% 70% 67% 33% / 30% 30% 70% 70%' }}
+        className="overflow-hidden flex justify-center items-center w-9/12 shadow-lg transform transition-all hover:scale-105"
+        onClick={handlerGoToModal}
+      >
         <img
-          style={{ borderRadius: '30% 70% 67% 33% / 30% 30% 70% 70%' }}
-          className="w-9/12 aspect-square shadow-lg object-cover object-center"
+          className="w-full aspect-square object-cover object-center"
           src={pictureUrl || defaultImage}
           alt={petName}
         />
-      </figure>
+      </button>
 
       <section className="flex flex-col justify-center items-center w-full">
         <Typography
@@ -117,6 +136,15 @@ export function PetInfoSection({ petInfo = {} }) {
         ))}
       </section>
       <PetDesc petInfo={petInfo} />
+
+      {openModal?.modalState && (
+        <Modal>
+          <ImageViewDetails
+            imageInfo={openModal?.modalInfo}
+            handleCloseModal={handlerModal}
+          />
+        </Modal>
+      )}
     </>
   );
 }

@@ -7,6 +7,7 @@ import { TextSelection } from './TextSelection';
 import { PetCard } from './PetCard';
 import { VaccineCard } from './VaccineCard';
 import { MetaHead } from './MetaHead';
+import { ImageViewDetails } from './ImageViewDetails';
 
 export {
   Logo,
@@ -18,4 +19,5 @@ export {
   PetCard,
   VaccineCard,
   MetaHead,
+  ImageViewDetails,
 };

@@ -14,7 +14,7 @@ export function VaccineDetails({ vaccineInfo = {}, handleCloseModal = null }) {
   const [imageUrl, setImageUrl] = useState(defaultImage);
 
   useEffect(() => {
-    setImageUrl(image);
+    if (image) setImageUrl(image);
   });
 
   const infoCard = [

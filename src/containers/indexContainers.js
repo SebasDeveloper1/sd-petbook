@@ -10,7 +10,6 @@ import { GoToBackLayout } from './GlobalContainers/GoToBackLayout';
 import { ConfirmationLayout } from './GlobalContainers/ConfirmationLayout';
 import { TextFieldGenerator } from './GlobalContainers/TextFieldGenerator';
 import { QrLayout } from './GlobalContainers/QrLayout';
-import { VaccineDetails } from './GlobalContainers/VaccineDetails';
 
 // HeaderContainers
 import { NavBarLG } from './HeaderContainers/NavBarLG';
@@ -54,6 +53,7 @@ import { PetDesc } from './PetViewContainers/PetDesc';
 import { VaccinesSection } from './PetViewContainers/VaccinesSection';
 import { OwnerInfoSection } from './PetViewContainers/OwnerInfoSection';
 import { LoadingSkeletonPetView } from './PetViewContainers/LoadingSkeletonPetView';
+import { VaccineDetails } from './PetViewContainers/VaccineDetails';
 
 // --------- Exported Objects ---------
 // GlobalContainers
@@ -69,7 +69,6 @@ export {
   ConfirmationLayout,
   TextFieldGenerator,
   QrLayout,
-  VaccineDetails,
 };
 // HeaderContainers
 export { NavBarLG, NavBarSM };
@@ -102,4 +101,5 @@ export {
   VaccinesSection,
   OwnerInfoSection,
   LoadingSkeletonPetView,
+  VaccineDetails,
 };
