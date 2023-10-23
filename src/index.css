@@ -58,7 +58,7 @@
   }
 
   .button-text-third {
-    @apply w-fit h-fit rounded-xl text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-slate-200;
+    @apply w-fit h-fit rounded-xl text-base font-medium text-slate-200 hover:bg-slate-700 hover:text-slate-200;
   }
 }
 

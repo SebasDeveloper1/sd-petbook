@@ -54,6 +54,7 @@ import { VaccinesSection } from './PetViewContainers/VaccinesSection';
 import { OwnerInfoSection } from './PetViewContainers/OwnerInfoSection';
 import { LoadingSkeletonPetView } from './PetViewContainers/LoadingSkeletonPetView';
 import { VaccineDetails } from './PetViewContainers/VaccineDetails';
+import { PetOptionsBanner } from './PetViewContainers/PetOptionsBanner';
 
 // --------- Exported Objects ---------
 // GlobalContainers
@@ -102,4 +103,5 @@ export {
   OwnerInfoSection,
   LoadingSkeletonPetView,
   VaccineDetails,
+  PetOptionsBanner,
 };

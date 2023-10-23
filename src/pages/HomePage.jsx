@@ -8,7 +8,7 @@ import {
   PetList,
   LoadingSkeletonHome,
 } from 'containers/indexContainers';
-import { getPets, deletePet } from 'fbase/dbFunctions';
+import { getPets } from 'fbase/dbFunctions';
 import { useGetUserState } from 'hooks/useGetUserState';
 
 export default function HomePage() {
@@ -42,8 +42,7 @@ export default function HomePage() {
     getStateUser();
   }, []);
 
-  const handleDeletePet = async (petId) => {
-    await deletePet({ petId });
+  const handleDeletePet = (petId) => {
     setPetList((prevPetList) =>
       prevPetList.filter((pet) => pet.docId !== petId)
     );

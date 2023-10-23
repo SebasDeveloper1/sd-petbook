@@ -8,15 +8,17 @@ import {
   VaccinesSection,
   OwnerInfoSection,
   LoadingSkeletonPetView,
+  PetOptionsBanner,
 } from 'containers/indexContainers';
 import Page404 from 'pages/Page404';
-import { getPetInfo } from 'fbase/dbFunctions';
+import { getPetInfo, getPets } from 'fbase/dbFunctions';
 import { useGetUserState } from 'hooks/useGetUserState';
 
 export default function PetViewPage() {
   // eslint-disable-next-line no-unused-vars
   const [currentUser, setCurrentUser] = useState(null);
   const [petInfo, setPetInfo] = useState({});
+  const [petExists, setPetExists] = useState(false);
   const [loading, setLoading] = useState(true);
   const { petName } = useParams();
   const petId = petName.split('+');
@@ -57,6 +59,26 @@ export default function PetViewPage() {
     fetchInfo();
   }, []);
 
+  useEffect(() => {
+    const fetchPets = async () => {
+      try {
+        if (currentUser) {
+          const pets = await getPets(currentUser.uid);
+          const petList = pets.some((pet) => pet.id === petId[1]);
+          setPetExists(petList);
+        } else {
+          // Si el usuario no está autenticado, establece petExists como false.
+          setPetExists(false);
+        }
+      } catch (error) {
+        // Manejo de errores: puedes personalizar esto según tus necesidades, por ejemplo, registrando el error.
+        console.error('Error al cargar mascotas:', error);
+        setPetExists(false); // Devuelve false en caso de error.
+      }
+    };
+    fetchPets();
+  }, [currentUser, petId]);
+
   const WrapperComponent = currentUser
     ? DashboardWrapper
     : DashboardWrapperNoLogin;
@@ -71,11 +93,12 @@ export default function PetViewPage() {
           type="article"
           url={document.location.href}
         />
-        <WrapperComponent>
-          <section>
-            {loading ? (
-              <LoadingSkeletonPetView />
-            ) : (
+        <section>
+          {loading ? (
+            <LoadingSkeletonPetView />
+          ) : (
+            <WrapperComponent>
+              {petExists ? <PetOptionsBanner petInfo={petInfo} /> : null}
               <section className="flex justify-center w-full min-h-screen pt-12 pb-24  bg-BeamsCover bg-contain bg-top bg-no-repeat">
                 <div className="w-11/12">
                   <section className="grid grid-cols-3 justify-center gap-10 divide-y md:divide-x md:divide-y-0">
@@ -89,9 +112,9 @@ export default function PetViewPage() {
                   </section>
                 </div>
               </section>
-            )}
-          </section>
-        </WrapperComponent>
+            </WrapperComponent>
+          )}
+        </section>
       </>
     );
   }

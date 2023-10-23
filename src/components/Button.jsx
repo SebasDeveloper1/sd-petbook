@@ -33,11 +33,11 @@ export function Button({
       onClick={handleOnClick}
       aria-label={ariaLabel}
     >
-      <IconContext.Provider value={{ className: 'text-3xl' }}>
+      <IconContext.Provider value={{ className: 'text-xl' }}>
         {startIcon}
       </IconContext.Provider>
       {value}
-      <IconContext.Provider value={{ className: 'text-3xl' }}>
+      <IconContext.Provider value={{ className: 'text-xl' }}>
         {endIcon}
       </IconContext.Provider>
     </button>
