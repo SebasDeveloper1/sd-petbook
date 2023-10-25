@@ -4,7 +4,7 @@ import { BsClipboardPlus } from 'react-icons/bs';
 import { Button, PetCard, MetaHead } from 'components/indexComponents';
 import {
   DashboardWrapper,
-  HeaderList,
+  HeroHome,
   PetList,
   LoadingSkeletonHome,
 } from 'containers/indexContainers';
@@ -66,7 +66,7 @@ export default function HomePage() {
           <LoadingSkeletonHome />
         ) : (
           <div className="relative w-full min-h-screen bg-slate-900">
-            <HeaderList userInfo={currentUser} />
+            <HeroHome userInfo={currentUser} />
             <section className="flex flex-col justify-center items-center w-full bg-BeamsCover bg-cover bg-top bg-no-repeat">
               <PetList>
                 <Button

@@ -7,7 +7,7 @@ import {
   regExpCountry,
   regExpDeparment,
   regExpCity,
-} from 'utils/regularExpressionsList';
+} from 'utils/inputValidation/regularExpressionsList';
 
 const messageList = {
   MSM_USERNAME:

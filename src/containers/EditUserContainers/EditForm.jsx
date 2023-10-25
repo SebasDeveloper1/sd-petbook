@@ -3,20 +3,18 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import { Typography, Button } from 'components/indexComponents';
-import {
-  TextFieldGenerator,
-  LoadingSkeletonEditForm,
-} from 'containers/indexContainers';
+import { LoadingSkeletonEditForm } from 'containers/indexContainers';
 import { updateUser } from 'fbase/dbFunctions';
 import {
   getStorageImageUrl,
   setImageToStorageTypes,
 } from 'fbase/storageFunctions';
-import { validateUserDataForm } from 'utils/UserformValidationFunctions';
+import { TextFieldGenerator } from 'utils/componentsJSX/TextFieldGenerator';
+import { validateUserDataForm } from 'utils/inputValidation/UserformValidationFunctions';
 import { imageLoadController } from 'utils/imageLoadController';
 import { getTimePassed } from 'utils/dateFunctions';
 import defaultImage from 'images/profile-picture.webp';
-import { userformInputList } from './formInputList';
+import { userformInputList } from 'utils/inputList/userformInputList';
 
 export function EditForm({ userInfo, handleUserInfo } = {}) {
   const [fileInput, setFileInput] = useState([]);

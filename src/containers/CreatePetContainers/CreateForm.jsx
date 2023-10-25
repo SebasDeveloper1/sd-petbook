@@ -12,8 +12,8 @@ import {
   LoadingSkeletonCreatePet,
 } from 'containers/indexContainers';
 import { Typography, Button } from 'components/indexComponents';
-import { validatePetDataForm } from 'utils/PetformValidationFunctions';
-import { validateOwnerPetForm } from 'utils/UserformValidationFunctions';
+import { validatePetDataForm } from 'utils/inputValidation/PetformValidationFunctions';
+import { validateOwnerPetForm } from 'utils/inputValidation/UserformValidationFunctions';
 import { imageLoadController } from 'utils/imageLoadController';
 import { createNewPet } from 'fbase/dbFunctions';
 import { setImageToStorageTypes } from 'fbase/storageFunctions';

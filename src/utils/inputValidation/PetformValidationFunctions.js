@@ -4,7 +4,7 @@ import {
   regExpSpecie,
   regExpWeight,
   regExpHeight,
-} from 'utils/regularExpressionsList';
+} from 'utils/inputValidation/regularExpressionsList';
 
 export const validateField = (values, fieldName, errorMessage) => {
   const errors = {};

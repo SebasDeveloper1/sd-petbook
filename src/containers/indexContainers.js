@@ -1,19 +1,16 @@
 // GlobalContainers
 import { Layout } from './GlobalContainers/Layout';
-import { Header } from './GlobalContainers/Header';
-import { HeaderNoLogin } from './GlobalContainers/HeaderNoLogin';
+import { NavBarLG } from './GlobalContainers/Header/NavBarLG';
+import { NavBarSM } from './GlobalContainers/Header/NavBarSM';
+import { Header } from './GlobalContainers/Header/Header';
+import { HeaderNoLogin } from './GlobalContainers/Header/HeaderNoLogin';
 import { Footer } from './GlobalContainers/Footer';
-import { Modal } from './GlobalContainers/Modal';
-import { DashboardWrapper } from './GlobalContainers/DashboardWrapper';
-import { DashboardWrapperNoLogin } from './GlobalContainers/DashboardWrapperNoLogin';
-import { GoToBackLayout } from './GlobalContainers/GoToBackLayout';
-import { ConfirmationLayout } from './GlobalContainers/ConfirmationLayout';
-import { TextFieldGenerator } from './GlobalContainers/TextFieldGenerator';
-import { QrLayout } from './GlobalContainers/QrLayout';
-
-// HeaderContainers
-import { NavBarLG } from './HeaderContainers/NavBarLG';
-import { NavBarSM } from './HeaderContainers/NavBarSM';
+import { Modal } from './GlobalContainers/ModalComponents/Modal';
+import { DashboardWrapper } from './GlobalContainers/DashboardWrapper/DashboardWrapper';
+import { DashboardWrapperNoLogin } from './GlobalContainers/DashboardWrapper/DashboardWrapperNoLogin';
+import { GoToBackLayout } from './GlobalContainers/ModalComponents/GoToBackLayout';
+import { ConfirmationLayout } from './GlobalContainers/ModalComponents/ConfirmationLayout';
+import { QrLayout } from './GlobalContainers/ModalComponents/QrLayout';
 
 // ChooseUsernameContainers
 import { UsernameForm } from './ChooseUsernameContainers/UsernameForm';
@@ -24,7 +21,7 @@ import { AboutUsSection } from './MainPageContainers/AboutUsSection';
 import { AuthorSection } from './MainPageContainers/AuthorSection';
 
 // HomePageContainers
-import { HeaderList } from './HomeContainers/HeaderList';
+import { HeroHome } from './HomeContainers/HeroHome';
 import { PetList } from './HomeContainers/PetList';
 import { LoadingSkeletonHome } from './HomeContainers/LoadingSkeletonHome';
 
@@ -59,6 +56,8 @@ import { PetOptionsBanner } from './PetViewContainers/PetOptionsBanner';
 // --------- Exported Objects ---------
 // GlobalContainers
 export {
+  NavBarLG,
+  NavBarSM,
   Header,
   HeaderNoLogin,
   Layout,
@@ -68,17 +67,15 @@ export {
   DashboardWrapperNoLogin,
   GoToBackLayout,
   ConfirmationLayout,
-  TextFieldGenerator,
   QrLayout,
 };
-// HeaderContainers
-export { NavBarLG, NavBarSM };
+
 // ChooseUsernameContainers
 export { UsernameForm };
 // MainPageContainers
 export { HeroMain, AboutUsSection, AuthorSection };
 // HomePageContainers
-export { HeaderList, PetList, LoadingSkeletonHome };
+export { HeroHome, PetList, LoadingSkeletonHome };
 // CreatePetContainers
 export {
   AddImagePet,

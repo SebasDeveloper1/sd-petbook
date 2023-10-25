@@ -3,7 +3,7 @@ import { Typography } from 'components/indexComponents';
 import { getStorageImageUrl } from 'fbase/storageFunctions';
 import defaultImage from 'images/profile-picture.webp';
 
-export function HeaderList({ userInfo } = {}) {
+export function HeroHome({ userInfo } = {}) {
   const { profilePicture = '', username } = userInfo;
   const [profileUrl, setProfileUrl] = useState(defaultImage);
 

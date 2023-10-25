@@ -17,8 +17,8 @@ import {
   setImageToStorageTypes,
   deleteStorageImage,
 } from 'fbase/storageFunctions';
-import { validatePetDataForm } from 'utils/PetformValidationFunctions';
-import { validateOwnerPetForm } from 'utils/UserformValidationFunctions';
+import { validatePetDataForm } from 'utils/inputValidation/PetformValidationFunctions';
+import { validateOwnerPetForm } from 'utils/inputValidation/UserformValidationFunctions';
 import { imageLoadController } from 'utils/imageLoadController';
 import {
   getDateInMilliseconds,

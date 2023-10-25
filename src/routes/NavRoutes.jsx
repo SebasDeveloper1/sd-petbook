@@ -1,7 +1,9 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-const ScrollWrapper = React.lazy(() => import('utils//ScrollWrapper'));
+const ScrollWrapper = React.lazy(() =>
+  import('utils/componentsJSX/ScrollWrapper')
+);
 const MainPage = lazy(() => import('pages/MainPage'));
 const HomePage = lazy(() => import('pages/HomePage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));

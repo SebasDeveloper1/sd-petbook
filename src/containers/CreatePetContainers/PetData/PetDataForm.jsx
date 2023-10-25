@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, TextField } from 'components/indexComponents';
-import { TextFieldGenerator } from 'containers/indexContainers';
-import { petformInputList } from '../formInputList';
+import { TextFieldGenerator } from 'utils/componentsJSX/TextFieldGenerator ';
+import { petformInputList } from 'utils/inputList/petformInputList';
 
 export function PetDataForm({
   errors = {},
