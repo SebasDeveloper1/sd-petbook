@@ -13,7 +13,8 @@ import { ConfirmationLayout } from './GlobalContainers/ModalComponents/Confirmat
 import { QrLayout } from './GlobalContainers/ModalComponents/QrLayout';
 
 // ChooseUsernameContainers
-import { UsernameForm } from './ChooseUsernameContainers/UsernameForm';
+import { CreateProfileForm } from './CreateProfileContainers/CreateProfileForm';
+import { LoadingSkeletonCreateProfile } from './CreateProfileContainers/LoadingSkeletonCreateProfile';
 
 // MainPageContainers
 import { HeroMain } from './MainPageContainers/HeroMain';
@@ -71,7 +72,7 @@ export {
 };
 
 // ChooseUsernameContainers
-export { UsernameForm };
+export { CreateProfileForm, LoadingSkeletonCreateProfile };
 // MainPageContainers
 export { HeroMain, AboutUsSection, AuthorSection };
 // HomePageContainers

@@ -14,7 +14,7 @@ export default function LoginPage() {
     return 2;
   };
   const handlerUserNotRegistered = () => {
-    navigate('/choose-username');
+    navigate('/create-profile');
     return 3;
   };
 
@@ -48,7 +48,7 @@ export default function LoginPage() {
             loading="lazy"
           />
         </figure>
-        <section className="flex justify-center w-full lg:w-2/5 lg:h-scree">
+        <section className="flex justify-center w-full lg:w-2/5">
           <div className="w-11/12 max-w-2xl px-4 py-8 lg:w-9/12 space-y-6 rounded-md divide-y divide-slate-600">
             <section className="flex flex-col items-center">
               <Typography

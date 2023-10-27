@@ -7,7 +7,7 @@ const ScrollWrapper = React.lazy(() =>
 const MainPage = lazy(() => import('pages/MainPage'));
 const HomePage = lazy(() => import('pages/HomePage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
-const ChooseUserNamePage = lazy(() => import('pages/ChooseUserNamePage'));
+const CreateProfilePage = lazy(() => import('pages/CreateProfilePage'));
 const UserViewPage = lazy(() => import('pages/UserViewPage'));
 const EditUserPage = lazy(() => import('pages/EditUserPage'));
 const CreatePetPage = lazy(() => import('pages/CreatePetPage'));
@@ -26,8 +26,8 @@ export function NavRoutes() {
             <Route exact path="home" element={<HomePage />} />
             <Route
               exact
-              path="choose-username"
-              element={<ChooseUserNamePage />}
+              path="create-profile"
+              element={<CreateProfilePage />}
             />
             <Route exact path="p/:username" element={<UserViewPage />} />
             <Route exact path="p/edit" element={<EditUserPage />} />

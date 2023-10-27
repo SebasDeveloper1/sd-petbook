@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { TextFieldGenerator } from 'utils/componentsJSX/TextFieldGenerator ';
+import { TextFieldGenerator } from 'utils/componentsJSX/TextFieldGenerator';
 import { userformInputList } from 'utils/inputList/petformInputList';
 
 export function OwnerDataForm({

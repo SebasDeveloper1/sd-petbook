@@ -2,14 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MetaHead } from 'components/indexComponents';
-import { UsernameForm, ConfirmationLayout } from 'containers/indexContainers';
-import { updateUser } from 'fbase/dbFunctions';
+import { CreateProfileForm } from 'containers/indexContainers';
 import { useGetUserState } from 'hooks/useGetUserState';
 
-export default function ChooseUserNamePage() {
+export default function CreateProfilePage() {
+  const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
-  const [currentUser, setCurrentUser] = useState({});
-  const [registerCompleted, setRegisterCompleted] = useState(false);
 
   /*
   Stages:
@@ -24,6 +22,7 @@ export default function ChooseUserNamePage() {
     navigate('/home');
     return 2;
   };
+
   const handlerUserNotRegistered = (user) => {
     setCurrentUser(user);
     return 3;
@@ -39,16 +38,6 @@ export default function ChooseUserNamePage() {
     onUserNotLoggedIn: handlerUserNotLoggedIn,
     onUserNotRegistered: handlerUserNotRegistered,
   });
-
-  const handlerRegister = async (username) => {
-    const tmpUser = { ...currentUser };
-    tmpUser.username = username;
-    tmpUser.processCompleted = true;
-    await updateUser(tmpUser);
-    return setRegisterCompleted(true);
-  };
-
-  const handlerContinue = () => navigate('/home');
 
   useEffect(() => {
     getStateUser();
@@ -70,16 +59,11 @@ export default function ChooseUserNamePage() {
         type="article"
         url={document.location.href}
       />
-      <div className="relative flex justify-center items-center p-4 h-screen bg-ChooseUsernamePage bg-center bg-cover bg-no-repeat after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-t from-sky-500 to-indigo-500 after:opacity-20">
-        {!registerCompleted ? (
-          <UsernameForm handleSubmitForm={handlerRegister} />
-        ) : (
-          <ConfirmationLayout
-            title="Registro exitoso"
-            paragraph="¡Felicidades! Has terminado el proceso de registro, presiona el botón para continuar."
-            handlerButton={handlerContinue}
-          />
-        )}
+      <div className="flex justify-center items-center w-full">
+        <CreateProfileForm
+          userInfo={currentUser}
+          handleUserInfo={setCurrentUser}
+        />
       </div>
     </>
   );
